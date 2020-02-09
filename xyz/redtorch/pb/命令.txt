@@ -1,0 +1,8 @@
+protoc xyz/redtorch/pb/core_enum.proto --python_out=./
+protoc xyz/redtorch/pb/core_field.proto --python_out=./
+protoc xyz/redtorch/pb/core_rpc.proto --python_out=./
+protoc xyz/redtorch/pb/dep.proto --python_out=./
+
+
+
+
