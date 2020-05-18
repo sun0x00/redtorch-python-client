@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='xyz.redtorch.pb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1fxyz/redtorch/pb/core_enum.proto\x12\x0fxyz.redtorch.pb*?\n\x16StrategyEngineTypeEnum\x12\x10\n\x0cSET_Treading\x10\x00\x12\x13\n\x0fSET_Backtesting\x10\x01*P\n\x0fGatewayTypeEnum\x12\x1a\n\x16GTE_TradeAndMarketData\x10\x00\x12\x12\n\x0eGTE_MarketData\x10\x01\x12\r\n\tGTE_Trade\x10\x02*1\n\x16GatewayAdapterTypeEnum\x12\x0b\n\x07GAT_CTP\x10\x00\x12\n\n\x06GAT_IB\x10\x01*R\n\x10\x43ommonStatusEnum\x12\x10\n\x0c\x43OMS_SUCCESS\x10\x00\x12\r\n\tCOMS_INFO\x10\x01\x12\r\n\tCOMS_WARN\x10\x02\x12\x0e\n\nCOMS_ERROR\x10\x03*f\n\x0cLogLevelEnum\x12\n\n\x06LL_All\x10\x00\x12\x0e\n\x08LL_Error\x10\xc0\xb8\x02\x12\r\n\x07LL_Warn\x10\xb0\xea\x01\x12\r\n\x07LL_Info\x10\xa0\x9c\x01\x12\r\n\x08LL_Debug\x10\x90N\x12\r\n\x08LL_Trace\x10\x88\'*@\n\x14MarketDataDBTypeEnum\x12\x0c\n\x08MDDT_MIX\x10\x00\x12\x0b\n\x07MDDT_TD\x10\x01\x12\r\n\tMDDT_HIST\x10\x02*W\n\x0c\x42\x61rCycleEnum\x12\n\n\x06\x42_5Sec\x10\x00\x12\n\n\x06\x42_1Min\x10\x01\x12\n\n\x06\x42_3Min\x10\x02\x12\n\n\x06\x42_5Min\x10\x03\x12\x0b\n\x07\x42_15Min\x10\x04\x12\n\n\x06\x42_1Day\x10\x05*s\n\x11\x43onnectStatusEnum\x12\x0e\n\nCS_Unkonwn\x10\x00\x12\x13\n\x0f\x43S_Disconnected\x10\x01\x12\x10\n\x0c\x43S_Connected\x10\x02\x12\x14\n\x10\x43S_Disconnecting\x10\x03\x12\x11\n\rCS_Connecting\x10\x04*^\n\x14OrderActionStatusTyp\x12\x0f\n\x0bOAS_Unkonwn\x10\x00\x12\x11\n\rOAS_Submitted\x10\x01\x12\x10\n\x0cOAS_Accepted\x10\x02\x12\x10\n\x0cOAS_Rejected\x10\x03*\xe4\x01\n\x0fOrderStatusEnum\x12\x0e\n\nOS_Unknown\x10\x00\x12\x10\n\x0cOS_AllTraded\x10\x01\x12\x19\n\x15OS_PartTradedQueueing\x10\x02\x12\x1c\n\x18OS_PartTradedNotQueueing\x10\x03\x12\x16\n\x12OS_NoTradeQueueing\x10\x04\x12\x19\n\x15OS_NoTradeNotQueueing\x10\x05\x12\x0f\n\x0bOS_Canceled\x10\x06\x12\x11\n\rOS_NotTouched\x10\x07\x12\x0e\n\nOS_Touched\x10\x08\x12\x0f\n\x0bOS_Rejected\x10\t*\xcd\x01\n\x15OrderSubmitStatusEnum\x12\x0f\n\x0bOSS_Unknown\x10\x00\x12\x17\n\x13OSS_InsertSubmitted\x10\x01\x12\x17\n\x13OSS_CancelSubmitted\x10\x02\x12\x17\n\x13OSS_ModifySubmitted\x10\x03\x12\x10\n\x0cOSS_Accepted\x10\x04\x12\x16\n\x12OSS_InsertRejected\x10\x05\x12\x16\n\x12OSS_CancelRejected\x10\x06\x12\x16\n\x12OSS_ModifyRejected\x10\x07*\xdc\x01\n\x10ProductClassEnum\x12\x17\n\x13UnknownProductClass\x10\x00\x12\n\n\x06\x45QUITY\x10\x01\x12\x0b\n\x07\x46UTURES\x10\x02\x12\n\n\x06OPTION\x10\x03\x12\t\n\x05INDEX\x10\x04\x12\x0f\n\x0b\x43OMBINATION\x10\x05\x12\x08\n\x04\x42OND\x10\x06\x12\t\n\x05\x46OREX\x10\x07\x12\x08\n\x04SPOT\x10\x08\x12\t\n\x05\x44\x45\x46\x45R\x10\t\x12\x07\n\x03\x45TF\x10\n\x12\x0c\n\x08WARRANTS\x10\x0b\x12\n\n\x06SPREAD\x10\x0c\x12\x08\n\x04\x46UND\x10\r\x12\x07\n\x03\x45\x46P\x10\x0e\x12\x0e\n\nSPOTOPTION\x10\x0f*5\n\rDirectionEnum\x12\r\n\tD_Unknown\x10\x00\x12\t\n\x05\x44_Buy\x10\x01\x12\n\n\x06\x44_Sell\x10\x02*<\n\x10PositionTypeEnum\x12\x0e\n\nPT_Unknown\x10\x00\x12\n\n\x06PT_Net\x10\x01\x12\x0c\n\x08PT_Gross\x10\x02*N\n\x15PositionDirectionEnum\x12\x0e\n\nPD_Unknown\x10\x00\x12\n\n\x06PD_Net\x10\x01\x12\x0b\n\x07PD_Long\x10\x02\x12\x0c\n\x08PD_Short\x10\x03*\x8b\x01\n\rHedgeFlagEnum\x12\x0e\n\nHF_Unknown\x10\x00\x12\x12\n\x0eHF_Speculation\x10\x01\x12\x10\n\x0cHF_Arbitrage\x10\x02\x12\x0c\n\x08HF_Hedge\x10\x03\x12\x12\n\x0eHF_MarketMaker\x10\x04\x12\x10\n\x0cHF_SpecHedge\x10\x05\x12\x10\n\x0cHF_HedgeSpec\x10\x06*\xcc\x03\n\x12OrderPriceTypeEnum\x12\x0f\n\x0bOPT_Unknown\x10\x00\x12\x10\n\x0cOPT_AnyPrice\x10\x01\x12\x12\n\x0eOPT_LimitPrice\x10\x02\x12\x11\n\rOPT_BestPrice\x10\x03\x12\x11\n\rOPT_LastPrice\x10\x04\x12\x1d\n\x19OPT_LastPricePlusOneTicks\x10\x05\x12\x1d\n\x19OPT_LastPricePlusTwoTicks\x10\x06\x12\x1f\n\x1bOPT_LastPricePlusThreeTicks\x10\x07\x12\x11\n\rOPT_AskPrice1\x10\x08\x12\x1d\n\x19OPT_AskPrice1PlusOneTicks\x10\t\x12\x1d\n\x19OPT_AskPrice1PlusTwoTicks\x10\n\x12\x1f\n\x1bOPT_AskPrice1PlusThreeTicks\x10\x0b\x12\x11\n\rOPT_BidPrice1\x10\x0c\x12\x1d\n\x19OPT_BidPrice1PlusOneTicks\x10\r\x12\x1d\n\x19OPT_BidPrice1PlusTwoTicks\x10\x0e\x12\x1f\n\x1bOPT_BidPrice1PlusThreeTicks\x10\x0f\x12\x16\n\x12OPT_FiveLevelPrice\x10\x10*\xa1\x01\n\x0eOffsetFlagEnum\x12\x0e\n\nOF_Unkonwn\x10\x00\x12\x0b\n\x07OF_Open\x10\x01\x12\x0c\n\x08OF_Close\x10\x02\x12\x11\n\rOF_ForceClose\x10\x03\x12\x11\n\rOF_CloseToday\x10\x04\x12\x15\n\x11OF_CloseYesterday\x10\x05\x12\x0f\n\x0bOF_ForceOff\x10\x06\x12\x16\n\x12OF_LocalForceClose\x10\x07*\xe3\x01\n\x14\x46orceCloseReasonEnum\x12\x0f\n\x0b\x46\x43R_Unkonwn\x10\x00\x12\x15\n\x11\x46\x43R_NotForceClose\x10\x01\x12\x13\n\x0f\x46\x43R_LackDeposit\x10\x02\x12\x1f\n\x1b\x46\x43R_ClientOverPositionLimit\x10\x03\x12\x1f\n\x1b\x46\x43R_MemberOverPositionLimit\x10\x04\x12\x13\n\x0f\x46\x43R_NotMultiple\x10\x05\x12\x11\n\rFCR_Violation\x10\x06\x12\r\n\tFCR_Other\x10\x07\x12\x15\n\x11\x46\x43R_PersonDeliver\x10\x08*\x9e\x01\n\rOrderTypeEnum\x12\x0e\n\nOT_Unkonwn\x10\x00\x12\r\n\tOT_Normal\x10\x01\x12\x16\n\x12OT_DeriveFromQuote\x10\x02\x12\x1c\n\x18OT_DeriveFromCombination\x10\x03\x12\x12\n\x0eOT_Combination\x10\x04\x12\x17\n\x13OT_ConditionalOrder\x10\x05\x12\x0b\n\x07OT_Swap\x10\x06*k\n\x11TimeConditionEnum\x12\x0e\n\nTC_Unkonwn\x10\x00\x12\n\n\x06TC_IOC\x10\x01\x12\n\n\x06TC_GFS\x10\x02\x12\n\n\x06TC_GFD\x10\x03\x12\n\n\x06TC_GTD\x10\x04\x12\n\n\x06TC_GTC\x10\x05\x12\n\n\x06TC_GFA\x10\x06*F\n\x13VolumeConditionEnum\x12\x0e\n\nVC_Unkonwn\x10\x00\x12\t\n\x05VC_AV\x10\x01\x12\t\n\x05VC_MV\x10\x02\x12\t\n\x05VC_CV\x10\x03*\x8a\x05\n\x17\x43ontingentConditionEnum\x12\x0e\n\nCC_Unkonwn\x10\x00\x12\x12\n\x0e\x43\x43_Immediately\x10\x01\x12\x0c\n\x08\x43\x43_Touch\x10\x02\x12\x12\n\x0e\x43\x43_TouchProfit\x10\x03\x12\x12\n\x0e\x43\x43_ParkedOrder\x10\x04\x12$\n CC_LastPriceGreaterThanStopPrice\x10\x05\x12%\n!CC_LastPriceGreaterEqualStopPrice\x10\x06\x12#\n\x1f\x43\x43_LastPriceLesserThanStopPrice\x10\x07\x12$\n CC_LastPriceLesserEqualStopPrice\x10\x08\x12#\n\x1f\x43\x43_AskPriceGreaterThanStopPrice\x10\t\x12$\n CC_AskPriceGreaterEqualStopPrice\x10\n\x12\"\n\x1e\x43\x43_AskPriceLesserThanStopPrice\x10\x0b\x12#\n\x1f\x43\x43_AskPriceLesserEqualStopPrice\x10\x0c\x12#\n\x1f\x43\x43_BidPriceGreaterThanStopPrice\x10\r\x12$\n CC_BidPriceGreaterEqualStopPrice\x10\x0e\x12\"\n\x1e\x43\x43_BidPriceLesserThanStopPrice\x10\x0f\x12#\n\x1f\x43\x43_BidPriceLesserEqualStopPrice\x10\x10\x12)\n%CC_LocalLastPriceLesserEqualStopPrice\x10\x11\x12*\n&CC_LocalLastPriceGreaterEqualStopPrice\x10\x12*>\n\x0e\x41\x63tionFlagEnum\x12\x0e\n\nAF_Unkonwn\x10\x00\x12\r\n\tAF_Delete\x10\x01\x12\r\n\tAF_Modify\x10\x02*T\n\x10TradingRightEnum\x12\x0e\n\nTR_Unkonwn\x10\x00\x12\x0c\n\x08TR_Allow\x10\x01\x12\x10\n\x0cTR_CloseOnly\x10\x02\x12\x10\n\x0cTR_Forbidden\x10\x03*N\n\x0fOrderSourceEnum\x12\x0f\n\x0bODS_Unkonwn\x10\x00\x12\x13\n\x0fODS_Participant\x10\x01\x12\x15\n\x11ODS_Administrator\x10\x02*\xad\x01\n\rTradeTypeEnum\x12\x0e\n\nTT_Unkonwn\x10\x00\x12\x17\n\x13TT_SplitCombination\x10\x01\x12\r\n\tTT_Common\x10\x02\x12\x17\n\x13TT_OptionsExecution\x10\x03\x12\n\n\x06TT_OTC\x10\x04\x12\x11\n\rTT_EFPDerived\x10\x05\x12\x19\n\x15TT_CombinationDerived\x10\x06\x12\x11\n\rTT_BlockTrade\x10\x07*b\n\x0fPriceSourceEnum\x12\x10\n\x0cPSRC_Unkonwn\x10\x00\x12\x12\n\x0ePSRC_LastPrice\x10\x01\x12\x0c\n\x08PSRC_Buy\x10\x02\x12\r\n\tPSRC_Sell\x10\x03\x12\x0c\n\x08PSRC_OTC\x10\x04*\xa8\x02\n\x0c\x43urrencyEnum\x12\x13\n\x0fUnknownCurrency\x10\x00\x12\x07\n\x03USD\x10\x01\x12\x07\n\x03\x43NY\x10\x02\x12\x07\n\x03\x43NH\x10\x03\x12\x07\n\x03HKD\x10\x04\x12\x07\n\x03JPY\x10\x05\x12\x07\n\x03\x45UR\x10\x06\x12\x07\n\x03GBP\x10\x07\x12\x07\n\x03\x44\x45M\x10\x08\x12\x07\n\x03\x43HF\x10\t\x12\x07\n\x03\x46RF\x10\n\x12\x07\n\x03\x43\x41\x44\x10\x0b\x12\x07\n\x03\x41UD\x10\x0c\x12\x07\n\x03\x41TS\x10\r\x12\x07\n\x03\x46IM\x10\x0e\x12\x07\n\x03\x42\x45\x46\x10\x0f\x12\x07\n\x03THB\x10\x10\x12\x07\n\x03IEP\x10\x11\x12\x07\n\x03ITL\x10\x12\x12\x07\n\x03LUF\x10\x13\x12\x07\n\x03NLG\x10\x14\x12\x07\n\x03PTE\x10\x15\x12\x07\n\x03\x45SP\x10\x16\x12\x07\n\x03IDR\x10\x17\x12\x07\n\x03MYR\x10\x18\x12\x07\n\x03NZD\x10\x19\x12\x07\n\x03PHP\x10\x1a\x12\x07\n\x03SUR\x10\x1b\x12\x07\n\x03SGD\x10\x1c\x12\x07\n\x03KRW\x10\x1d*\x95\x02\n\x0c\x45xchangeEnum\x12\x13\n\x0fUnknownExchange\x10\x00\x12\x07\n\x03SSE\x10\x01\x12\x08\n\x04SZSE\x10\x02\x12\t\n\x05\x43\x46\x46\x45X\x10\x03\x12\x08\n\x04SHFE\x10\x04\x12\x08\n\x04\x43ZCE\x10\x05\x12\x07\n\x03\x44\x43\x45\x10\x06\x12\x07\n\x03SGE\x10\x07\x12\x07\n\x03INE\x10\x08\x12\x08\n\x04SEHK\x10\t\x12\x08\n\x04HKFE\x10\n\x12\x07\n\x03SGX\x10\x0b\x12\t\n\x05NYBOT\x10\x0c\x12\t\n\x05NYMEX\x10\r\x12\t\n\x05\x43OMEX\x10\x0e\x12\x07\n\x03\x43ME\x10\x0f\x12\x07\n\x03\x43\x46\x45\x10\x10\x12\n\n\x06GLOBEX\x10\x11\x12\x07\n\x03ICE\x10\x12\x12\x07\n\x03IPE\x10\x13\x12\x07\n\x03LME\x10\x14\x12\x0c\n\x08IDEALPRO\x10\x15\x12\t\n\x05OANDA\x10\x16\x12\x08\n\x04\x46XCM\x10\x17\x12\t\n\x05SMART\x10\x18*E\n\x0fOptionsTypeEnum\x12\r\n\tO_Unknown\x10\x00\x12\x11\n\rO_CallOptions\x10\x01\x12\x10\n\x0cO_PutOptions\x10\x02*Y\n\x0eStrikeModeEnum\x12\x0f\n\x0bSTM_Unknown\x10\x00\x12\x13\n\x0fSTM_Continental\x10\x01\x12\x10\n\x0cSTM_American\x10\x02\x12\x0f\n\x0bSTM_Bermuda\x10\x03*\x94\x01\n\x13\x43ombinationTypeEnum\x12\x11\n\rCOMBT_Unknown\x10\x00\x12\x10\n\x0c\x43OMBT_Future\x10\x01\x12\r\n\tCOMBT_BUL\x10\x02\x12\r\n\tCOMBT_BER\x10\x03\x12\r\n\tCOMBT_STD\x10\x04\x12\r\n\tCOMBT_STG\x10\x05\x12\r\n\tCOMBT_PRT\x10\x06\x12\r\n\tCOMBT_CLD\x10\x07\x62\x06proto3')
+  serialized_pb=_b('\n\x1fxyz/redtorch/pb/core_enum.proto\x12\x0fxyz.redtorch.pb*?\n\x16StrategyEngineTypeEnum\x12\x10\n\x0cSET_Treading\x10\x00\x12\x13\n\x0fSET_Backtesting\x10\x01*P\n\x0fGatewayTypeEnum\x12\x1a\n\x16GTE_TradeAndMarketData\x10\x00\x12\x12\n\x0eGTE_MarketData\x10\x01\x12\r\n\tGTE_Trade\x10\x02*A\n\x16GatewayAdapterTypeEnum\x12\x0b\n\x07GAT_CTP\x10\x00\x12\n\n\x06GAT_IB\x10\x01\x12\x0e\n\nGAT_COMMON\x10\x02*R\n\x10\x43ommonStatusEnum\x12\x10\n\x0c\x43OMS_SUCCESS\x10\x00\x12\r\n\tCOMS_INFO\x10\x01\x12\r\n\tCOMS_WARN\x10\x02\x12\x0e\n\nCOMS_ERROR\x10\x03*f\n\x0cLogLevelEnum\x12\n\n\x06LL_All\x10\x00\x12\x0e\n\x08LL_Error\x10\xc0\xb8\x02\x12\r\n\x07LL_Warn\x10\xb0\xea\x01\x12\r\n\x07LL_Info\x10\xa0\x9c\x01\x12\r\n\x08LL_Debug\x10\x90N\x12\r\n\x08LL_Trace\x10\x88\'*@\n\x14MarketDataDBTypeEnum\x12\x0c\n\x08MDDT_MIX\x10\x00\x12\x0b\n\x07MDDT_TD\x10\x01\x12\r\n\tMDDT_HIST\x10\x02*W\n\x0c\x42\x61rCycleEnum\x12\n\n\x06\x42_5Sec\x10\x00\x12\n\n\x06\x42_1Min\x10\x01\x12\n\n\x06\x42_3Min\x10\x02\x12\n\n\x06\x42_5Min\x10\x03\x12\x0b\n\x07\x42_15Min\x10\x04\x12\n\n\x06\x42_1Day\x10\x05*s\n\x11\x43onnectStatusEnum\x12\x0e\n\nCS_Unkonwn\x10\x00\x12\x13\n\x0f\x43S_Disconnected\x10\x01\x12\x10\n\x0c\x43S_Connected\x10\x02\x12\x14\n\x10\x43S_Disconnecting\x10\x03\x12\x11\n\rCS_Connecting\x10\x04*^\n\x14OrderActionStatusTyp\x12\x0f\n\x0bOAS_Unkonwn\x10\x00\x12\x11\n\rOAS_Submitted\x10\x01\x12\x10\n\x0cOAS_Accepted\x10\x02\x12\x10\n\x0cOAS_Rejected\x10\x03*\xe4\x01\n\x0fOrderStatusEnum\x12\x0e\n\nOS_Unknown\x10\x00\x12\x10\n\x0cOS_AllTraded\x10\x01\x12\x19\n\x15OS_PartTradedQueueing\x10\x02\x12\x1c\n\x18OS_PartTradedNotQueueing\x10\x03\x12\x16\n\x12OS_NoTradeQueueing\x10\x04\x12\x19\n\x15OS_NoTradeNotQueueing\x10\x05\x12\x0f\n\x0bOS_Canceled\x10\x06\x12\x11\n\rOS_NotTouched\x10\x07\x12\x0e\n\nOS_Touched\x10\x08\x12\x0f\n\x0bOS_Rejected\x10\t*\xcd\x01\n\x15OrderSubmitStatusEnum\x12\x0f\n\x0bOSS_Unknown\x10\x00\x12\x17\n\x13OSS_InsertSubmitted\x10\x01\x12\x17\n\x13OSS_CancelSubmitted\x10\x02\x12\x17\n\x13OSS_ModifySubmitted\x10\x03\x12\x10\n\x0cOSS_Accepted\x10\x04\x12\x16\n\x12OSS_InsertRejected\x10\x05\x12\x16\n\x12OSS_CancelRejected\x10\x06\x12\x16\n\x12OSS_ModifyRejected\x10\x07*\xdc\x01\n\x10ProductClassEnum\x12\x17\n\x13UnknownProductClass\x10\x00\x12\n\n\x06\x45QUITY\x10\x01\x12\x0b\n\x07\x46UTURES\x10\x02\x12\n\n\x06OPTION\x10\x03\x12\t\n\x05INDEX\x10\x04\x12\x0f\n\x0b\x43OMBINATION\x10\x05\x12\x08\n\x04\x42OND\x10\x06\x12\t\n\x05\x46OREX\x10\x07\x12\x08\n\x04SPOT\x10\x08\x12\t\n\x05\x44\x45\x46\x45R\x10\t\x12\x07\n\x03\x45TF\x10\n\x12\x0c\n\x08WARRANTS\x10\x0b\x12\n\n\x06SPREAD\x10\x0c\x12\x08\n\x04\x46UND\x10\r\x12\x07\n\x03\x45\x46P\x10\x0e\x12\x0e\n\nSPOTOPTION\x10\x0f*5\n\rDirectionEnum\x12\r\n\tD_Unknown\x10\x00\x12\t\n\x05\x44_Buy\x10\x01\x12\n\n\x06\x44_Sell\x10\x02*<\n\x10PositionTypeEnum\x12\x0e\n\nPT_Unknown\x10\x00\x12\n\n\x06PT_Net\x10\x01\x12\x0c\n\x08PT_Gross\x10\x02*N\n\x15PositionDirectionEnum\x12\x0e\n\nPD_Unknown\x10\x00\x12\n\n\x06PD_Net\x10\x01\x12\x0b\n\x07PD_Long\x10\x02\x12\x0c\n\x08PD_Short\x10\x03*\x8b\x01\n\rHedgeFlagEnum\x12\x0e\n\nHF_Unknown\x10\x00\x12\x12\n\x0eHF_Speculation\x10\x01\x12\x10\n\x0cHF_Arbitrage\x10\x02\x12\x0c\n\x08HF_Hedge\x10\x03\x12\x12\n\x0eHF_MarketMaker\x10\x04\x12\x10\n\x0cHF_SpecHedge\x10\x05\x12\x10\n\x0cHF_HedgeSpec\x10\x06*\xcc\x03\n\x12OrderPriceTypeEnum\x12\x0f\n\x0bOPT_Unknown\x10\x00\x12\x10\n\x0cOPT_AnyPrice\x10\x01\x12\x12\n\x0eOPT_LimitPrice\x10\x02\x12\x11\n\rOPT_BestPrice\x10\x03\x12\x11\n\rOPT_LastPrice\x10\x04\x12\x1d\n\x19OPT_LastPricePlusOneTicks\x10\x05\x12\x1d\n\x19OPT_LastPricePlusTwoTicks\x10\x06\x12\x1f\n\x1bOPT_LastPricePlusThreeTicks\x10\x07\x12\x11\n\rOPT_AskPrice1\x10\x08\x12\x1d\n\x19OPT_AskPrice1PlusOneTicks\x10\t\x12\x1d\n\x19OPT_AskPrice1PlusTwoTicks\x10\n\x12\x1f\n\x1bOPT_AskPrice1PlusThreeTicks\x10\x0b\x12\x11\n\rOPT_BidPrice1\x10\x0c\x12\x1d\n\x19OPT_BidPrice1PlusOneTicks\x10\r\x12\x1d\n\x19OPT_BidPrice1PlusTwoTicks\x10\x0e\x12\x1f\n\x1bOPT_BidPrice1PlusThreeTicks\x10\x0f\x12\x16\n\x12OPT_FiveLevelPrice\x10\x10*\xa1\x01\n\x0eOffsetFlagEnum\x12\x0e\n\nOF_Unkonwn\x10\x00\x12\x0b\n\x07OF_Open\x10\x01\x12\x0c\n\x08OF_Close\x10\x02\x12\x11\n\rOF_ForceClose\x10\x03\x12\x11\n\rOF_CloseToday\x10\x04\x12\x15\n\x11OF_CloseYesterday\x10\x05\x12\x0f\n\x0bOF_ForceOff\x10\x06\x12\x16\n\x12OF_LocalForceClose\x10\x07*\xe3\x01\n\x14\x46orceCloseReasonEnum\x12\x0f\n\x0b\x46\x43R_Unkonwn\x10\x00\x12\x15\n\x11\x46\x43R_NotForceClose\x10\x01\x12\x13\n\x0f\x46\x43R_LackDeposit\x10\x02\x12\x1f\n\x1b\x46\x43R_ClientOverPositionLimit\x10\x03\x12\x1f\n\x1b\x46\x43R_MemberOverPositionLimit\x10\x04\x12\x13\n\x0f\x46\x43R_NotMultiple\x10\x05\x12\x11\n\rFCR_Violation\x10\x06\x12\r\n\tFCR_Other\x10\x07\x12\x15\n\x11\x46\x43R_PersonDeliver\x10\x08*\x9e\x01\n\rOrderTypeEnum\x12\x0e\n\nOT_Unkonwn\x10\x00\x12\r\n\tOT_Normal\x10\x01\x12\x16\n\x12OT_DeriveFromQuote\x10\x02\x12\x1c\n\x18OT_DeriveFromCombination\x10\x03\x12\x12\n\x0eOT_Combination\x10\x04\x12\x17\n\x13OT_ConditionalOrder\x10\x05\x12\x0b\n\x07OT_Swap\x10\x06*k\n\x11TimeConditionEnum\x12\x0e\n\nTC_Unkonwn\x10\x00\x12\n\n\x06TC_IOC\x10\x01\x12\n\n\x06TC_GFS\x10\x02\x12\n\n\x06TC_GFD\x10\x03\x12\n\n\x06TC_GTD\x10\x04\x12\n\n\x06TC_GTC\x10\x05\x12\n\n\x06TC_GFA\x10\x06*F\n\x13VolumeConditionEnum\x12\x0e\n\nVC_Unkonwn\x10\x00\x12\t\n\x05VC_AV\x10\x01\x12\t\n\x05VC_MV\x10\x02\x12\t\n\x05VC_CV\x10\x03*\x8a\x05\n\x17\x43ontingentConditionEnum\x12\x0e\n\nCC_Unkonwn\x10\x00\x12\x12\n\x0e\x43\x43_Immediately\x10\x01\x12\x0c\n\x08\x43\x43_Touch\x10\x02\x12\x12\n\x0e\x43\x43_TouchProfit\x10\x03\x12\x12\n\x0e\x43\x43_ParkedOrder\x10\x04\x12$\n CC_LastPriceGreaterThanStopPrice\x10\x05\x12%\n!CC_LastPriceGreaterEqualStopPrice\x10\x06\x12#\n\x1f\x43\x43_LastPriceLesserThanStopPrice\x10\x07\x12$\n CC_LastPriceLesserEqualStopPrice\x10\x08\x12#\n\x1f\x43\x43_AskPriceGreaterThanStopPrice\x10\t\x12$\n CC_AskPriceGreaterEqualStopPrice\x10\n\x12\"\n\x1e\x43\x43_AskPriceLesserThanStopPrice\x10\x0b\x12#\n\x1f\x43\x43_AskPriceLesserEqualStopPrice\x10\x0c\x12#\n\x1f\x43\x43_BidPriceGreaterThanStopPrice\x10\r\x12$\n CC_BidPriceGreaterEqualStopPrice\x10\x0e\x12\"\n\x1e\x43\x43_BidPriceLesserThanStopPrice\x10\x0f\x12#\n\x1f\x43\x43_BidPriceLesserEqualStopPrice\x10\x10\x12)\n%CC_LocalLastPriceLesserEqualStopPrice\x10\x11\x12*\n&CC_LocalLastPriceGreaterEqualStopPrice\x10\x12*>\n\x0e\x41\x63tionFlagEnum\x12\x0e\n\nAF_Unkonwn\x10\x00\x12\r\n\tAF_Delete\x10\x01\x12\r\n\tAF_Modify\x10\x02*T\n\x10TradingRightEnum\x12\x0e\n\nTR_Unkonwn\x10\x00\x12\x0c\n\x08TR_Allow\x10\x01\x12\x10\n\x0cTR_CloseOnly\x10\x02\x12\x10\n\x0cTR_Forbidden\x10\x03*N\n\x0fOrderSourceEnum\x12\x0f\n\x0bODS_Unkonwn\x10\x00\x12\x13\n\x0fODS_Participant\x10\x01\x12\x15\n\x11ODS_Administrator\x10\x02*\xad\x01\n\rTradeTypeEnum\x12\x0e\n\nTT_Unkonwn\x10\x00\x12\x17\n\x13TT_SplitCombination\x10\x01\x12\r\n\tTT_Common\x10\x02\x12\x17\n\x13TT_OptionsExecution\x10\x03\x12\n\n\x06TT_OTC\x10\x04\x12\x11\n\rTT_EFPDerived\x10\x05\x12\x19\n\x15TT_CombinationDerived\x10\x06\x12\x11\n\rTT_BlockTrade\x10\x07*b\n\x0fPriceSourceEnum\x12\x10\n\x0cPSRC_Unkonwn\x10\x00\x12\x12\n\x0ePSRC_LastPrice\x10\x01\x12\x0c\n\x08PSRC_Buy\x10\x02\x12\r\n\tPSRC_Sell\x10\x03\x12\x0c\n\x08PSRC_OTC\x10\x04*\xa8\x02\n\x0c\x43urrencyEnum\x12\x13\n\x0fUnknownCurrency\x10\x00\x12\x07\n\x03USD\x10\x01\x12\x07\n\x03\x43NY\x10\x02\x12\x07\n\x03\x43NH\x10\x03\x12\x07\n\x03HKD\x10\x04\x12\x07\n\x03JPY\x10\x05\x12\x07\n\x03\x45UR\x10\x06\x12\x07\n\x03GBP\x10\x07\x12\x07\n\x03\x44\x45M\x10\x08\x12\x07\n\x03\x43HF\x10\t\x12\x07\n\x03\x46RF\x10\n\x12\x07\n\x03\x43\x41\x44\x10\x0b\x12\x07\n\x03\x41UD\x10\x0c\x12\x07\n\x03\x41TS\x10\r\x12\x07\n\x03\x46IM\x10\x0e\x12\x07\n\x03\x42\x45\x46\x10\x0f\x12\x07\n\x03THB\x10\x10\x12\x07\n\x03IEP\x10\x11\x12\x07\n\x03ITL\x10\x12\x12\x07\n\x03LUF\x10\x13\x12\x07\n\x03NLG\x10\x14\x12\x07\n\x03PTE\x10\x15\x12\x07\n\x03\x45SP\x10\x16\x12\x07\n\x03IDR\x10\x17\x12\x07\n\x03MYR\x10\x18\x12\x07\n\x03NZD\x10\x19\x12\x07\n\x03PHP\x10\x1a\x12\x07\n\x03SUR\x10\x1b\x12\x07\n\x03SGD\x10\x1c\x12\x07\n\x03KRW\x10\x1d*\x96\x03\n\x0c\x45xchangeEnum\x12\x13\n\x0fUnknownExchange\x10\x00\x12\x07\n\x03SSE\x10\x01\x12\x08\n\x04SZSE\x10\x02\x12\t\n\x05\x43\x46\x46\x45X\x10\x03\x12\x08\n\x04SHFE\x10\x04\x12\x08\n\x04\x43ZCE\x10\x05\x12\x07\n\x03\x44\x43\x45\x10\x06\x12\x07\n\x03SGE\x10\x07\x12\x07\n\x03INE\x10\x08\x12\x08\n\x04SEHK\x10\t\x12\x08\n\x04HKFE\x10\n\x12\x07\n\x03SGX\x10\x0b\x12\t\n\x05NYBOT\x10\x0c\x12\t\n\x05NYMEX\x10\r\x12\x07\n\x03\x43\x46\x45\x10\x0e\x12\n\n\x06GLOBEX\x10\x0f\x12\r\n\tCMECRYPTO\x10\x10\x12\t\n\x05ICEEU\x10\x11\x12\r\n\tICEEUSOFT\x10\x12\x12\t\n\x05ICEUS\x10\x13\x12\x07\n\x03IPE\x10\x14\x12\n\n\x06LMEOTC\x10\x15\x12\t\n\x05\x45\x43\x42OT\x10\x16\x12\x08\n\x04\x41PEX\x10\x17\x12\x07\n\x03\x42MD\x10\x18\x12\t\n\x05MONEP\x10\x19\x12\x07\n\x03\x44TB\x10\x1a\x12\t\n\x05TOCOM\x10\x1b\x12\n\n\x06TAIFEX\x10\x1c\x12\x0c\n\x08SEHKSZSE\x10\x1d\x12\x0b\n\x07SEHKNTL\x10\x1e\x12\x07\n\x03KSE\x10\x1f\x12\x07\n\x03OSE\x10 \x12\x0f\n\x0bIB_IDEALPRO\x10!\x12\x0c\n\x08IB_SMART\x10\"*E\n\x0fOptionsTypeEnum\x12\r\n\tO_Unknown\x10\x00\x12\x11\n\rO_CallOptions\x10\x01\x12\x10\n\x0cO_PutOptions\x10\x02*Y\n\x0eStrikeModeEnum\x12\x0f\n\x0bSTM_Unknown\x10\x00\x12\x13\n\x0fSTM_Continental\x10\x01\x12\x10\n\x0cSTM_American\x10\x02\x12\x0f\n\x0bSTM_Bermuda\x10\x03*\x94\x01\n\x13\x43ombinationTypeEnum\x12\x11\n\rCOMBT_Unknown\x10\x00\x12\x10\n\x0c\x43OMBT_Future\x10\x01\x12\r\n\tCOMBT_BUL\x10\x02\x12\r\n\tCOMBT_BER\x10\x03\x12\r\n\tCOMBT_STD\x10\x04\x12\r\n\tCOMBT_STG\x10\x05\x12\r\n\tCOMBT_PRT\x10\x06\x12\r\n\tCOMBT_CLD\x10\x07\x62\x06proto3')
 )
 
 _STRATEGYENGINETYPEENUM = _descriptor.EnumDescriptor(
@@ -88,11 +88,15 @@ _GATEWAYADAPTERTYPEENUM = _descriptor.EnumDescriptor(
       name='GAT_IB', index=1, number=1,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GAT_COMMON', index=2, number=2,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=199,
-  serialized_end=248,
+  serialized_end=264,
 )
 _sym_db.RegisterEnumDescriptor(_GATEWAYADAPTERTYPEENUM)
 
@@ -122,8 +126,8 @@ _COMMONSTATUSENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=250,
-  serialized_end=332,
+  serialized_start=266,
+  serialized_end=348,
 )
 _sym_db.RegisterEnumDescriptor(_COMMONSTATUSENUM)
 
@@ -161,8 +165,8 @@ _LOGLEVELENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=334,
-  serialized_end=436,
+  serialized_start=350,
+  serialized_end=452,
 )
 _sym_db.RegisterEnumDescriptor(_LOGLEVELENUM)
 
@@ -188,8 +192,8 @@ _MARKETDATADBTYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=438,
-  serialized_end=502,
+  serialized_start=454,
+  serialized_end=518,
 )
 _sym_db.RegisterEnumDescriptor(_MARKETDATADBTYPEENUM)
 
@@ -227,8 +231,8 @@ _BARCYCLEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=504,
-  serialized_end=591,
+  serialized_start=520,
+  serialized_end=607,
 )
 _sym_db.RegisterEnumDescriptor(_BARCYCLEENUM)
 
@@ -262,8 +266,8 @@ _CONNECTSTATUSENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=593,
-  serialized_end=708,
+  serialized_start=609,
+  serialized_end=724,
 )
 _sym_db.RegisterEnumDescriptor(_CONNECTSTATUSENUM)
 
@@ -293,8 +297,8 @@ _ORDERACTIONSTATUSTYP = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=710,
-  serialized_end=804,
+  serialized_start=726,
+  serialized_end=820,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERACTIONSTATUSTYP)
 
@@ -348,8 +352,8 @@ _ORDERSTATUSENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=807,
-  serialized_end=1035,
+  serialized_start=823,
+  serialized_end=1051,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERSTATUSENUM)
 
@@ -395,8 +399,8 @@ _ORDERSUBMITSTATUSENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1038,
-  serialized_end=1243,
+  serialized_start=1054,
+  serialized_end=1259,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERSUBMITSTATUSENUM)
 
@@ -474,8 +478,8 @@ _PRODUCTCLASSENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1246,
-  serialized_end=1466,
+  serialized_start=1262,
+  serialized_end=1482,
 )
 _sym_db.RegisterEnumDescriptor(_PRODUCTCLASSENUM)
 
@@ -501,8 +505,8 @@ _DIRECTIONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1468,
-  serialized_end=1521,
+  serialized_start=1484,
+  serialized_end=1537,
 )
 _sym_db.RegisterEnumDescriptor(_DIRECTIONENUM)
 
@@ -528,8 +532,8 @@ _POSITIONTYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1523,
-  serialized_end=1583,
+  serialized_start=1539,
+  serialized_end=1599,
 )
 _sym_db.RegisterEnumDescriptor(_POSITIONTYPEENUM)
 
@@ -559,8 +563,8 @@ _POSITIONDIRECTIONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1585,
-  serialized_end=1663,
+  serialized_start=1601,
+  serialized_end=1679,
 )
 _sym_db.RegisterEnumDescriptor(_POSITIONDIRECTIONENUM)
 
@@ -602,8 +606,8 @@ _HEDGEFLAGENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1666,
-  serialized_end=1805,
+  serialized_start=1682,
+  serialized_end=1821,
 )
 _sym_db.RegisterEnumDescriptor(_HEDGEFLAGENUM)
 
@@ -685,8 +689,8 @@ _ORDERPRICETYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1808,
-  serialized_end=2268,
+  serialized_start=1824,
+  serialized_end=2284,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERPRICETYPEENUM)
 
@@ -732,8 +736,8 @@ _OFFSETFLAGENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2271,
-  serialized_end=2432,
+  serialized_start=2287,
+  serialized_end=2448,
 )
 _sym_db.RegisterEnumDescriptor(_OFFSETFLAGENUM)
 
@@ -783,8 +787,8 @@ _FORCECLOSEREASONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2435,
-  serialized_end=2662,
+  serialized_start=2451,
+  serialized_end=2678,
 )
 _sym_db.RegisterEnumDescriptor(_FORCECLOSEREASONENUM)
 
@@ -826,8 +830,8 @@ _ORDERTYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2665,
-  serialized_end=2823,
+  serialized_start=2681,
+  serialized_end=2839,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERTYPEENUM)
 
@@ -869,8 +873,8 @@ _TIMECONDITIONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2825,
-  serialized_end=2932,
+  serialized_start=2841,
+  serialized_end=2948,
 )
 _sym_db.RegisterEnumDescriptor(_TIMECONDITIONENUM)
 
@@ -900,8 +904,8 @@ _VOLUMECONDITIONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2934,
-  serialized_end=3004,
+  serialized_start=2950,
+  serialized_end=3020,
 )
 _sym_db.RegisterEnumDescriptor(_VOLUMECONDITIONENUM)
 
@@ -991,8 +995,8 @@ _CONTINGENTCONDITIONENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3007,
-  serialized_end=3657,
+  serialized_start=3023,
+  serialized_end=3673,
 )
 _sym_db.RegisterEnumDescriptor(_CONTINGENTCONDITIONENUM)
 
@@ -1018,8 +1022,8 @@ _ACTIONFLAGENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3659,
-  serialized_end=3721,
+  serialized_start=3675,
+  serialized_end=3737,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONFLAGENUM)
 
@@ -1049,8 +1053,8 @@ _TRADINGRIGHTENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3723,
-  serialized_end=3807,
+  serialized_start=3739,
+  serialized_end=3823,
 )
 _sym_db.RegisterEnumDescriptor(_TRADINGRIGHTENUM)
 
@@ -1076,8 +1080,8 @@ _ORDERSOURCEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3809,
-  serialized_end=3887,
+  serialized_start=3825,
+  serialized_end=3903,
 )
 _sym_db.RegisterEnumDescriptor(_ORDERSOURCEENUM)
 
@@ -1123,8 +1127,8 @@ _TRADETYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3890,
-  serialized_end=4063,
+  serialized_start=3906,
+  serialized_end=4079,
 )
 _sym_db.RegisterEnumDescriptor(_TRADETYPEENUM)
 
@@ -1158,8 +1162,8 @@ _PRICESOURCEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4065,
-  serialized_end=4163,
+  serialized_start=4081,
+  serialized_end=4179,
 )
 _sym_db.RegisterEnumDescriptor(_PRICESOURCEENUM)
 
@@ -1293,8 +1297,8 @@ _CURRENCYENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4166,
-  serialized_end=4462,
+  serialized_start=4182,
+  serialized_end=4478,
 )
 _sym_db.RegisterEnumDescriptor(_CURRENCYENUM)
 
@@ -1362,54 +1366,94 @@ _EXCHANGEENUM = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='COMEX', index=14, number=14,
+      name='CFE', index=14, number=14,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CME', index=15, number=15,
+      name='GLOBEX', index=15, number=15,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CFE', index=16, number=16,
+      name='CMECRYPTO', index=16, number=16,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='GLOBEX', index=17, number=17,
+      name='ICEEU', index=17, number=17,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='ICE', index=18, number=18,
+      name='ICEEUSOFT', index=18, number=18,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='IPE', index=19, number=19,
+      name='ICEUS', index=19, number=19,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='LME', index=20, number=20,
+      name='IPE', index=20, number=20,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='IDEALPRO', index=21, number=21,
+      name='LMEOTC', index=21, number=21,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='OANDA', index=22, number=22,
+      name='ECBOT', index=22, number=22,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='FXCM', index=23, number=23,
+      name='APEX', index=23, number=23,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='SMART', index=24, number=24,
+      name='BMD', index=24, number=24,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MONEP', index=25, number=25,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DTB', index=26, number=26,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TOCOM', index=27, number=27,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TAIFEX', index=28, number=28,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SEHKSZSE', index=29, number=29,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SEHKNTL', index=30, number=30,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='KSE', index=31, number=31,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OSE', index=32, number=32,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IB_IDEALPRO', index=33, number=33,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IB_SMART', index=34, number=34,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4465,
-  serialized_end=4742,
+  serialized_start=4481,
+  serialized_end=4887,
 )
 _sym_db.RegisterEnumDescriptor(_EXCHANGEENUM)
 
@@ -1435,8 +1479,8 @@ _OPTIONSTYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4744,
-  serialized_end=4813,
+  serialized_start=4889,
+  serialized_end=4958,
 )
 _sym_db.RegisterEnumDescriptor(_OPTIONSTYPEENUM)
 
@@ -1466,8 +1510,8 @@ _STRIKEMODEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4815,
-  serialized_end=4904,
+  serialized_start=4960,
+  serialized_end=5049,
 )
 _sym_db.RegisterEnumDescriptor(_STRIKEMODEENUM)
 
@@ -1513,8 +1557,8 @@ _COMBINATIONTYPEENUM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4907,
-  serialized_end=5055,
+  serialized_start=5052,
+  serialized_end=5200,
 )
 _sym_db.RegisterEnumDescriptor(_COMBINATIONTYPEENUM)
 
@@ -1526,6 +1570,7 @@ GTE_MarketData = 1
 GTE_Trade = 2
 GAT_CTP = 0
 GAT_IB = 1
+GAT_COMMON = 2
 COMS_SUCCESS = 0
 COMS_INFO = 1
 COMS_WARN = 2
@@ -1743,17 +1788,27 @@ HKFE = 10
 SGX = 11
 NYBOT = 12
 NYMEX = 13
-COMEX = 14
-CME = 15
-CFE = 16
-GLOBEX = 17
-ICE = 18
-IPE = 19
-LME = 20
-IDEALPRO = 21
-OANDA = 22
-FXCM = 23
-SMART = 24
+CFE = 14
+GLOBEX = 15
+CMECRYPTO = 16
+ICEEU = 17
+ICEEUSOFT = 18
+ICEUS = 19
+IPE = 20
+LMEOTC = 21
+ECBOT = 22
+APEX = 23
+BMD = 24
+MONEP = 25
+DTB = 26
+TOCOM = 27
+TAIFEX = 28
+SEHKSZSE = 29
+SEHKNTL = 30
+KSE = 31
+OSE = 32
+IB_IDEALPRO = 33
+IB_SMART = 34
 O_Unknown = 0
 O_CallOptions = 1
 O_PutOptions = 2
