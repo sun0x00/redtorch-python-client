@@ -159,7 +159,8 @@ class StrategyTemplate:
 
     def unsubscribe(self, unifiedSymbol, gatewayId=None):
         if unifiedSymbol in ClientTradeCacheService.mixContractDict:
-            self.subscribedUnifiedSymbolSet.add(unifiedSymbol)
+            if unifiedSymbol in self.subscribedUnifiedSymbolSet:
+                self.subscribedUnifiedSymbolSet.remove(unifiedSymbol)
             RpcClientApiService.unsubscribe(ClientTradeCacheService.mixContractDict[unifiedSymbol], gatewayId,
                                             sync=True)
         else:
