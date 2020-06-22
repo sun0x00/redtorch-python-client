@@ -19,6 +19,8 @@ class RpcClientRspHandler:
     rpcGetTickListRspDict = dict()
     rpcGetAccountListRspDict = dict()
 
+    rpcQueryDBBarListRspDict = dict()
+
     @staticmethod
     def getAndRemoveRpcSubscribeRsp(reqId):
         if reqId in RpcClientRspHandler.rpcSubscribeRspDict:
@@ -115,6 +117,15 @@ class RpcClientRspHandler:
             if reqId in RpcClientRspHandler.waitReqIdSet:
                 RpcClientRspHandler.waitReqIdSet.remove(reqId)
             return RpcClientRspHandler.rpcGetTickListRspDict.pop(reqId)
+        else:
+            return None
+
+    @staticmethod
+    def getAndRemoveRpcQueryDBBarListRsp(reqId):
+        if reqId in RpcClientRspHandler.rpcQueryDBBarListRspDict:
+            if reqId in RpcClientRspHandler.waitReqIdSet:
+                RpcClientRspHandler.waitReqIdSet.remove(reqId)
+            return RpcClientRspHandler.rpcQueryDBBarListRspDict.pop(reqId)
         else:
             return None
 
@@ -255,3 +266,12 @@ class RpcClientRspHandler:
                 RpcClientRspHandler.rpcExceptionRspDict[rpcExceptionRsp.originalReqId] = rpcExceptionRsp
         else:
             logger.error("接收到未知请求ID的异常回报,异常信息:%s", rpcExceptionRsp.info)
+
+    @staticmethod
+    def onQueryDBBarListRsp(rpcQueryDBBarListRsp):
+        reqId = rpcQueryDBBarListRsp.commonRsp.reqId
+        if reqId in RpcClientRspHandler.waitReqIdSet:
+            RpcClientRspHandler.rpcQueryDBBarListRspDict[reqId] = rpcQueryDBBarListRsp
+        else:
+            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+

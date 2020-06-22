@@ -1,40 +1,24 @@
-import uuid
 
 from xyz.redtorch.client.strategy.StrategyTemplate import StrategyTemplate
-from xyz.redtorch.pb.core_enum_pb2 import OrderPriceTypeEnum, DirectionEnum, OffsetFlagEnum
 
 
 class StrategyDemo(StrategyTemplate):
 
-    def __init__(self, strategyId):
-        super().__init__(strategyId)
-        self.tickCount = 0
-        self.preOrderId = None
-        self.preOriginOrderId = None
-        self.priceTick = 0.02
+    def __init__(self, strategySetting):
+        super().__init__(strategySetting)
 
     def onInit(self):
-        self.subscribe("au2006@SHFE@FUTURES")
+        self.subscribe("sc2009@INE@FUTURES")
 
     def onTick(self, tick):
         print("收到Tick, UnifiedSymbol: %s, GatewayId %s" % (tick.unifiedSymbol, tick.gatewayId))
 
-        self.tickCount += 1
-
-        if str(self.tickCount)[-1] == "5":
-            self.submitOrder("au2006@SHFE@FUTURES", OrderPriceTypeEnum.OPT_LimitPrice, DirectionEnum.D_Buy,
-                             OffsetFlagEnum.OF_Open, "094948@CNY@52a91f77-c3a7-42ac-a4fe-7a605b99ff4a",
-                             tick.askPrice[0] + self.priceTick, 1,
-                             sync=False)
-            self.submitOrder("au2006@SHFE@FUTURES", OrderPriceTypeEnum.OPT_LimitPrice, DirectionEnum.D_Sell,
-                             OffsetFlagEnum.OF_Open, "094948@CNY@52a91f77-c3a7-42ac-a4fe-7a605b99ff4a",
-                             tick.bidPrice[0] - self.priceTick, 1,
-                             sync=False)
-
     def onTrade(self, trade):
-        print("收到成交信息")
-        print(trade)
+        # 判断是否是当前策略发出的委托的成交
+        if trade.originOrderId in self.originOrderIdSet:
+            print("收到成交信息")
 
     def onOrder(self, order):
-        print("收到委托信息")
-        print(order)
+        # 判断是否是当前策略发出的委托
+        if order.originOrderId in self.originOrderIdSet:
+            print("收到委托信息")

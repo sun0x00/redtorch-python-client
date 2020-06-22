@@ -8,7 +8,7 @@ from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHand
 from xyz.redtorch.pb.core_field_pb2 import CommonReqField, CancelOrderReqField
 from xyz.redtorch.pb.core_rpc_pb2 import RpcId, RpcSubscribeReq, RpcUnsubscribeReq, RpcSubmitOrderReq, \
     RpcCancelOrderReq, RpcSearchContractReq, RpcGetAccountListReq, RpcGetMixContractListReq, RpcGetPositionListReq, \
-    RpcGetOrderListReq, RpcGetTradeListReq, RpcGetTickListReq
+    RpcGetOrderListReq, RpcGetTradeListReq, RpcGetTickListReq, RpcQueryDBBarListReq
 
 
 class RpcClientApiService:
@@ -34,7 +34,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSubscribeReq.SerializeToString(), reqId,
-                                                                RpcId.SUBSCRIBE_REQ)
+                                                         RpcId.SUBSCRIBE_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -86,7 +86,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcUnsubscribeReq.SerializeToString(), reqId,
-                                                                RpcId.UNSUBSCRIBE_REQ)
+                                                         RpcId.UNSUBSCRIBE_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -138,7 +138,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSubmitOrderReq.SerializeToString(), reqId,
-                                                                RpcId.SUBMIT_ORDER_REQ)
+                                                         RpcId.SUBMIT_ORDER_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -198,7 +198,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcCancelOrderReq.SerializeToString(), reqId,
-                                                                RpcId.CANCEL_ORDER_REQ)
+                                                         RpcId.CANCEL_ORDER_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -250,7 +250,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSearchContractReq.SerializeToString(), reqId,
-                                                                RpcId.SEARCH_CONTRACT_REQ)
+                                                         RpcId.SEARCH_CONTRACT_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -301,7 +301,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetAccountListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_ACCOUNT_LIST_REQ)
+                                                         RpcId.GET_ACCOUNT_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -352,7 +352,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetMixContractListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_MIX_CONTRACT_LIST_REQ)
+                                                         RpcId.GET_MIX_CONTRACT_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -403,7 +403,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetPositionListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_POSITION_LIST_REQ)
+                                                         RpcId.GET_POSITION_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -454,7 +454,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetOrderListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_ORDER_LIST_REQ)
+                                                         RpcId.GET_ORDER_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -505,7 +505,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetTradeListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_TRADE_LIST_REQ)
+                                                         RpcId.GET_TRADE_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -556,7 +556,7 @@ class RpcClientApiService:
             RpcClientRspHandler.registerWaitReqId(reqId)
 
         sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetTickListReq.SerializeToString(), reqId,
-                                                                RpcId.GET_TICK_LIST_REQ)
+                                                         RpcId.GET_TICK_LIST_REQ)
 
         if sync and not sendResult:
             RpcClientRspHandler.unregisterWaitReqId(reqId)
@@ -585,3 +585,60 @@ class RpcClientApiService:
                     RpcClientRspHandler.unregisterWaitReqId(reqId)
                     logger.error("获取Tick列表错误,请求ID: %s,等待回报超时", reqId)
                     return None
+
+    @staticmethod
+    def queryDBBarList(startTimestamp, endTimestamp, unifiedSymbol, barCycle, marketDataDBType, reqId=None, timeoutSeconds=None):
+        if not reqId:
+            reqId = str(uuid.uuid4())
+        if not timeoutSeconds:
+            timeoutSeconds = Config.rpcTimeOut
+        operatorId = Config.operatorId
+        sourceNodeId = Config.nodeId
+
+        commonReq = CommonReqField()
+        commonReq.sourceNodeId = sourceNodeId
+        commonReq.targetNodeId = 0
+        commonReq.operatorId = operatorId
+        commonReq.reqId = reqId
+
+        rpcQueryDBBarListReq = RpcQueryDBBarListReq()
+
+        rpcQueryDBBarListReq.commonReq.CopyFrom(commonReq)
+
+        rpcQueryDBBarListReq.startTimestamp = startTimestamp
+        rpcQueryDBBarListReq.endTimestamp = endTimestamp
+        rpcQueryDBBarListReq.unifiedSymbol = unifiedSymbol
+        rpcQueryDBBarListReq.barCycle = barCycle
+        rpcQueryDBBarListReq.marketDataDBType = marketDataDBType
+
+        RpcClientRspHandler.registerWaitReqId(reqId)
+
+        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcQueryDBBarListReq.SerializeToString(), reqId,
+                                                         RpcId.QUERY_DB_BAR_LIST_REQ)
+
+        if not sendResult:
+            RpcClientRspHandler.unregisterWaitReqId(reqId)
+            return None
+
+        startTime = time.time()
+        while True:
+            if time.time() - startTime < timeoutSeconds:
+                rpcQueryDBBarListRsp = RpcClientRspHandler.getAndRemoveRpcQueryDBBarListRsp(reqId)
+                if not rpcQueryDBBarListRsp:
+                    rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
+                    if rpcExceptionRsp:
+                        logger.error("获取Bar列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                        return None
+                    time.sleep(0.02)
+                else:
+                    commonRsp = rpcQueryDBBarListRsp.commonRsp
+                    errorId = commonRsp.errorId
+                    if errorId == 0:
+                        return rpcQueryDBBarListRsp.bar
+                    else:
+                        logger.error("获取Bar列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                        return None
+            else:
+                RpcClientRspHandler.unregisterWaitReqId(reqId)
+                logger.error("获取Bar列表错误,请求ID: %s,等待回报超时", reqId)
+                return None

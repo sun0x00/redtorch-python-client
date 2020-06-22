@@ -4,7 +4,7 @@ from xyz.redtorch.pb.core_rpc_pb2 import RpcSubmitOrderRsp, RpcExceptionRsp, Rpc
     RpcGetOrderListRsp, RpcGetTradeListRsp, RpcGetPositionListRsp, RpcPositionRtn, RpcOrderRtn, \
     RpcTradeRtn, RpcAccountRtn, RpcNoticeRtn, RpcTickRtn, RpcContractRtn, RpcGetAccountListRsp, \
     RpcOrderListRtn, RpcTradeListRtn, RpcContractListRtn, RpcPositionListRtn, RpcAccountListRtn, \
-    RpcTickListRtn
+    RpcTickListRtn, RpcQueryDBBarListRsp
 from xyz.redtorch.client.Config import Config
 from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHandler
 from xyz.redtorch.client.service.rpc.RpcClientRtnHandler import RpcClientRtnHandler
@@ -45,10 +45,9 @@ class RpcClientProcessService:
         if contentType == DataExchangeProtocol.ContentType.COMPRESSED_LZ4:
             try:
                 contentByteString = lz4framed.decompress(dep.contentBytes)
-            except Exception as e:
+            except Exception:
                 logger.error("处理DEP异常,来源节点ID:%s,RPC类型:%s,RPC ID:%s,请求ID:%s时间戳:%s,无法使用LZ4正确解析报文内容", sourceNodeId,
-                             rpcType, rpcId, reqId, timestamp)
-                logger.error(e, exc_info=True)
+                             rpcType, rpcId, reqId, timestamp, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, "无法使用LZ4正确解析报文内容")
                 return
         elif contentType == DataExchangeProtocol.ContentType.ROUTINE:
@@ -85,8 +84,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:SUBSCRIBE_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onSubscribeRsp(rpcSubscribeRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:SUBSCRIBE_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:SUBSCRIBE_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.UNSUBSCRIBE_RSP:
             try:
@@ -96,8 +94,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:UNSUBSCRIBE_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onUnsubscribeRsp(rpcUnsubscribeRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:UNSUBSCRIBE_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:UNSUBSCRIBE_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.SUBMIT_ORDER_RSP:
             try:
@@ -107,8 +104,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:SUBMIT_ORDER_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onSubmitOrderRsp(rpcSubmitOrderRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:SUBMIT_ORDER_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:SUBMIT_ORDER_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.CANCEL_ORDER_RSP:
             try:
@@ -118,8 +114,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:CANCEL_ORDER_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onCancelOrderRsp(rpcCancelOrderRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:CANCEL_ORDER_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:CANCEL_ORDER_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.SEARCH_CONTRACT_RSP:
             try:
@@ -129,8 +124,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:SEARCH_CONTRACT_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onSearchContractRsp(rpcSearchContractRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:SEARCH_CONTRACT_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:SEARCH_CONTRACT_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_MIX_CONTRACT_LIST_RSP:
             try:
@@ -140,8 +134,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_MIX_CONTRACT_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetMixContractListRsp(rpcGetMixContractListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_MIX_CONTRACT_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_MIX_CONTRACT_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_POSITION_LIST_RSP:
             try:
@@ -151,8 +144,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_POSITION_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetPositionListRsp(rpcGetPositionListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_POSITION_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_POSITION_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_ACCOUNT_LIST_RSP:
             try:
@@ -162,8 +154,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_ACCOUNT_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetAccountListRsp(rpcGetAccountListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_ACCOUNT_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_ACCOUNT_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_TRADE_LIST_RSP:
             try:
@@ -173,8 +164,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_TRADE_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetTradeListRsp(rpcGetTradeListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_TRADE_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_TRADE_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_ORDER_LIST_RSP:
             try:
@@ -184,8 +174,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_ORDER_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetOrderListRsp(rpcGetOrderListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_ORDER_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_ORDER_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.GET_TICK_LIST_RSP:
             try:
@@ -195,8 +184,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:GET_TICK_LIST_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onGetTickListRsp(rpcGetTickListRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_TICK_LIST_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:GET_TICK_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         elif rpcId == RpcId.EXCEPTION_RSP:
             try:
@@ -205,8 +193,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:EXCEPTION_RSP", sourceNodeId, reqId)
                 RpcClientRspHandler.onExceptionRsp(rpcExceptionRsp)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:EXCEPTION_RSP", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:EXCEPTION_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.ORDER_RTN:
@@ -216,8 +203,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:ORDER_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcOrderRtn(rpcOrderRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:ORDER_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:ORDER_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.TRADE_RTN:
@@ -227,8 +213,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:TRADE_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcTradeRtn(rpcTradeRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:TRADE_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:TRADE_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.POSITION_RTN:
@@ -238,8 +223,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:POSITION_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcPositionRtn(rpcPositionRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:POSITION_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:POSITION_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.ACCOUNT_RTN:
@@ -249,8 +233,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:ACCOUNT_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcAccountRtn(rpcAccountRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:ACCOUNT_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:ACCOUNT_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.CONTRACT_RTN:
@@ -260,8 +243,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:CONTRACT_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcContractRtn(rpcContractRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:CONTRACT_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:CONTRACT_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.TICK_RTN:
@@ -271,8 +253,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:TICK_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcTickRtn(rpcTickRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:TICK_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:TICK_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.ORDER_LIST_RTN:
@@ -282,8 +263,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:ORDER_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcOrderListRtn(rpcOrderListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:ORDER_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:ORDER_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.TRADE_LIST_RTN:
@@ -293,8 +273,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:TRADE_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcTradeListRtn(rpcTradeListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:TRADE_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:TRADE_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.CONTRACT_LIST_RTN:
@@ -304,8 +283,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:CONTRACT_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcContractListRtn(rpcContractListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:CONTRACT_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:CONTRACT_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.POSITION_LIST_RTN:
@@ -315,8 +293,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:POSITION_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcPositionListRtn(rpcPositionListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:POSITION_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:POSITION_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.ACCOUNT_LIST_RTN:
@@ -326,8 +303,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:ACCOUNT_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcAccountListRtn(rpcAccountListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:ACCOUNT_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:ACCOUNT_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.TICK_LIST_RTN:
@@ -337,8 +313,7 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:TICK_LIST_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcTickListRtn(rpcTickListRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:TICK_LIST_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:TICK_LIST_RTN", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
 
         elif rpcId == RpcId.NOTICE_RTN:
@@ -348,11 +323,20 @@ class RpcClientProcessService:
                 logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:NOTICE_RTN", sourceNodeId, reqId)
                 RpcClientRtnHandler.onRpcNoticeRtn(rpcNoticeRtn)
             except Exception as e:
-                logger.error("处理RPC异常,来源节点ID:%s,RPC:NOTICE_RTN", sourceNodeId)
-                logger.error(e, exc_info=True)
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:NOTICE_RTN", sourceNodeId, exc_info=True)
+                RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
+        elif rpcId == RpcId.QUERY_DB_BAR_LIST_RSP:
+            try:
+                rpcQueryDBBarListRsp = RpcQueryDBBarListRsp()
+                rpcQueryDBBarListRsp.ParseFromString(contentByteString)
+                RpcClientProcessService.checkCommonRsp(rpcQueryDBBarListRsp.commonRsp, sourceNodeId, reqId)
+                logger.info("处理RPC记录,来源节点ID:%s,请求ID:%s,RPC:QUERY_DB_BAR_LIST_RSP", sourceNodeId, reqId)
+                RpcClientRspHandler.onQueryDBBarListRsp(rpcQueryDBBarListRsp)
+            except Exception as e:
+                logger.error("处理RPC异常,来源节点ID:%s,RPC:QUERY_DB_BAR_LIST_RSP", sourceNodeId, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, str(e))
         else:
-            logger.error("处理RPC错误, 来源节点ID:%s, RPC ID:%s, 请求ID:%s 不支持此功能", sourceNodeId, rpcId, reqId);
+            logger.error("处理RPC错误, 来源节点ID:%s, RPC ID:%s, 请求ID:%s 不支持此功能", sourceNodeId, rpcId, reqId)
 
     @staticmethod
     def checkCommonRsp(commonRsp, sourceNodeId, reqId):
@@ -413,9 +397,8 @@ class RpcClientProcessService:
         logger.info("发送RPC记录,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId)
         try:
             encodeContent = lz4framed.compress(content)
-        except Exception as e:
-            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId)
-            logger.error(e, exc_info=True)
+        except Exception:
+            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId, exc_info=True)
             return False
 
         dep = DataExchangeProtocol()
