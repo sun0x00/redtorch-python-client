@@ -10,7 +10,7 @@
 + Python
 
 ## 主要框架或类库
-+ websocket-client
++ websockets
 + py-lz4framed
 + requests
 + protobuf

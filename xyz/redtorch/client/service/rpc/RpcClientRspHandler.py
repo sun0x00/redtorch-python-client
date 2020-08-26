@@ -1,277 +1,473 @@
 import logging as logger
+from threading import RLock
 from xyz.redtorch.client.service.ClientTradeCacheService import ClientTradeCacheService
 
 
 class RpcClientRspHandler:
-    waitReqIdSet = set()
+    __waitReqIdSet = set()
+    __waitReqIdSetLock = RLock()
 
-    rpcSubscribeRspDict = dict()
-    rpcUnsubscribeRspDict = dict()
-    rpcSubmitOrderRspDict = dict()
-    rpcCancelOrderRspDict = dict()
-    rpcSearchContractRspDict = dict()
-    rpcExceptionRspDict = dict()
+    __rpcSubscribeRspDict = dict()
+    __rpcSubscribeRspDictLock = RLock()
 
-    rpcGetMixContractListRspDict = dict()
-    rpcGetPositionListRspDict = dict()
-    rpcGetTradeListRspDict = dict()
-    rpcGetOrderListRspDict = dict()
-    rpcGetTickListRspDict = dict()
-    rpcGetAccountListRspDict = dict()
+    __rpcUnsubscribeRspDict = dict()
+    __rpcUnsubscribeRspDictLock = RLock()
 
-    rpcQueryDBBarListRspDict = dict()
+    __rpcSubmitOrderRspDict = dict()
+    __rpcSubmitOrderRspDictLock = RLock()
+
+    __rpcCancelOrderRspDict = dict()
+    __rpcCancelOrderRspDictLock = RLock()
+
+    __rpcSearchContractRspDict = dict()
+    __rpcSearchContractRspDictLock = RLock()
+
+    __rpcExceptionRspDict = dict()
+    __rpcExceptionRspDictLock = RLock()
+
+    __rpcGetMixContractListRspDict = dict()
+    __rpcGetMixContractListRspDictLock = RLock()
+
+    __rpcGetPositionListRspDict = dict()
+    __rpcGetPositionListRspDictLock = RLock()
+
+    __rpcGetTradeListRspDict = dict()
+    __rpcGetTradeListRspDictLock = RLock()
+
+    __rpcGetOrderListRspDict = dict()
+    __rpcGetOrderListRspDictLock = RLock()
+
+    __rpcGetTickListRspDict = dict()
+    __rpcGetTickListRspDictLock = RLock()
+
+    __rpcGetAccountListRspDict = dict()
+    __rpcGetAccountListRspDictLock = RLock()
+
+    __rpcQueryDBBarListRspDict = dict()
+    __rpcQueryDBBarListRspDictLock = RLock()
 
     @staticmethod
     def getAndRemoveRpcSubscribeRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcSubscribeRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcSubscribeRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSubscribeRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcSubscribeRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcSubscribeRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSubscribeRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcUnsubscribeRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcUnsubscribeRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcUnsubscribeRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcUnsubscribeRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcUnsubscribeRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcUnsubscribeRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcUnsubscribeRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcSubmitOrderRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcSubmitOrderRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcSubmitOrderRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSubmitOrderRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcSubmitOrderRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcSubmitOrderRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSubmitOrderRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcCancelOrderRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcCancelOrderRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcCancelOrderRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcCancelOrderRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcCancelOrderRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcCancelOrderRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcCancelOrderRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcSearchContractRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcSearchContractRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcSearchContractRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSearchContractRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcSearchContractRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcSearchContractRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSearchContractRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcExceptionRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcExceptionRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcExceptionRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcExceptionRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcExceptionRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcExceptionRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcExceptionRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetMixContractListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetMixContractListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetMixContractListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetMixContractListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetMixContractListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetMixContractListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetMixContractListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetPositionListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetPositionListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetPositionListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetPositionListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetPositionListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetPositionListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetPositionListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetTradeListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetTradeListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetTradeListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetTradeListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetTradeListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetTradeListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetTradeListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetOrderListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetOrderListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetOrderListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetOrderListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetOrderListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetOrderListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetOrderListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetTickListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetTickListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetTickListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetTickListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetTickListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetTickListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetTickListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcQueryDBBarListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcQueryDBBarListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcQueryDBBarListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcQueryDBBarListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcQueryDBBarListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcQueryDBBarListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcQueryDBBarListRspDictLock.release()
 
     @staticmethod
     def getAndRemoveRpcGetAccountListRsp(reqId):
-        if reqId in RpcClientRspHandler.rpcGetAccountListRspDict:
-            if reqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.waitReqIdSet.remove(reqId)
-            return RpcClientRspHandler.rpcGetAccountListRspDict.pop(reqId)
-        else:
-            return None
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetAccountListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__rpcGetAccountListRspDict:
+                if reqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+                return RpcClientRspHandler.__rpcGetAccountListRspDict.pop(reqId)
+            else:
+                return None
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetAccountListRspDictLock.release()
 
     @staticmethod
     def registerWaitReqId(reqId):
-        RpcClientRspHandler.waitReqIdSet.add(reqId)
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        try:
+            RpcClientRspHandler.__waitReqIdSet.add(reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
 
     @staticmethod
     def unregisterWaitReqId(reqId):
-        RpcClientRspHandler.waitReqIdSet.remove(reqId)
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        try:
+            RpcClientRspHandler.__waitReqIdSet.remove(reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
 
     @staticmethod
     def onSubscribeRsp(rpcSubscribeRsp):
         reqId = rpcSubscribeRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcSubscribeRspDict[reqId] = rpcSubscribeRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSubscribeRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcSubscribeRspDict[reqId] = rpcSubscribeRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSubscribeRspDictLock.release()
 
     @staticmethod
     def onUnsubscribeRsp(rpcUnsubscribeRsp):
         reqId = rpcUnsubscribeRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcUnsubscribeRspDict[reqId] = rpcUnsubscribeRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcUnsubscribeRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcUnsubscribeRspDict[reqId] = rpcUnsubscribeRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcUnsubscribeRspDictLock.release()
 
     @staticmethod
     def onSubmitOrderRsp(rpcSubmitOrderRsp):
         reqId = rpcSubmitOrderRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcSubmitOrderRspDict[reqId] = rpcSubmitOrderRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSubmitOrderRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcSubmitOrderRspDict[reqId] = rpcSubmitOrderRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSubmitOrderRspDictLock.release()
 
     @staticmethod
     def onCancelOrderRsp(rpcCancelOrderRsp):
         reqId = rpcCancelOrderRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcCancelOrderRspDict[reqId] = rpcCancelOrderRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcCancelOrderRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcCancelOrderRspDict[reqId] = rpcCancelOrderRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcCancelOrderRspDictLock.release()
 
     @staticmethod
     def onSearchContractRsp(rpcSearchContractRsp):
         reqId = rpcSearchContractRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcSearchContractRspDict[reqId] = rpcSearchContractRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcSearchContractRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcSearchContractRspDict[reqId] = rpcSearchContractRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcSearchContractRspDictLock.release()
 
     @staticmethod
     def onGetMixContractListRsp(rpcGetMixContractListRsp):
         reqId = rpcGetMixContractListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetMixContractListRspDict[reqId] = rpcGetMixContractListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetMixContractListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetMixContractListRspDict[reqId] = rpcGetMixContractListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetMixContractListRspDictLock.release()
 
         if rpcGetMixContractListRsp.contract:
-            for tmpContract in rpcGetMixContractListRsp.contract:
-                ClientTradeCacheService.storeContract(tmpContract)
+            ClientTradeCacheService.storeContractList(rpcGetMixContractListRsp.contract)
 
     @staticmethod
     def onGetAccountListRsp(rpcGetAccountListRsp):
         reqId = rpcGetAccountListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetAccountListRspDict[reqId] = rpcGetAccountListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetAccountListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetAccountListRspDict[reqId] = rpcGetAccountListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetAccountListRspDictLock.release()
 
         if rpcGetAccountListRsp.account:
-            for tmpAccount in rpcGetAccountListRsp.account:
-                ClientTradeCacheService.storeAccount(tmpAccount)
+            ClientTradeCacheService.storeAccountList(rpcGetAccountListRsp.account)
 
     @staticmethod
     def onGetPositionListRsp(rpcGetPositionListRsp):
         reqId = rpcGetPositionListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetPositionListRspDict[reqId] = rpcGetPositionListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetPositionListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetPositionListRspDict[reqId] = rpcGetPositionListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetPositionListRspDictLock.release()
 
         if rpcGetPositionListRsp.position:
-            for tmpPosition in rpcGetPositionListRsp.position:
-                ClientTradeCacheService.storePosition(tmpPosition)
+            ClientTradeCacheService.storePositionList(rpcGetPositionListRsp.position)
 
     @staticmethod
     def onGetTradeListRsp(rpcGetTradeListRsp):
         reqId = rpcGetTradeListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetTradeListRspDict[reqId] = rpcGetTradeListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetTradeListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetTradeListRspDict[reqId] = rpcGetTradeListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetTradeListRspDictLock.release()
 
         if rpcGetTradeListRsp.trade:
-            for tmpTrade in rpcGetTradeListRsp.trade:
-                ClientTradeCacheService.storeTrade(tmpTrade)
+            ClientTradeCacheService.storeTradeList(rpcGetTradeListRsp.trade)
 
     @staticmethod
     def onGetOrderListRsp(rpcGetOrderListRsp):
         reqId = rpcGetOrderListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetOrderListRspDict[reqId] = rpcGetOrderListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetOrderListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetOrderListRspDict[reqId] = rpcGetOrderListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetOrderListRspDictLock.release()
 
         if rpcGetOrderListRsp.order:
-            for tmpOrder in rpcGetOrderListRsp.order:
-                ClientTradeCacheService.storeOrder(tmpOrder)
+            ClientTradeCacheService.storeOrderList(rpcGetOrderListRsp.order)
 
     @staticmethod
     def onGetTickListRsp(rpcGetTickListRsp):
         reqId = rpcGetTickListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcGetTickListRspDict[reqId] = rpcGetTickListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcGetTickListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcGetTickListRspDict[reqId] = rpcGetTickListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcGetTickListRspDictLock.release()
 
         if rpcGetTickListRsp.tick:
-            for tmpTick in rpcGetTickListRsp.tick:
-                ClientTradeCacheService.storeTick(tmpTick)
+            ClientTradeCacheService.storeTickList(rpcGetTickListRsp.tick)
 
     @staticmethod
     def onExceptionRsp(rpcExceptionRsp):
         if rpcExceptionRsp.originalReqId:
-            logger.error("接收到异常回报,请求ID:%s,异常信息:%s", rpcExceptionRsp.originalReqId, rpcExceptionRsp.info)
-            if rpcExceptionRsp.originalReqId in RpcClientRspHandler.waitReqIdSet:
-                RpcClientRspHandler.rpcExceptionRspDict[rpcExceptionRsp.originalReqId] = rpcExceptionRsp
+            RpcClientRspHandler.__waitReqIdSetLock.acquire()
+            RpcClientRspHandler.__rpcExceptionRspDictLock.acquire()
+            try:
+                logger.error("接收到异常回报,请求ID:%s,异常信息:%s", rpcExceptionRsp.originalReqId, rpcExceptionRsp.info)
+                if rpcExceptionRsp.originalReqId in RpcClientRspHandler.__waitReqIdSet:
+                    RpcClientRspHandler.__rpcExceptionRspDict[rpcExceptionRsp.originalReqId] = rpcExceptionRsp
+            finally:
+                RpcClientRspHandler.__waitReqIdSetLock.release()
+                RpcClientRspHandler.__rpcExceptionRspDictLock.release()
         else:
             logger.error("接收到未知请求ID的异常回报,异常信息:%s", rpcExceptionRsp.info)
 
     @staticmethod
     def onQueryDBBarListRsp(rpcQueryDBBarListRsp):
         reqId = rpcQueryDBBarListRsp.commonRsp.reqId
-        if reqId in RpcClientRspHandler.waitReqIdSet:
-            RpcClientRspHandler.rpcQueryDBBarListRspDict[reqId] = rpcQueryDBBarListRsp
-        else:
-            logger.info("直接丢弃的回报,请求ID:%s", reqId)
 
+        RpcClientRspHandler.__waitReqIdSetLock.acquire()
+        RpcClientRspHandler.__rpcQueryDBBarListRspDictLock.acquire()
+        try:
+            if reqId in RpcClientRspHandler.__waitReqIdSet:
+                RpcClientRspHandler.__rpcQueryDBBarListRspDict[reqId] = rpcQueryDBBarListRsp
+            else:
+                logger.info("直接丢弃的回报,请求ID:%s", reqId)
+        finally:
+            RpcClientRspHandler.__waitReqIdSetLock.release()
+            RpcClientRspHandler.__rpcQueryDBBarListRspDictLock.release()

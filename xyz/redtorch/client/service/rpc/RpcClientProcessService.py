@@ -1,3 +1,4 @@
+from xyz.redtorch.client.web.http.HttpClient import HttpClient
 from xyz.redtorch.pb.dep_pb2 import DataExchangeProtocol
 from xyz.redtorch.pb.core_rpc_pb2 import RpcSubmitOrderRsp, RpcExceptionRsp, RpcId, RpcCancelOrderRsp, \
     RpcSubscribeRsp, RpcUnsubscribeRsp, RpcSearchContractRsp, RpcGetMixContractListRsp, RpcGetTickListRsp, \
@@ -5,7 +6,7 @@ from xyz.redtorch.pb.core_rpc_pb2 import RpcSubmitOrderRsp, RpcExceptionRsp, Rpc
     RpcTradeRtn, RpcAccountRtn, RpcNoticeRtn, RpcTickRtn, RpcContractRtn, RpcGetAccountListRsp, \
     RpcOrderListRtn, RpcTradeListRtn, RpcContractListRtn, RpcPositionListRtn, RpcAccountListRtn, \
     RpcTickListRtn, RpcQueryDBBarListRsp
-from xyz.redtorch.client.Config import Config
+from xyz.redtorch.client.RtConfig import RtConfig
 from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHandler
 from xyz.redtorch.client.service.rpc.RpcClientRtnHandler import RpcClientRtnHandler
 from xyz.redtorch.client.web.socket.WebSocketClientHandler import WebSocketClientHandler
@@ -30,8 +31,8 @@ class RpcClientProcessService:
         sourceNodeId = dep.sourceNodeId
         targetNodeId = dep.targetNodeId
 
-        if targetNodeId != Config.nodeId:
-            logger.error("处理DEP错误,目标节点ID不匹配当前节点ID:%s,目标节点ID:%s", Config.nodeId, targetNodeId)
+        if targetNodeId != RtConfig.nodeId:
+            logger.error("处理DEP错误,目标节点ID不匹配当前节点ID:%s,目标节点ID:%s", RtConfig.nodeId, targetNodeId)
             return
 
         rpcId = dep.rpcId
@@ -382,7 +383,7 @@ class RpcClientProcessService:
         dep.reqId = reqId
         dep.rpcType = DataExchangeProtocol.RpcType.CORE_RPC
         dep.rpcId = rpcId
-        dep.sourceNodeId = Config.nodeId
+        dep.sourceNodeId = RtConfig.nodeId
         dep.targetNodeId = targetNodeId
         dep.timestamp = int(round(time.time() * 1000))
         dep.contentBytes = content
@@ -397,8 +398,8 @@ class RpcClientProcessService:
         logger.info("发送RPC记录,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId)
         try:
             encodeContent = lz4framed.compress(content)
-        except Exception:
-            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId, exc_info=True)
+        except Exception as e:
+            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId, e, exc_info=True)
             return False
 
         dep = DataExchangeProtocol()
@@ -406,7 +407,7 @@ class RpcClientProcessService:
         dep.reqId = reqId
         dep.rpcType = DataExchangeProtocol.RpcType.CORE_RPC
         dep.rpcId = rpcId
-        dep.sourceNodeId = Config.nodeId
+        dep.sourceNodeId = RtConfig.nodeId
         dep.targetNodeId = targetNodeId
         dep.timestamp = int(round(time.time() * 1000))
         dep.contentBytes = encodeContent
@@ -419,10 +420,13 @@ class RpcClientProcessService:
     def onWsClosed():
         pass
 
+
     @staticmethod
     def onWsError():
         pass
 
     @staticmethod
     def onWsConnected():
-        pass
+        from xyz.redtorch.client.service.rpc.RpcClientApiService import RpcClientApiService
+        for contract in RpcClientApiService.subscribedContractDict.values():
+            RpcClientApiService.subscribe(contract)

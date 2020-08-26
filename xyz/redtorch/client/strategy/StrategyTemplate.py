@@ -33,9 +33,12 @@ class StrategyTemplate:
         self.msgQueue.put(msg)
 
     def processMessage(self):
-        while self.strategyId in StrategyEngine.strategyDict and self is StrategyEngine.strategyDict[self.strategyId]:
+        strategy = StrategyEngine.getStrategyByStrategyId(self.strategyId)
+        while strategy is not None and self is strategy:
+
             if self.msgQueue.empty():
                 time.sleep(0.01)
+                strategy = StrategyEngine.getStrategyByStrategyId(self.strategyId)
                 continue
             message = self.msgQueue.get()
 
@@ -50,13 +53,15 @@ class StrategyTemplate:
                 order = message['value']
                 self.processOrder(order)
 
+            strategy = StrategyEngine.getStrategyByStrategyId(self.strategyId)
+
     def initStrategy(self):
         if not self.initSwitch:
             try:
                 self.onInit()
                 self.initSwitch = True
                 thread.start_new_thread(self.processMessage, ())
-            except Exception:
+            except:
                 logger.error("策略%s初始化异常", self.strategyId, exc_info=True)
         else:
             logger.warning("策略%s已经初始化,请勿重复初始化", self.strategyId)
@@ -70,7 +75,7 @@ class StrategyTemplate:
             try:
                 self.onStartTrading()
                 self.tradingSwitch = True
-            except Exception:
+            except:
                 logger.error("策略%s启动异常", self.strategyId, exc_info=True)
         else:
             logger.warning("策略%s已经处于交易状态", self.strategyId)
@@ -80,14 +85,14 @@ class StrategyTemplate:
             self.tradingSwitch = False
             try:
                 self.onStopTrading(finishedCorrectly)
-            except Exception:
+            except:
                 logger.error("策略%s停止异常", self.strategyId, exc_info=True)
 
     def processTick(self, tick):
         if self.initSwitch and self.tradingSwitch:
             try:
                 self.onTick(tick)
-            except Exception:
+            except():
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Tick异常", self.strategyId, exc_info=True)
 
@@ -95,7 +100,7 @@ class StrategyTemplate:
         if self.initSwitch and self.tradingSwitch:
             try:
                 self.onTrade(trade)
-            except Exception as e:
+            except():
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Trade异常", self.strategyId, exc_info=True)
 
@@ -103,7 +108,7 @@ class StrategyTemplate:
         if self.initSwitch and self.tradingSwitch:
             try:
                 self.onOrder(order)
-            except Exception as e:
+            except():
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Order异常", self.strategyId, exc_info=True)
 
@@ -134,7 +139,7 @@ class StrategyTemplate:
         if self.initSwitch and self.tradingSwitch:
             submitOrderReq = SubmitOrderReqField()
 
-            submitOrderReq.contract.CopyFrom(ClientTradeCacheService.mixContractDict[unifiedSymbol])
+            submitOrderReq.contract.CopyFrom(ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol))
             submitOrderReq.direction = direction
             submitOrderReq.offsetFlag = offsetFlag
             submitOrderReq.orderPriceType = orderPriceType
@@ -148,7 +153,7 @@ class StrategyTemplate:
             submitOrderReq.forceCloseReason = ForceCloseReasonEnum.FCR_NotForceClose
             submitOrderReq.volume = volume
 
-            account = ClientTradeCacheService.accountDict[accountId]
+            account = ClientTradeCacheService.getAccountByAccountId(accountId)
 
             submitOrderReq.gatewayId = account.gatewayId
             submitOrderReq.accountCode = account.code
@@ -176,22 +181,24 @@ class StrategyTemplate:
         RpcClientApiService.cancelOrder(orderId=orderId, originOrderId=originOrderId, reqId=reqId, sync=sync)
 
     def subscribe(self, unifiedSymbol, gatewayId=None):
-        if unifiedSymbol in ClientTradeCacheService.mixContractDict:
+        contract = ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol)
+        if contract is not None:
             self.subscribedUnifiedSymbolSet.add(unifiedSymbol)
-            contract = ClientTradeCacheService.mixContractDict[unifiedSymbol]
+
             if gatewayId is not None:
                 contract.gatewayId = gatewayId
             else:
                 contract.gatewayId = ""
-            RpcClientApiService.subscribe(ClientTradeCacheService.mixContractDict[unifiedSymbol], None, sync=True)
+            RpcClientApiService.subscribe(contract, None, sync=True)
         else:
             logger.error("策略%s订阅行情错误,未能找到合约%s", self.strategyId, unifiedSymbol)
 
     def unsubscribe(self, unifiedSymbol, gatewayId=None):
-        if unifiedSymbol in ClientTradeCacheService.mixContractDict:
+        contract = ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol)
+        if contract is not None:
             if unifiedSymbol in self.subscribedUnifiedSymbolSet:
                 self.subscribedUnifiedSymbolSet.remove(unifiedSymbol)
-            RpcClientApiService.unsubscribe(ClientTradeCacheService.mixContractDict[unifiedSymbol], gatewayId,
+            RpcClientApiService.unsubscribe(contract, gatewayId,
                                             sync=True)
         else:
             logger.error("策略%s退订行情错误,未能找到合约%s", self.strategyId, unifiedSymbol)

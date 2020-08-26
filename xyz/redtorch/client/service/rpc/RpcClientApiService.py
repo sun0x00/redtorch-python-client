@@ -1,6 +1,6 @@
 import uuid
 import logging as logger
-from xyz.redtorch.client.Config import Config
+from xyz.redtorch.client.RtConfig import RtConfig
 import time
 
 from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
@@ -12,12 +12,15 @@ from xyz.redtorch.pb.core_rpc_pb2 import RpcId, RpcSubscribeReq, RpcUnsubscribeR
 
 
 class RpcClientApiService:
+
+    subscribedContractDict = {}
+
     @staticmethod
     def subscribe(contract, reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -43,10 +46,10 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcSubscribeRsp = RpcClientRspHandler.getAndRemoveRpcSubscribeRsp(reqId)
                     if not rpcSubscribeRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId);
+                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
                         if rpcExceptionRsp:
                             logger.error("订阅错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
                             return False
@@ -55,6 +58,7 @@ class RpcClientApiService:
                         commonRsp = rpcSubscribeRsp.commonRsp
                         errorId = commonRsp.errorId
                         if errorId == 0:
+                            RpcClientApiService.subscribedContractDict[contract.unifiedSymbol+"@"+str(contract.gatewayId)] = contract
                             return True
                         else:
                             logger.error("订阅错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
@@ -68,8 +72,8 @@ class RpcClientApiService:
     def unsubscribe(contract, reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -95,10 +99,10 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcUnsubscribeRsp = RpcClientRspHandler.getAndRemoveRpcUnsubscribeRsp(reqId)
                     if not rpcUnsubscribeRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId);
+                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
                         if rpcExceptionRsp:
                             logger.error("取消订阅错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
                             return False
@@ -107,6 +111,8 @@ class RpcClientApiService:
                         commonRsp = rpcUnsubscribeRsp.commonRsp
                         errorId = commonRsp.errorId
                         if errorId == 0:
+                            if contract.unifiedSymbol+"@"+str(contract.gatewayId) in RpcClientApiService.subscribedContractDict.keys():
+                                del RpcClientApiService.subscribedContractDict[contract.unifiedSymbol+"@"+str(contract.gatewayId)]
                             return True
                         else:
                             logger.error("取消订阅错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
@@ -120,8 +126,8 @@ class RpcClientApiService:
     def submitOrder(submitOrderReq, reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -147,10 +153,10 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcSubmitOrderRsp = RpcClientRspHandler.getAndRemoveRpcSubmitOrderRsp(reqId)
                     if not rpcSubmitOrderRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId);
+                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
                         if rpcExceptionRsp:
                             logger.error("提交定单错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
                             return None
@@ -172,8 +178,8 @@ class RpcClientApiService:
     def cancelOrder(orderId=None, originOrderId=None, reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -207,10 +213,10 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcCancelOrderRsp = RpcClientRspHandler.getAndRemoveRpcCancelOrderRsp(reqId)
                     if not rpcCancelOrderRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId);
+                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
                         if rpcExceptionRsp:
                             logger.error("撤销定单错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
                             return False
@@ -232,8 +238,8 @@ class RpcClientApiService:
     def searchContract(contract, reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -259,10 +265,10 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcSearchContractRsp = RpcClientRspHandler.getAndRemoveRpcSearchContractRsp(reqId)
                     if not rpcSearchContractRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId);
+                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
                         if rpcExceptionRsp:
                             logger.error("搜寻合约错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
                             return False
@@ -284,8 +290,8 @@ class RpcClientApiService:
     def getAccountList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -310,7 +316,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetAccountListRsp = RpcClientRspHandler.getAndRemoveRpcGetAccountListRsp(reqId)
                     if not rpcGetAccountListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -335,8 +341,8 @@ class RpcClientApiService:
     def getMixContractList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -361,7 +367,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetMixContractListRsp = RpcClientRspHandler.getAndRemoveRpcGetMixContractListRsp(reqId)
                     if not rpcGetMixContractListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -386,8 +392,8 @@ class RpcClientApiService:
     def getPositionList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -412,7 +418,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetPositionListRsp = RpcClientRspHandler.getAndRemoveRpcGetPositionListRsp(reqId)
                     if not rpcGetPositionListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -437,8 +443,8 @@ class RpcClientApiService:
     def getOrderList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -463,7 +469,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetOrderListRsp = RpcClientRspHandler.getAndRemoveRpcGetOrderListRsp(reqId)
                     if not rpcGetOrderListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -488,8 +494,8 @@ class RpcClientApiService:
     def getTradeList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -514,7 +520,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetTradeListRsp = RpcClientRspHandler.getAndRemoveRpcGetTradeListRsp(reqId)
                     if not rpcGetTradeListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -539,8 +545,8 @@ class RpcClientApiService:
     def getTickList(reqId=None, sync=False):
         if not reqId:
             reqId = str(uuid.uuid4())
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId
@@ -548,7 +554,7 @@ class RpcClientApiService:
         commonReq.operatorId = operatorId
         commonReq.reqId = reqId
 
-        rpcGetTickListReq = RpcGetTickListReq();
+        rpcGetTickListReq = RpcGetTickListReq()
 
         rpcGetTickListReq.commonReq.CopyFrom(commonReq)
 
@@ -565,7 +571,7 @@ class RpcClientApiService:
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < Config.rpcTimeOut:
+                if time.time() - startTime < RtConfig.rpcTimeOut:
                     rpcGetTickListRsp = RpcClientRspHandler.getAndRemoveRpcGetTickListRsp(reqId)
                     if not rpcGetTickListRsp:
                         rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
@@ -591,9 +597,9 @@ class RpcClientApiService:
         if not reqId:
             reqId = str(uuid.uuid4())
         if not timeoutSeconds:
-            timeoutSeconds = Config.rpcTimeOut
-        operatorId = Config.operatorId
-        sourceNodeId = Config.nodeId
+            timeoutSeconds = RtConfig.rpcTimeOut
+        operatorId = RtConfig.operatorId
+        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
         commonReq.sourceNodeId = sourceNodeId

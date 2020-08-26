@@ -1,6 +1,6 @@
  pip install requests
  pip install protobuf
- pip install websocket-client
+ pip install websockets
  pip install py-lz4framed
 
  安装py-lz4framed时可能需要vc14.0,请使用vc14.0_visualcppbuildtools_full.exe安装,请勾选WindowsPhone 8.1 SDK 以外的其他选项
