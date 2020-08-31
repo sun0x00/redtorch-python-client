@@ -1,4 +1,3 @@
-from xyz.redtorch.client.web.http.HttpClient import HttpClient
 from xyz.redtorch.pb.dep_pb2 import DataExchangeProtocol
 from xyz.redtorch.pb.core_rpc_pb2 import RpcSubmitOrderRsp, RpcExceptionRsp, RpcId, RpcCancelOrderRsp, \
     RpcSubscribeRsp, RpcUnsubscribeRsp, RpcSearchContractRsp, RpcGetMixContractListRsp, RpcGetTickListRsp, \
@@ -22,9 +21,8 @@ class RpcClientProcessService:
             dep = DataExchangeProtocol()
             dep.ParseFromString(data)
 
-        except Exception as e:
-            logger.error("处理DEP错误,PB解析数据发生错误")
-            logger.error(e, exc_info=True)
+        except:
+            logger.error("处理DEP错误,PB解析数据发生错误", exc_info=True)
             logger.error("处理DEP错误,PB解析数据发生错误,原始数据:%s", data)
             return
 
@@ -46,7 +44,7 @@ class RpcClientProcessService:
         if contentType == DataExchangeProtocol.ContentType.COMPRESSED_LZ4:
             try:
                 contentByteString = lz4framed.decompress(dep.contentBytes)
-            except Exception:
+            except:
                 logger.error("处理DEP异常,来源节点ID:%s,RPC类型:%s,RPC ID:%s,请求ID:%s时间戳:%s,无法使用LZ4正确解析报文内容", sourceNodeId,
                              rpcType, rpcId, reqId, timestamp, exc_info=True)
                 RpcClientProcessService.sendExceptionRsp(sourceNodeId, rpcId, reqId, timestamp, "无法使用LZ4正确解析报文内容")
@@ -75,7 +73,7 @@ class RpcClientProcessService:
     @staticmethod
     def doCoreRpc(sourceNodeId, rpcId, reqId, contentByteString, timestamp):
         if rpcId == RpcId.UNKNOWN_RPC_ID:
-            logger.warning("处理RPC,来源节点ID:%s,RPC ID:%s", sourceNodeId, rpcId)
+            logger.warning("处理RPC,未知RPC ID,来源节点ID:%s,RPC ID:%s", sourceNodeId, rpcId)
             return
         elif rpcId == RpcId.SUBSCRIBE_RSP:
             try:
@@ -398,8 +396,8 @@ class RpcClientProcessService:
         logger.info("发送RPC记录,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId)
         try:
             encodeContent = lz4framed.compress(content)
-        except Exception as e:
-            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId, e, exc_info=True)
+        except:
+            logger.error("发送RPC错误,压缩错误,目标节点:%s,请求ID:%s,RPC ID:%s", targetNodeId, reqId, rpcId, exc_info=True)
             return False
 
         dep = DataExchangeProtocol()
@@ -419,7 +417,6 @@ class RpcClientProcessService:
     @staticmethod
     def onWsClosed():
         pass
-
 
     @staticmethod
     def onWsError():

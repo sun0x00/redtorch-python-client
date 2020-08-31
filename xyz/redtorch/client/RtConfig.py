@@ -50,7 +50,7 @@ class RtConfig:
                     RpcClientApiService.getTradeList(sync=True)
                     logging.info("获取Tick列表")
                     RpcClientApiService.getTickList(sync=True)
-        except():
+        except:
             logging.error("定时更新最新净值发生错误", exc_info=True)
         t = Timer(interval, RtConfig.autoConnectAndUpdateTask, (interval,))
         t.start()

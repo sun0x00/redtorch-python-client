@@ -30,7 +30,6 @@ class HttpClient:
             else:
                 logger.error("服务器返回非200状态码")
                 return None
-        except Exception as e:
-            logger.error("登录发生异常")
-            logger.error(e, exc_info=True)
+        except:
+            logger.error("登录发生异常", exc_info=True)
             return None

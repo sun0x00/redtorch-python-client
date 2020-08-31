@@ -4,7 +4,6 @@ import time
 from xyz.redtorch.client.service.rpc.RpcClientApiService import RpcClientApiService
 from test.StrategyDemo import StrategyDemo
 from xyz.redtorch.client.strategy.StrategyEngine import StrategyEngine
-from xyz.redtorch.client.web.http.HttpClient import HttpClient
 from xyz.redtorch.client.RtConfig import RtConfig
 from xyz.redtorch.client.web.socket.WebSocketClientHandler import WebSocketClientHandler
 

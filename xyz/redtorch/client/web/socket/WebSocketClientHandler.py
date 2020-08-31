@@ -41,8 +41,8 @@ class WebSocketClientHandler:
                     else:
                         logger.warning("接收到非二进制消息")
 
-        except Exception as e:
-            logger.error("WebSocket连接断开", e)
+        except:
+            logger.error("WebSocket连接断开", exc_info=True)
         finally:
             from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
             RpcClientProcessService.onWsClosed()
@@ -61,9 +61,8 @@ class WebSocketClientHandler:
                 thread.start_new_thread(asyncio.get_event_loop().run_until_complete,
                                         (WebSocketClientHandler.connectAsyncWS({'cookie': cookie}),))
                 logger.info("创建WebSocket线程")
-            except Exception as e:
-                logger.error("创建会话实例异常")
-                logger.error(e, exc_info=True)
+            except:
+                logger.error("创建会话实例异常", exc_info=True)
                 WebSocketClientHandler.connecting = False
         else:
             logger.info("会话实例已存在或正在创建,不可重复创建")
@@ -76,9 +75,8 @@ class WebSocketClientHandler:
 
         try:
             asyncio.run_coroutine_threadsafe(WebSocketClientHandler._ws.send(data), WebSocketClientHandler.eventLoop).result()
-        except Exception as e:
-            logger.error("发送二进制数据错误")
-            logger.error(e, exc_info=True)
+        except:
+            logger.error("发送二进制数据错误", exc_info=True)
             return False
 
         return True

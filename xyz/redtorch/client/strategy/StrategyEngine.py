@@ -27,13 +27,22 @@ class StrategyEngine:
             StrategyEngine.__strategyDictLock.release()
 
     @staticmethod
-    def removeStrategy(strategyId):
+    def removeStrategyByStrategyId(strategyId):
         StrategyEngine.__strategyDictLock.acquire()
         try:
             if strategyId in StrategyEngine.__strategyDict:
                 strategy = StrategyEngine.__strategyDict.pop(strategyId)
                 return strategy.stopTrading(True)
             return None
+        finally:
+            StrategyEngine.__strategyDictLock.release()
+
+    @staticmethod
+    def getStrategyIdList():
+        strategyIdList = list()
+        StrategyEngine.__strategyDictLock.acquire()
+        try:
+            strategyIdList.append(StrategyEngine.__strategyDict.keys())
         finally:
             StrategyEngine.__strategyDictLock.release()
 
