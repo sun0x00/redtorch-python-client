@@ -7,7 +7,7 @@ from xyz.redtorch.client.strategy.StrategyEngine import StrategyEngine
 from xyz.redtorch.client.RtConfig import RtConfig
 from xyz.redtorch.client.web.socket.WebSocketClientHandler import WebSocketClientHandler
 
-from xyz.redtorch.pb.core_enum_pb2 import MarketDataDBTypeEnum, BarCycleEnum
+from xyz.redtorch.pb.core_enum_pb2 import MarketDataDBTypeEnum, BarPeriodEnum
 
 
 if __name__ == "__main__":
@@ -25,13 +25,7 @@ if __name__ == "__main__":
     logger.addHandler(fileHandler)
     logger.addHandler(streamHandler)
 
-    # 修改配置必要信息
-    # RtConfig.host = ""
-    # RtConfig.port = 9099
-    # RtConfig.username = 'admin'
-    # RtConfig.password = ''
-
-    RtConfig.initRtClient()
+    RtConfig.initRtClient("127.0.0.1:9099", "admin", "rt-admin")
 
     while not WebSocketClientHandler.connected:
         time.sleep(5)
@@ -42,10 +36,11 @@ if __name__ == "__main__":
     endDatetime = '2020-06-23 00:00:00.000000'
     endTimestamp = int(time.mktime(time.strptime(endDatetime, "%Y-%m-%d %H:%M:%S.%f"))*1000)
     print(startDatetime)
-    print(endTimestamp)
-    barList = RpcClientApiService.queryDBBarList(startTimestamp, endTimestamp, "IC2009@CFFEX@FUTURES", BarCycleEnum.B_1Min, MarketDataDBTypeEnum.MDDT_MIX, reqId=None, timeoutSeconds=None)
+    print(endDatetime)
+    barList = RpcClientApiService.queryDBBarList(startTimestamp, endTimestamp, "IC2009@CFFEX@FUTURES", BarPeriodEnum.B_1Min, MarketDataDBTypeEnum.MDDT_MIX, transactionId=None, rpcTimeOut=60)
 
-    print(len(barList))
+    if barList:
+        print(len(barList))
 
     demoStrategyId = "TEST-STRATEGY-ID-000"
     strategyDemo = StrategyDemo({"strategyId": demoStrategyId})

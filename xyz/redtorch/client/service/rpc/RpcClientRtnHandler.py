@@ -1,8 +1,9 @@
+import logging as logger
+
 from google.protobuf.json_format import MessageToJson
 
 from xyz.redtorch.client.service.ClientTradeCacheService import ClientTradeCacheService
 from xyz.redtorch.client.strategy.StrategyEngine import StrategyEngine
-import logging as logger
 
 
 class RpcClientRtnHandler:
@@ -35,7 +36,7 @@ class RpcClientRtnHandler:
 
     @staticmethod
     def onRpcNoticeRtn(rpcNoticeRtn):
-        logger.info("收到通知信息%s", print(MessageToJson(rpcNoticeRtn)))
+        logger.info("收到通知信息%s" % str(MessageToJson(rpcNoticeRtn)))
 
     @staticmethod
     def onRpcOrderListRtn(rpcOrderListRtn):

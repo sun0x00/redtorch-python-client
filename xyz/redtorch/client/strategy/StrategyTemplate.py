@@ -1,6 +1,6 @@
 import logging as logger
-import uuid
 import time
+import uuid
 
 from google.protobuf.json_format import MessageToJson
 
@@ -105,7 +105,7 @@ class StrategyTemplate:
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Tick异常", self.strategyId, exc_info=True)
         else:
-            logger.error("拒绝处理Tick,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Tick,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def processTrade(self, trade):
         if self.initSwitch and self.tradingSwitch:
@@ -115,7 +115,7 @@ class StrategyTemplate:
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Trade异常", self.strategyId, exc_info=True)
         else:
-            logger.error("拒绝处理Trade,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Trade,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def processOrder(self, order):
         if self.initSwitch and self.tradingSwitch:
@@ -126,7 +126,7 @@ class StrategyTemplate:
                 logger.error("策略%s处理Order异常", self.strategyId, exc_info=True)
 
         else:
-            logger.error("拒绝处理Order,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Order,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def onInit(self):
         logger.info("策略%s初始化", self.strategyId)
@@ -135,21 +135,21 @@ class StrategyTemplate:
         logger.info("策略%s开始交易", self.strategyId)
 
     def onStopTrading(self, finishedCorrectly=True):
-        logger.info("策略%s停止交易, %s", self.strategyId, finishedCorrectly)
+        logger.info("策略%s停止交易, 停止状态%s", self.strategyId, finishedCorrectly)
 
     def onTick(self, tick):
         # 已经根据订阅过滤了不属于此策略的行情
-        print(MessageToJson(tick))
+        logger.info("策略%s收到Tick:%s", self.strategyId, MessageToJson(tick))
 
     def onTrade(self, trade):
         # 校验是否是策略发出的定单
         if trade.originOrderId in self.originOrderIdSet:
-            print(MessageToJson(trade))
+            logger.info("策略%s收到Trade:%s", self.strategyId, MessageToJson(trade))
 
     def onOrder(self, order):
         # 校验是否是策略发出的定单
         if order.originOrderId in self.originOrderIdSet:
-            print(MessageToJson(order))
+            logger.info("策略%s收到Order:%s", self.strategyId, MessageToJson(order))
 
     def submitOrder(self, unifiedSymbol, orderPriceType, direction, offsetFlag, accountId, price, volume,
                     originOrderId=None, sync=True):
@@ -183,7 +183,7 @@ class StrategyTemplate:
 
             self.originOrderIdSet.add(submitOrderReq.originOrderId)
 
-            logger.info("策略%s提交定单 %s", MessageToJson(submitOrderReq), self.strategyId)
+            logger.info("策略%s提交定单 %s", self.strategyId, MessageToJson(submitOrderReq))
             if sync:
                 orderId = RpcClientApiService.submitOrder(submitOrderReq, sync=True)
                 return orderId
@@ -191,11 +191,12 @@ class StrategyTemplate:
                 RpcClientApiService.submitOrder(submitOrderReq, sync=False)
                 return None
         else:
-            logger.error("策略尚未初始化或未处于交易状态")
+            logger.error("策略%s尚未初始化或未处于交易状态", self.strategyId)
             return None
 
-    def cancelOrder(self, orderId=None, originOrderId=None, reqId=None, sync=False):
-        RpcClientApiService.cancelOrder(orderId=orderId, originOrderId=originOrderId, reqId=reqId, sync=sync)
+    def cancelOrder(self, orderId=None, originOrderId=None, transactionId=None, sync=False):
+        RpcClientApiService.cancelOrder(orderId=orderId, originOrderId=originOrderId, transactionId=transactionId,
+                                        sync=sync)
 
     def subscribe(self, unifiedSymbol, gatewayId=None):
 
@@ -221,4 +222,4 @@ class StrategyTemplate:
             RpcClientApiService.unsubscribe(contract, gatewayId,
                                             sync=True)
         else:
-            logger.error("策略%s退订行情错误,未能找到合约%s", self.strategyId, unifiedSymbol)
+            logger.error("策略%s取消订阅合约错误,未能找到合约%s", self.strategyId, unifiedSymbol)
