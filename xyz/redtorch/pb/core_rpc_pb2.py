@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1exyz/redtorch/pb/core_rpc.proto\x12\x0fxyz.redtorch.pb\x1a xyz/redtorch/pb/core_field.proto\x1a\x1fxyz/redtorch/pb/core_enum.proto\"w\n\x0fRpcSubscribeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"E\n\x0fRpcSubscribeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"\x8c\x01\n\x11RpcUnsubscribeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x03 \x01(\t\"G\n\x11RpcUnsubscribeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"\x85\x01\n\x11RpcSubmitOrderReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12<\n\x0esubmitOrderReq\x18\x02 \x01(\x0b\x32$.xyz.redtorch.pb.SubmitOrderReqField\"X\n\x11RpcSubmitOrderRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"\x85\x01\n\x11RpcCancelOrderReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12<\n\x0e\x63\x61ncelOrderReq\x18\x02 \x01(\x0b\x32$.xyz.redtorch.pb.CancelOrderReqField\"G\n\x11RpcCancelOrderRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"|\n\x14RpcSearchContractReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"J\n\x14RpcSearchContractRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"H\n\x12RpcGetOrderListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"t\n\x12RpcGetOrderListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"O\n\x19RpcGetWorkingOrderListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"{\n\x19RpcGetWorkingOrderListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"`\n\x19RpcQueryOrderByOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"{\n\x19RpcQueryOrderByOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"l\n\x1fRpcQueryOrderByOriginOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\roriginOrderId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryOrderByOriginOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"h\n\x1fRpcQueryOrderListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryOrderListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"p\n#RpcQueryOrderListByUnifiedSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runifiedSymbol\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryOrderListByUnifiedSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"H\n\x12RpcGetTradeListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"t\n\x12RpcGetTradeListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"`\n\x19RpcQueryTradeByTradeIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07tradeId\x18\x02 \x01(\t\"{\n\x19RpcQueryTradeByTradeIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"p\n#RpcQueryTradeListByUnifiedSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runifiedSymbol\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryTradeListByUnifiedSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"h\n\x1fRpcQueryTradeListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryTradeListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"d\n\x1dRpcQueryTradeListByOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"\x7f\n\x1dRpcQueryTradeListByOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"p\n#RpcQueryTradeListByOriginOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\roriginOrderId\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryTradeListByOriginOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"K\n\x15RpcGetPositionListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"}\n\x15RpcGetPositionListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"i\n\x1fRpcQueryPositionByPositionIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x12\n\npositionId\x18\x02 \x01(\t\"\x87\x01\n\x1fRpcQueryPositionByPositionIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"k\n\"RpcQueryPositionListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x8a\x01\n\"RpcQueryPositionListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"s\n&RpcQueryPositionListByUnifiedSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runifiedSymbol\x18\x02 \x01(\t\"\x8e\x01\n&RpcQueryPositionListByUnifiedSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"J\n\x14RpcGetAccountListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"z\n\x14RpcGetAccountListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"f\n\x1dRpcQueryAccountByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x83\x01\n\x1dRpcQueryAccountByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x01(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"n\n#RpcQueryAccountListByAccountCodeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x13\n\x0b\x61\x63\x63ountCode\x18\x02 \x01(\t\"\x89\x01\n#RpcQueryAccountListByAccountCodeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"K\n\x15RpcGetContractListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"}\n\x15RpcGetContractListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"i\n\x1fRpcQueryContractByContractIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x12\n\ncontractId\x18\x02 \x01(\t\"\x87\x01\n\x1fRpcQueryContractByContractIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"s\n&RpcQueryContractListByUnifiedSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runifiedSymbol\x18\x02 \x01(\t\"\x8e\x01\n&RpcQueryContractListByUnifiedSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"k\n\"RpcQueryContractListByGatewayIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\tgatewayId\x18\x02 \x01(\t\"\x8a\x01\n\"RpcQueryContractListByGatewayIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"\x84\x01\n\x1eRpcSyncSlaveNodeRuntimeDataReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12.\n\x07gateway\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.GatewayField\"\xce\x01\n\x1eRpcSyncSlaveNodeRuntimeDataRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12<\n\x0egatewaySetting\x18\x02 \x03(\x0b\x32$.xyz.redtorch.pb.GatewaySettingField\x12:\n\x12subscribedContract\x18\x03 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"N\n\x18RpcGetMixContractListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"\x80\x01\n\x18RpcGetMixContractListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"G\n\x11RpcGetTickListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"q\n\x11RpcGetTickListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12(\n\x04tick\x18\x02 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"\x83\x02\n\x14RpcQueryDBBarListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runifiedSymbol\x18\x04 \x01(\t\x12\x31\n\tbarPeriod\x18\x05 \x01(\x0e\x32\x1e.xyz.redtorch.pb.BarPeriodEnum\x12?\n\x10marketDataDBType\x18\x06 \x01(\x0e\x32%.xyz.redtorch.pb.MarketDataDBTypeEnum\"r\n\x14RpcQueryDBBarListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12&\n\x03\x62\x61r\x18\x02 \x03(\x0b\x32\x19.xyz.redtorch.pb.BarField\"\xd1\x01\n\x15RpcQueryDBTickListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runifiedSymbol\x18\x04 \x01(\t\x12?\n\x10marketDataDBType\x18\x05 \x01(\x0e\x32%.xyz.redtorch.pb.MarketDataDBTypeEnum\"u\n\x15RpcQueryDBTickListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12(\n\x04tick\x18\x02 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"\xa3\x01\n\x18RpcQueryVolumeBarListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runifiedSymbol\x18\x04 \x01(\t\x12\x0e\n\x06volume\x18\x05 \x01(\x07\"v\n\x18RpcQueryVolumeBarListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12&\n\x03\x62\x61r\x18\x02 \x03(\x0b\x32\x19.xyz.redtorch.pb.BarField\"p\n\x0fRpcExceptionRsp\x12\x15\n\roriginalRpcId\x18\x01 \x01(\x07\x12\x1d\n\x15originalTransactionId\x18\x02 \x01(\t\x12\x19\n\x11originalTimestamp\x18\x03 \x01(\x06\x12\x0c\n\x04info\x18\x04 \x01(\t\"9\n\x0bRpcOrderRtn\x12*\n\x05order\x18\x01 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"9\n\x0bRpcTradeRtn\x12*\n\x05trade\x18\x01 \x01(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"B\n\x0eRpcContractRtn\x12\x30\n\x08\x63ontract\x18\x01 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"B\n\x0eRpcPositionRtn\x12\x30\n\x08position\x18\x01 \x01(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"?\n\rRpcAccountRtn\x12.\n\x07\x61\x63\x63ount\x18\x01 \x01(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"6\n\nRpcTickRtn\x12(\n\x04tick\x18\x01 \x01(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"=\n\x0fRpcOrderListRtn\x12*\n\x05order\x18\x01 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"=\n\x0fRpcTradeListRtn\x12*\n\x05trade\x18\x01 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"F\n\x12RpcContractListRtn\x12\x30\n\x08\x63ontract\x18\x01 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"F\n\x12RpcPositionListRtn\x12\x30\n\x08position\x18\x01 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"C\n\x11RpcAccountListRtn\x12.\n\x07\x61\x63\x63ount\x18\x01 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\":\n\x0eRpcTickListRtn\x12(\n\x04tick\x18\x01 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"<\n\x0cRpcNoticeRtn\x12,\n\x06notice\x18\x01 \x01(\x0b\x32\x1c.xyz.redtorch.pb.NoticeField*\x9b\x14\n\x05RpcId\x12\x12\n\x0eUNKNOWN_RPC_ID\x10\x00\x12\x11\n\rSUBSCRIBE_REQ\x10\x01\x12\x11\n\rSUBSCRIBE_RSP\x10\x02\x12\x13\n\x0fUNSUBSCRIBE_REQ\x10\x03\x12\x13\n\x0fUNSUBSCRIBE_RSP\x10\x04\x12\x14\n\x10SUBMIT_ORDER_REQ\x10\x05\x12\x14\n\x10SUBMIT_ORDER_RSP\x10\x06\x12\x14\n\x10\x43\x41NCEL_ORDER_REQ\x10\x07\x12\x14\n\x10\x43\x41NCEL_ORDER_RSP\x10\x08\x12\x17\n\x13SEARCH_CONTRACT_REQ\x10\t\x12\x17\n\x13SEARCH_CONTRACT_RSP\x10\n\x12\x16\n\x12GET_ORDER_LIST_REQ\x10\x0b\x12\x16\n\x12GET_ORDER_LIST_RSP\x10\x0c\x12\x1e\n\x1aGET_WORKING_ORDER_LIST_REQ\x10\r\x12\x1e\n\x1aGET_WORKING_ORDER_LIST_RSP\x10\x0e\x12\x1f\n\x1bQUERY_ORDER_BY_ORDER_ID_REQ\x10\x0f\x12\x1f\n\x1bQUERY_ORDER_BY_ORDER_ID_RSP\x10\x10\x12&\n\"QUERY_ORDER_BY_ORIGIN_ORDER_ID_REQ\x10\x11\x12&\n\"QUERY_ORDER_BY_ORIGIN_ORDER_ID_RSP\x10\x12\x12&\n\"QUERY_ORDER_LIST_BY_ACCOUNT_ID_REQ\x10\x13\x12&\n\"QUERY_ORDER_LIST_BY_ACCOUNT_ID_RSP\x10\x14\x12*\n&QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_REQ\x10\x15\x12*\n&QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_RSP\x10\x16\x12\x16\n\x12GET_TRADE_LIST_REQ\x10\x17\x12\x16\n\x12GET_TRADE_LIST_RSP\x10\x18\x12\x1f\n\x1bQUERY_TRADE_BY_TRADE_ID_REQ\x10\x19\x12\x1f\n\x1bQUERY_TRADE_BY_TRADE_ID_RSP\x10\x1a\x12*\n&QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_REQ\x10\x1b\x12*\n&QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_RSP\x10\x1c\x12&\n\"QUERY_TRADE_LIST_BY_ACCOUNT_ID_REQ\x10\x1d\x12&\n\"QUERY_TRADE_LIST_BY_ACCOUNT_ID_RSP\x10\x1e\x12$\n QUERY_TRADE_LIST_BY_ORDER_ID_REQ\x10\x1f\x12$\n QUERY_TRADE_LIST_BY_ORDER_ID_RSP\x10 \x12+\n\'QUERY_TRADE_LIST_BY_ORIGIN_ORDER_ID_REQ\x10!\x12+\n\'QUERY_TRADE_LIST_BY_ORIGIN_ORDER_ID_RSP\x10\"\x12\x19\n\x15GET_POSITION_LIST_REQ\x10#\x12\x19\n\x15GET_POSITION_LIST_RSP\x10$\x12%\n!QUERY_POSITION_BY_POSITION_ID_REQ\x10%\x12%\n!QUERY_POSITION_BY_POSITION_ID_RSP\x10&\x12)\n%QUERY_POSITION_LIST_BY_ACCOUNT_ID_REQ\x10\'\x12)\n%QUERY_POSITION_LIST_BY_ACCOUNT_ID_RSP\x10(\x12-\n)QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_REQ\x10)\x12-\n)QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_RSP\x10*\x12\x18\n\x14GET_ACCOUNT_LIST_REQ\x10+\x12\x18\n\x14GET_ACCOUNT_LIST_RSP\x10,\x12#\n\x1fQUERY_ACCOUNT_BY_ACCOUNT_ID_REQ\x10-\x12#\n\x1fQUERY_ACCOUNT_BY_ACCOUNT_ID_RSP\x10.\x12*\n&QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_REQ\x10/\x12*\n&QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_RSP\x10\x30\x12\x19\n\x15GET_CONTRACT_LIST_REQ\x10\x31\x12\x19\n\x15GET_CONTRACT_LIST_RSP\x10\x32\x12%\n!QUERY_CONTRACT_BY_CONTRACT_ID_REQ\x10\x33\x12%\n!QUERY_CONTRACT_BY_CONTRACT_ID_RSP\x10\x34\x12-\n)QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_REQ\x10\x35\x12-\n)QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_RSP\x10\x36\x12)\n%QUERY_CONTRACT_LIST_BY_GATEWAY_ID_REQ\x10\x37\x12)\n%QUERY_CONTRACT_LIST_BY_GATEWAY_ID_RSP\x10\x38\x12$\n SYNC_SLAVE_NODE_RUNTIME_DATA_REQ\x10\x39\x12$\n SYNC_SLAVE_NODE_RUNTIME_DATA_RSP\x10:\x12\x1d\n\x19GET_MIX_CONTRACT_LIST_REQ\x10;\x12\x1d\n\x19GET_MIX_CONTRACT_LIST_RSP\x10<\x12\x15\n\x11GET_TICK_LIST_REQ\x10=\x12\x15\n\x11GET_TICK_LIST_RSP\x10>\x12\x19\n\x15QUERY_DB_BAR_LIST_REQ\x10?\x12\x19\n\x15QUERY_DB_BAR_LIST_RSP\x10@\x12\x1a\n\x16QUERY_DB_TICK_LIST_REQ\x10\x41\x12\x1a\n\x16QUERY_DB_TICK_LIST_RSP\x10\x42\x12\x1d\n\x19QUERY_VOLUME_BAR_LIST_REQ\x10\x43\x12\x1d\n\x19QUERY_VOLUME_BAR_LIST_RSP\x10\x44\x12\x13\n\rEXCEPTION_RSP\x10\xbf\x84=\x12\x0e\n\tORDER_RTN\x10\xe9\x07\x12\x0e\n\tTRADE_RTN\x10\xea\x07\x12\x11\n\x0c\x43ONTRACT_RTN\x10\xeb\x07\x12\x11\n\x0cPOSITION_RTN\x10\xec\x07\x12\x10\n\x0b\x41\x43\x43OUNT_RTN\x10\xed\x07\x12\r\n\x08TICK_RTN\x10\xee\x07\x12\x13\n\x0eORDER_LIST_RTN\x10\xef\x07\x12\x13\n\x0eTRADE_LIST_RTN\x10\xf0\x07\x12\x16\n\x11\x43ONTRACT_LIST_RTN\x10\xf1\x07\x12\x16\n\x11POSITION_LIST_RTN\x10\xf2\x07\x12\x15\n\x10\x41\x43\x43OUNT_LIST_RTN\x10\xf3\x07\x12\x12\n\rTICK_LIST_RTN\x10\xf4\x07\x12\x0f\n\nNOTICE_RTN\x10\xf5\x07\x62\x06proto3'
+  serialized_pb=b'\n\x1exyz/redtorch/pb/core_rpc.proto\x12\x0fxyz.redtorch.pb\x1a xyz/redtorch/pb/core_field.proto\x1a\x1fxyz/redtorch/pb/core_enum.proto\"w\n\x0fRpcSubscribeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"E\n\x0fRpcSubscribeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"\x8c\x01\n\x11RpcUnsubscribeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x03 \x01(\t\"G\n\x11RpcUnsubscribeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"\x85\x01\n\x11RpcSubmitOrderReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12<\n\x0esubmitOrderReq\x18\x02 \x01(\x0b\x32$.xyz.redtorch.pb.SubmitOrderReqField\"X\n\x11RpcSubmitOrderRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"\x85\x01\n\x11RpcCancelOrderReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12<\n\x0e\x63\x61ncelOrderReq\x18\x02 \x01(\x0b\x32$.xyz.redtorch.pb.CancelOrderReqField\"G\n\x11RpcCancelOrderRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"|\n\x14RpcSearchContractReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"J\n\x14RpcSearchContractRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\"H\n\x12RpcGetOrderListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"t\n\x12RpcGetOrderListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"O\n\x19RpcGetWorkingOrderListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"{\n\x19RpcGetWorkingOrderListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"`\n\x19RpcQueryOrderByOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"{\n\x19RpcQueryOrderByOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"l\n\x1fRpcQueryOrderByOriginOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\roriginOrderId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryOrderByOriginOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"h\n\x1fRpcQueryOrderListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryOrderListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"p\n#RpcQueryOrderListByUniformSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runiformSymbol\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryOrderListByUniformSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05order\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"H\n\x12RpcGetTradeListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"t\n\x12RpcGetTradeListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"`\n\x19RpcQueryTradeByTradeIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07tradeId\x18\x02 \x01(\t\"{\n\x19RpcQueryTradeByTradeIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x01(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"p\n#RpcQueryTradeListByUniformSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runiformSymbol\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryTradeListByUniformSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"h\n\x1fRpcQueryTradeListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x81\x01\n\x1fRpcQueryTradeListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"d\n\x1dRpcQueryTradeListByOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x0f\n\x07orderId\x18\x02 \x01(\t\"\x7f\n\x1dRpcQueryTradeListByOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"p\n#RpcQueryTradeListByOriginOrderIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\roriginOrderId\x18\x02 \x01(\t\"\x85\x01\n#RpcQueryTradeListByOriginOrderIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12*\n\x05trade\x18\x02 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"K\n\x15RpcGetPositionListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"}\n\x15RpcGetPositionListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"i\n\x1fRpcQueryPositionByPositionIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x12\n\npositionId\x18\x02 \x01(\t\"\x87\x01\n\x1fRpcQueryPositionByPositionIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"k\n\"RpcQueryPositionListByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x8a\x01\n\"RpcQueryPositionListByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"s\n&RpcQueryPositionListByUniformSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runiformSymbol\x18\x02 \x01(\t\"\x8e\x01\n&RpcQueryPositionListByUniformSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08position\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"J\n\x14RpcGetAccountListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"z\n\x14RpcGetAccountListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"f\n\x1dRpcQueryAccountByAccountIdReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x11\n\taccountId\x18\x02 \x01(\t\"\x83\x01\n\x1dRpcQueryAccountByAccountIdRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x01(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"n\n#RpcQueryAccountListByAccountCodeReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x13\n\x0b\x61\x63\x63ountCode\x18\x02 \x01(\t\"\x89\x01\n#RpcQueryAccountListByAccountCodeRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12.\n\x07\x61\x63\x63ount\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"K\n\x15RpcGetContractListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"}\n\x15RpcGetContractListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"o\n\"RpcQueryContractByUniformSymbolReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x15\n\runiformSymbol\x18\x02 \x01(\t\"\x8a\x01\n\"RpcQueryContractByUniformSymbolRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12\x30\n\x08\x63ontract\x18\x02 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"\x84\x01\n\x1eRpcSyncSlaveNodeRuntimeDataReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12.\n\x07gateway\x18\x02 \x03(\x0b\x32\x1d.xyz.redtorch.pb.GatewayField\"\xce\x01\n\x1eRpcSyncSlaveNodeRuntimeDataRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12<\n\x0egatewaySetting\x18\x02 \x03(\x0b\x32$.xyz.redtorch.pb.GatewaySettingField\x12:\n\x12subscribedContract\x18\x03 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"G\n\x11RpcGetTickListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\"q\n\x11RpcGetTickListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12(\n\x04tick\x18\x02 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"\x83\x02\n\x14RpcQueryDBBarListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runiformSymbol\x18\x04 \x01(\t\x12\x31\n\tbarPeriod\x18\x05 \x01(\x0e\x32\x1e.xyz.redtorch.pb.BarPeriodEnum\x12?\n\x10marketDataDBType\x18\x06 \x01(\x0e\x32%.xyz.redtorch.pb.MarketDataDBTypeEnum\"r\n\x14RpcQueryDBBarListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12&\n\x03\x62\x61r\x18\x02 \x03(\x0b\x32\x19.xyz.redtorch.pb.BarField\"\xd1\x01\n\x15RpcQueryDBTickListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runiformSymbol\x18\x04 \x01(\t\x12?\n\x10marketDataDBType\x18\x05 \x01(\x0e\x32%.xyz.redtorch.pb.MarketDataDBTypeEnum\"u\n\x15RpcQueryDBTickListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12(\n\x04tick\x18\x02 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"\xa3\x01\n\x18RpcQueryVolumeBarListReq\x12\x32\n\tcommonReq\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonReqField\x12\x16\n\x0estartTimestamp\x18\x02 \x01(\x06\x12\x14\n\x0c\x65ndTimestamp\x18\x03 \x01(\x06\x12\x15\n\runiformSymbol\x18\x04 \x01(\t\x12\x0e\n\x06volume\x18\x05 \x01(\x07\"v\n\x18RpcQueryVolumeBarListRsp\x12\x32\n\tcommonRsp\x18\x01 \x01(\x0b\x32\x1f.xyz.redtorch.pb.CommonRspField\x12&\n\x03\x62\x61r\x18\x02 \x03(\x0b\x32\x19.xyz.redtorch.pb.BarField\"p\n\x0fRpcExceptionRsp\x12\x15\n\roriginalRpcId\x18\x01 \x01(\x07\x12\x1d\n\x15originalTransactionId\x18\x02 \x01(\t\x12\x19\n\x11originalTimestamp\x18\x03 \x01(\x06\x12\x0c\n\x04info\x18\x04 \x01(\t\"9\n\x0bRpcOrderRtn\x12*\n\x05order\x18\x01 \x01(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"9\n\x0bRpcTradeRtn\x12*\n\x05trade\x18\x01 \x01(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"B\n\x0eRpcContractRtn\x12\x30\n\x08\x63ontract\x18\x01 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"B\n\x0eRpcPositionRtn\x12\x30\n\x08position\x18\x01 \x01(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"?\n\rRpcAccountRtn\x12.\n\x07\x61\x63\x63ount\x18\x01 \x01(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\"6\n\nRpcTickRtn\x12(\n\x04tick\x18\x01 \x01(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"=\n\x0fRpcOrderListRtn\x12*\n\x05order\x18\x01 \x03(\x0b\x32\x1b.xyz.redtorch.pb.OrderField\"=\n\x0fRpcTradeListRtn\x12*\n\x05trade\x18\x01 \x03(\x0b\x32\x1b.xyz.redtorch.pb.TradeField\"F\n\x12RpcContractListRtn\x12\x30\n\x08\x63ontract\x18\x01 \x03(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\"F\n\x12RpcPositionListRtn\x12\x30\n\x08position\x18\x01 \x03(\x0b\x32\x1e.xyz.redtorch.pb.PositionField\"C\n\x11RpcAccountListRtn\x12.\n\x07\x61\x63\x63ount\x18\x01 \x03(\x0b\x32\x1d.xyz.redtorch.pb.AccountField\":\n\x0eRpcTickListRtn\x12(\n\x04tick\x18\x01 \x03(\x0b\x32\x1a.xyz.redtorch.pb.TickField\"<\n\x0cRpcNoticeRtn\x12,\n\x06notice\x18\x01 \x01(\x0b\x32\x1c.xyz.redtorch.pb.NoticeField*\xaf\x12\n\x05RpcId\x12\x12\n\x0eUNKNOWN_RPC_ID\x10\x00\x12\x11\n\rSUBSCRIBE_REQ\x10\x01\x12\x11\n\rSUBSCRIBE_RSP\x10\x02\x12\x13\n\x0fUNSUBSCRIBE_REQ\x10\x03\x12\x13\n\x0fUNSUBSCRIBE_RSP\x10\x04\x12\x14\n\x10SUBMIT_ORDER_REQ\x10\x05\x12\x14\n\x10SUBMIT_ORDER_RSP\x10\x06\x12\x14\n\x10\x43\x41NCEL_ORDER_REQ\x10\x07\x12\x14\n\x10\x43\x41NCEL_ORDER_RSP\x10\x08\x12\x17\n\x13SEARCH_CONTRACT_REQ\x10\t\x12\x17\n\x13SEARCH_CONTRACT_RSP\x10\n\x12\x16\n\x12GET_ORDER_LIST_REQ\x10\x0b\x12\x16\n\x12GET_ORDER_LIST_RSP\x10\x0c\x12\x1e\n\x1aGET_WORKING_ORDER_LIST_REQ\x10\r\x12\x1e\n\x1aGET_WORKING_ORDER_LIST_RSP\x10\x0e\x12\x1f\n\x1bQUERY_ORDER_BY_ORDER_ID_REQ\x10\x0f\x12\x1f\n\x1bQUERY_ORDER_BY_ORDER_ID_RSP\x10\x10\x12&\n\"QUERY_ORDER_BY_ORIGIN_ORDER_ID_REQ\x10\x11\x12&\n\"QUERY_ORDER_BY_ORIGIN_ORDER_ID_RSP\x10\x12\x12&\n\"QUERY_ORDER_LIST_BY_ACCOUNT_ID_REQ\x10\x13\x12&\n\"QUERY_ORDER_LIST_BY_ACCOUNT_ID_RSP\x10\x14\x12*\n&QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_REQ\x10\x15\x12*\n&QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_RSP\x10\x16\x12\x16\n\x12GET_TRADE_LIST_REQ\x10\x17\x12\x16\n\x12GET_TRADE_LIST_RSP\x10\x18\x12\x1f\n\x1bQUERY_TRADE_BY_TRADE_ID_REQ\x10\x19\x12\x1f\n\x1bQUERY_TRADE_BY_TRADE_ID_RSP\x10\x1a\x12*\n&QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_REQ\x10\x1b\x12*\n&QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_RSP\x10\x1c\x12&\n\"QUERY_TRADE_LIST_BY_ACCOUNT_ID_REQ\x10\x1d\x12&\n\"QUERY_TRADE_LIST_BY_ACCOUNT_ID_RSP\x10\x1e\x12$\n QUERY_TRADE_LIST_BY_ORDER_ID_REQ\x10\x1f\x12$\n QUERY_TRADE_LIST_BY_ORDER_ID_RSP\x10 \x12+\n\'QUERY_TRADE_LIST_BY_ORIGIN_ORDER_ID_REQ\x10!\x12+\n\'QUERY_TRADE_LIST_BY_ORIGIN_ORDER_ID_RSP\x10\"\x12\x19\n\x15GET_POSITION_LIST_REQ\x10#\x12\x19\n\x15GET_POSITION_LIST_RSP\x10$\x12%\n!QUERY_POSITION_BY_POSITION_ID_REQ\x10%\x12%\n!QUERY_POSITION_BY_POSITION_ID_RSP\x10&\x12)\n%QUERY_POSITION_LIST_BY_ACCOUNT_ID_REQ\x10\'\x12)\n%QUERY_POSITION_LIST_BY_ACCOUNT_ID_RSP\x10(\x12-\n)QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_REQ\x10)\x12-\n)QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_RSP\x10*\x12\x18\n\x14GET_ACCOUNT_LIST_REQ\x10+\x12\x18\n\x14GET_ACCOUNT_LIST_RSP\x10,\x12#\n\x1fQUERY_ACCOUNT_BY_ACCOUNT_ID_REQ\x10-\x12#\n\x1fQUERY_ACCOUNT_BY_ACCOUNT_ID_RSP\x10.\x12*\n&QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_REQ\x10/\x12*\n&QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_RSP\x10\x30\x12\x19\n\x15GET_CONTRACT_LIST_REQ\x10\x31\x12\x19\n\x15GET_CONTRACT_LIST_RSP\x10\x32\x12(\n$QUERY_CONTRACT_BY_UNIFORM_SYMBOL_REQ\x10\x33\x12(\n$QUERY_CONTRACT_BY_UNIFORM_SYMBOL_RSP\x10\x34\x12$\n SYNC_SLAVE_NODE_RUNTIME_DATA_REQ\x10\x35\x12$\n SYNC_SLAVE_NODE_RUNTIME_DATA_RSP\x10\x36\x12\x15\n\x11GET_TICK_LIST_REQ\x10\x37\x12\x15\n\x11GET_TICK_LIST_RSP\x10\x38\x12\x19\n\x15QUERY_DB_BAR_LIST_REQ\x10\x39\x12\x19\n\x15QUERY_DB_BAR_LIST_RSP\x10:\x12\x1a\n\x16QUERY_DB_TICK_LIST_REQ\x10;\x12\x1a\n\x16QUERY_DB_TICK_LIST_RSP\x10<\x12\x1d\n\x19QUERY_VOLUME_BAR_LIST_REQ\x10=\x12\x1d\n\x19QUERY_VOLUME_BAR_LIST_RSP\x10>\x12\x13\n\rEXCEPTION_RSP\x10\xbf\x84=\x12\x0e\n\tORDER_RTN\x10\xe9\x07\x12\x0e\n\tTRADE_RTN\x10\xea\x07\x12\x11\n\x0c\x43ONTRACT_RTN\x10\xeb\x07\x12\x11\n\x0cPOSITION_RTN\x10\xec\x07\x12\x10\n\x0b\x41\x43\x43OUNT_RTN\x10\xed\x07\x12\r\n\x08TICK_RTN\x10\xee\x07\x12\x13\n\x0eORDER_LIST_RTN\x10\xef\x07\x12\x13\n\x0eTRADE_LIST_RTN\x10\xf0\x07\x12\x16\n\x11\x43ONTRACT_LIST_RTN\x10\xf1\x07\x12\x16\n\x11POSITION_LIST_RTN\x10\xf2\x07\x12\x15\n\x10\x41\x43\x43OUNT_LIST_RTN\x10\xf3\x07\x12\x12\n\rTICK_LIST_RTN\x10\xf4\x07\x12\x0f\n\nNOTICE_RTN\x10\xf5\x07\x62\x06proto3'
   ,
   dependencies=[xyz_dot_redtorch_dot_pb_dot_core__field__pb2.DESCRIPTOR,xyz_dot_redtorch_dot_pb_dot_core__enum__pb2.DESCRIPTOR,])
 
@@ -139,12 +139,12 @@ _RPCID = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_REQ', index=21, number=21,
+      name='QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_REQ', index=21, number=21,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_RSP', index=22, number=22,
+      name='QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_RSP', index=22, number=22,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -169,12 +169,12 @@ _RPCID = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_REQ', index=27, number=27,
+      name='QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_REQ', index=27, number=27,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_RSP', index=28, number=28,
+      name='QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_RSP', index=28, number=28,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -239,12 +239,12 @@ _RPCID = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_REQ', index=41, number=41,
+      name='QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_REQ', index=41, number=41,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_RSP', index=42, number=42,
+      name='QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_RSP', index=42, number=42,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -289,170 +289,140 @@ _RPCID = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_BY_CONTRACT_ID_REQ', index=51, number=51,
+      name='QUERY_CONTRACT_BY_UNIFORM_SYMBOL_REQ', index=51, number=51,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_BY_CONTRACT_ID_RSP', index=52, number=52,
+      name='QUERY_CONTRACT_BY_UNIFORM_SYMBOL_RSP', index=52, number=52,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_REQ', index=53, number=53,
+      name='SYNC_SLAVE_NODE_RUNTIME_DATA_REQ', index=53, number=53,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_RSP', index=54, number=54,
+      name='SYNC_SLAVE_NODE_RUNTIME_DATA_RSP', index=54, number=54,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_LIST_BY_GATEWAY_ID_REQ', index=55, number=55,
+      name='GET_TICK_LIST_REQ', index=55, number=55,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_CONTRACT_LIST_BY_GATEWAY_ID_RSP', index=56, number=56,
+      name='GET_TICK_LIST_RSP', index=56, number=56,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='SYNC_SLAVE_NODE_RUNTIME_DATA_REQ', index=57, number=57,
+      name='QUERY_DB_BAR_LIST_REQ', index=57, number=57,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='SYNC_SLAVE_NODE_RUNTIME_DATA_RSP', index=58, number=58,
+      name='QUERY_DB_BAR_LIST_RSP', index=58, number=58,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='GET_MIX_CONTRACT_LIST_REQ', index=59, number=59,
+      name='QUERY_DB_TICK_LIST_REQ', index=59, number=59,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='GET_MIX_CONTRACT_LIST_RSP', index=60, number=60,
+      name='QUERY_DB_TICK_LIST_RSP', index=60, number=60,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='GET_TICK_LIST_REQ', index=61, number=61,
+      name='QUERY_VOLUME_BAR_LIST_REQ', index=61, number=61,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='GET_TICK_LIST_RSP', index=62, number=62,
+      name='QUERY_VOLUME_BAR_LIST_RSP', index=62, number=62,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_DB_BAR_LIST_REQ', index=63, number=63,
+      name='EXCEPTION_RSP', index=63, number=999999,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_DB_BAR_LIST_RSP', index=64, number=64,
+      name='ORDER_RTN', index=64, number=1001,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_DB_TICK_LIST_REQ', index=65, number=65,
+      name='TRADE_RTN', index=65, number=1002,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_DB_TICK_LIST_RSP', index=66, number=66,
+      name='CONTRACT_RTN', index=66, number=1003,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_VOLUME_BAR_LIST_REQ', index=67, number=67,
+      name='POSITION_RTN', index=67, number=1004,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='QUERY_VOLUME_BAR_LIST_RSP', index=68, number=68,
+      name='ACCOUNT_RTN', index=68, number=1005,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='EXCEPTION_RSP', index=69, number=999999,
+      name='TICK_RTN', index=69, number=1006,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='ORDER_RTN', index=70, number=1001,
+      name='ORDER_LIST_RTN', index=70, number=1007,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='TRADE_RTN', index=71, number=1002,
+      name='TRADE_LIST_RTN', index=71, number=1008,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONTRACT_RTN', index=72, number=1003,
+      name='CONTRACT_LIST_RTN', index=72, number=1009,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='POSITION_RTN', index=73, number=1004,
+      name='POSITION_LIST_RTN', index=73, number=1010,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='ACCOUNT_RTN', index=74, number=1005,
+      name='ACCOUNT_LIST_RTN', index=74, number=1011,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='TICK_RTN', index=75, number=1006,
+      name='TICK_LIST_RTN', index=75, number=1012,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='ORDER_LIST_RTN', index=76, number=1007,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TRADE_LIST_RTN', index=77, number=1008,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONTRACT_LIST_RTN', index=78, number=1009,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='POSITION_LIST_RTN', index=79, number=1010,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='ACCOUNT_LIST_RTN', index=80, number=1011,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TICK_LIST_RTN', index=81, number=1012,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='NOTICE_RTN', index=82, number=1013,
+      name='NOTICE_RTN', index=76, number=1013,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=9199,
-  serialized_end=11786,
+  serialized_start=8485,
+  serialized_end=10836,
 )
 _sym_db.RegisterEnumDescriptor(_RPCID)
 
@@ -478,14 +448,14 @@ QUERY_ORDER_BY_ORIGIN_ORDER_ID_REQ = 17
 QUERY_ORDER_BY_ORIGIN_ORDER_ID_RSP = 18
 QUERY_ORDER_LIST_BY_ACCOUNT_ID_REQ = 19
 QUERY_ORDER_LIST_BY_ACCOUNT_ID_RSP = 20
-QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_REQ = 21
-QUERY_ORDER_LIST_BY_UNIFIED_SYMBOL_RSP = 22
+QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_REQ = 21
+QUERY_ORDER_LIST_BY_UNIFORM_SYMBOL_RSP = 22
 GET_TRADE_LIST_REQ = 23
 GET_TRADE_LIST_RSP = 24
 QUERY_TRADE_BY_TRADE_ID_REQ = 25
 QUERY_TRADE_BY_TRADE_ID_RSP = 26
-QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_REQ = 27
-QUERY_TRADE_LIST_BY_UNIFIED_SYMBOL_RSP = 28
+QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_REQ = 27
+QUERY_TRADE_LIST_BY_UNIFORM_SYMBOL_RSP = 28
 QUERY_TRADE_LIST_BY_ACCOUNT_ID_REQ = 29
 QUERY_TRADE_LIST_BY_ACCOUNT_ID_RSP = 30
 QUERY_TRADE_LIST_BY_ORDER_ID_REQ = 31
@@ -498,8 +468,8 @@ QUERY_POSITION_BY_POSITION_ID_REQ = 37
 QUERY_POSITION_BY_POSITION_ID_RSP = 38
 QUERY_POSITION_LIST_BY_ACCOUNT_ID_REQ = 39
 QUERY_POSITION_LIST_BY_ACCOUNT_ID_RSP = 40
-QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_REQ = 41
-QUERY_POSITION_LIST_BY_UNIFIED_SYMBOL_RSP = 42
+QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_REQ = 41
+QUERY_POSITION_LIST_BY_UNIFORM_SYMBOL_RSP = 42
 GET_ACCOUNT_LIST_REQ = 43
 GET_ACCOUNT_LIST_RSP = 44
 QUERY_ACCOUNT_BY_ACCOUNT_ID_REQ = 45
@@ -508,24 +478,18 @@ QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_REQ = 47
 QUERY_ACCOUNT_LIST_BY_ACCOUNT_CODE_RSP = 48
 GET_CONTRACT_LIST_REQ = 49
 GET_CONTRACT_LIST_RSP = 50
-QUERY_CONTRACT_BY_CONTRACT_ID_REQ = 51
-QUERY_CONTRACT_BY_CONTRACT_ID_RSP = 52
-QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_REQ = 53
-QUERY_CONTRACT_LIST_BY_UNIFIED_SYMBOL_RSP = 54
-QUERY_CONTRACT_LIST_BY_GATEWAY_ID_REQ = 55
-QUERY_CONTRACT_LIST_BY_GATEWAY_ID_RSP = 56
-SYNC_SLAVE_NODE_RUNTIME_DATA_REQ = 57
-SYNC_SLAVE_NODE_RUNTIME_DATA_RSP = 58
-GET_MIX_CONTRACT_LIST_REQ = 59
-GET_MIX_CONTRACT_LIST_RSP = 60
-GET_TICK_LIST_REQ = 61
-GET_TICK_LIST_RSP = 62
-QUERY_DB_BAR_LIST_REQ = 63
-QUERY_DB_BAR_LIST_RSP = 64
-QUERY_DB_TICK_LIST_REQ = 65
-QUERY_DB_TICK_LIST_RSP = 66
-QUERY_VOLUME_BAR_LIST_REQ = 67
-QUERY_VOLUME_BAR_LIST_RSP = 68
+QUERY_CONTRACT_BY_UNIFORM_SYMBOL_REQ = 51
+QUERY_CONTRACT_BY_UNIFORM_SYMBOL_RSP = 52
+SYNC_SLAVE_NODE_RUNTIME_DATA_REQ = 53
+SYNC_SLAVE_NODE_RUNTIME_DATA_RSP = 54
+GET_TICK_LIST_REQ = 55
+GET_TICK_LIST_RSP = 56
+QUERY_DB_BAR_LIST_REQ = 57
+QUERY_DB_BAR_LIST_RSP = 58
+QUERY_DB_TICK_LIST_REQ = 59
+QUERY_DB_TICK_LIST_RSP = 60
+QUERY_VOLUME_BAR_LIST_REQ = 61
+QUERY_VOLUME_BAR_LIST_RSP = 62
 EXCEPTION_RSP = 999999
 ORDER_RTN = 1001
 TRADE_RTN = 1002
@@ -1288,23 +1252,23 @@ _RPCQUERYORDERLISTBYACCOUNTIDRSP = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYORDERLISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
-  name='RpcQueryOrderListByUnifiedSymbolReq',
-  full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolReq',
+_RPCQUERYORDERLISTBYUNIFORMSYMBOLREQ = _descriptor.Descriptor(
+  name='RpcQueryOrderListByUniformSymbolReq',
+  full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolReq',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolReq.commonReq', index=0,
+      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolReq.commonReq', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolReq.unifiedSymbol', index=1,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolReq.uniformSymbol', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -1327,23 +1291,23 @@ _RPCQUERYORDERLISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYORDERLISTBYUNIFIEDSYMBOLRSP = _descriptor.Descriptor(
-  name='RpcQueryOrderListByUnifiedSymbolRsp',
-  full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolRsp',
+_RPCQUERYORDERLISTBYUNIFORMSYMBOLRSP = _descriptor.Descriptor(
+  name='RpcQueryOrderListByUniformSymbolRsp',
+  full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolRsp',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolRsp.commonRsp', index=0,
+      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolRsp.commonRsp', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='order', full_name='xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolRsp.order', index=1,
+      name='order', full_name='xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolRsp.order', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1515,23 +1479,23 @@ _RPCQUERYTRADEBYTRADEIDRSP = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYTRADELISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
-  name='RpcQueryTradeListByUnifiedSymbolReq',
-  full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolReq',
+_RPCQUERYTRADELISTBYUNIFORMSYMBOLREQ = _descriptor.Descriptor(
+  name='RpcQueryTradeListByUniformSymbolReq',
+  full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolReq',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolReq.commonReq', index=0,
+      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolReq.commonReq', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolReq.unifiedSymbol', index=1,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolReq.uniformSymbol', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -1554,23 +1518,23 @@ _RPCQUERYTRADELISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYTRADELISTBYUNIFIEDSYMBOLRSP = _descriptor.Descriptor(
-  name='RpcQueryTradeListByUnifiedSymbolRsp',
-  full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolRsp',
+_RPCQUERYTRADELISTBYUNIFORMSYMBOLRSP = _descriptor.Descriptor(
+  name='RpcQueryTradeListByUniformSymbolRsp',
+  full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolRsp',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolRsp.commonRsp', index=0,
+      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolRsp.commonRsp', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='trade', full_name='xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolRsp.trade', index=1,
+      name='trade', full_name='xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolRsp.trade', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -2054,23 +2018,23 @@ _RPCQUERYPOSITIONLISTBYACCOUNTIDRSP = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
-  name='RpcQueryPositionListByUnifiedSymbolReq',
-  full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolReq',
+_RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLREQ = _descriptor.Descriptor(
+  name='RpcQueryPositionListByUniformSymbolReq',
+  full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolReq',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolReq.commonReq', index=0,
+      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolReq.commonReq', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolReq.unifiedSymbol', index=1,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolReq.uniformSymbol', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -2093,23 +2057,23 @@ _RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLRSP = _descriptor.Descriptor(
-  name='RpcQueryPositionListByUnifiedSymbolRsp',
-  full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolRsp',
+_RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLRSP = _descriptor.Descriptor(
+  name='RpcQueryPositionListByUniformSymbolRsp',
+  full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolRsp',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolRsp.commonRsp', index=0,
+      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolRsp.commonRsp', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='position', full_name='xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolRsp.position', index=1,
+      name='position', full_name='xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolRsp.position', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -2430,23 +2394,23 @@ _RPCGETCONTRACTLISTRSP = _descriptor.Descriptor(
 )
 
 
-_RPCQUERYCONTRACTBYCONTRACTIDREQ = _descriptor.Descriptor(
-  name='RpcQueryContractByContractIdReq',
-  full_name='xyz.redtorch.pb.RpcQueryContractByContractIdReq',
+_RPCQUERYCONTRACTBYUNIFORMSYMBOLREQ = _descriptor.Descriptor(
+  name='RpcQueryContractByUniformSymbolReq',
+  full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolReq',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryContractByContractIdReq.commonReq', index=0,
+      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolReq.commonReq', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='contractId', full_name='xyz.redtorch.pb.RpcQueryContractByContractIdReq.contractId', index=1,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolReq.uniformSymbol', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -2465,27 +2429,27 @@ _RPCQUERYCONTRACTBYCONTRACTIDREQ = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=5753,
-  serialized_end=5858,
+  serialized_end=5864,
 )
 
 
-_RPCQUERYCONTRACTBYCONTRACTIDRSP = _descriptor.Descriptor(
-  name='RpcQueryContractByContractIdRsp',
-  full_name='xyz.redtorch.pb.RpcQueryContractByContractIdRsp',
+_RPCQUERYCONTRACTBYUNIFORMSYMBOLRSP = _descriptor.Descriptor(
+  name='RpcQueryContractByUniformSymbolRsp',
+  full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolRsp',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryContractByContractIdRsp.commonRsp', index=0,
+      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolRsp.commonRsp', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='contract', full_name='xyz.redtorch.pb.RpcQueryContractByContractIdRsp.contract', index=1,
+      name='contract', full_name='xyz.redtorch.pb.RpcQueryContractByUniformSymbolRsp.contract', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -2503,164 +2467,8 @@ _RPCQUERYCONTRACTBYCONTRACTIDRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5861,
-  serialized_end=5996,
-)
-
-
-_RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLREQ = _descriptor.Descriptor(
-  name='RpcQueryContractListByUnifiedSymbolReq',
-  full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolReq.commonReq', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolReq.unifiedSymbol', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5998,
-  serialized_end=6113,
-)
-
-
-_RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLRSP = _descriptor.Descriptor(
-  name='RpcQueryContractListByUnifiedSymbolRsp',
-  full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolRsp',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolRsp.commonRsp', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='contract', full_name='xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolRsp.contract', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6116,
-  serialized_end=6258,
-)
-
-
-_RPCQUERYCONTRACTLISTBYGATEWAYIDREQ = _descriptor.Descriptor(
-  name='RpcQueryContractListByGatewayIdReq',
-  full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdReq.commonReq', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='gatewayId', full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdReq.gatewayId', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6260,
-  serialized_end=6367,
-)
-
-
-_RPCQUERYCONTRACTLISTBYGATEWAYIDRSP = _descriptor.Descriptor(
-  name='RpcQueryContractListByGatewayIdRsp',
-  full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdRsp',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdRsp.commonRsp', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='contract', full_name='xyz.redtorch.pb.RpcQueryContractListByGatewayIdRsp.contract', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6370,
-  serialized_end=6508,
+  serialized_start=5867,
+  serialized_end=6005,
 )
 
 
@@ -2698,8 +2506,8 @@ _RPCSYNCSLAVENODERUNTIMEDATAREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6511,
-  serialized_end=6643,
+  serialized_start=6008,
+  serialized_end=6140,
 )
 
 
@@ -2744,79 +2552,8 @@ _RPCSYNCSLAVENODERUNTIMEDATARSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6646,
-  serialized_end=6852,
-)
-
-
-_RPCGETMIXCONTRACTLISTREQ = _descriptor.Descriptor(
-  name='RpcGetMixContractListReq',
-  full_name='xyz.redtorch.pb.RpcGetMixContractListReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonReq', full_name='xyz.redtorch.pb.RpcGetMixContractListReq.commonReq', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6854,
-  serialized_end=6932,
-)
-
-
-_RPCGETMIXCONTRACTLISTRSP = _descriptor.Descriptor(
-  name='RpcGetMixContractListRsp',
-  full_name='xyz.redtorch.pb.RpcGetMixContractListRsp',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='commonRsp', full_name='xyz.redtorch.pb.RpcGetMixContractListRsp.commonRsp', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='contract', full_name='xyz.redtorch.pb.RpcGetMixContractListRsp.contract', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6935,
-  serialized_end=7063,
+  serialized_start=6143,
+  serialized_end=6349,
 )
 
 
@@ -2847,8 +2584,8 @@ _RPCGETTICKLISTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7065,
-  serialized_end=7136,
+  serialized_start=6351,
+  serialized_end=6422,
 )
 
 
@@ -2886,8 +2623,8 @@ _RPCGETTICKLISTRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7138,
-  serialized_end=7251,
+  serialized_start=6424,
+  serialized_end=6537,
 )
 
 
@@ -2921,7 +2658,7 @@ _RPCQUERYDBBARLISTREQ = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryDBBarListReq.unifiedSymbol', index=3,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryDBBarListReq.uniformSymbol', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -2953,8 +2690,8 @@ _RPCQUERYDBBARLISTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7254,
-  serialized_end=7513,
+  serialized_start=6540,
+  serialized_end=6799,
 )
 
 
@@ -2992,8 +2729,8 @@ _RPCQUERYDBBARLISTRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7515,
-  serialized_end=7629,
+  serialized_start=6801,
+  serialized_end=6915,
 )
 
 
@@ -3027,7 +2764,7 @@ _RPCQUERYDBTICKLISTREQ = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryDBTickListReq.unifiedSymbol', index=3,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryDBTickListReq.uniformSymbol', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -3052,8 +2789,8 @@ _RPCQUERYDBTICKLISTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7632,
-  serialized_end=7841,
+  serialized_start=6918,
+  serialized_end=7127,
 )
 
 
@@ -3091,8 +2828,8 @@ _RPCQUERYDBTICKLISTRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7843,
-  serialized_end=7960,
+  serialized_start=7129,
+  serialized_end=7246,
 )
 
 
@@ -3126,7 +2863,7 @@ _RPCQUERYVOLUMEBARLISTREQ = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unifiedSymbol', full_name='xyz.redtorch.pb.RpcQueryVolumeBarListReq.unifiedSymbol', index=3,
+      name='uniformSymbol', full_name='xyz.redtorch.pb.RpcQueryVolumeBarListReq.uniformSymbol', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -3151,8 +2888,8 @@ _RPCQUERYVOLUMEBARLISTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7963,
-  serialized_end=8126,
+  serialized_start=7249,
+  serialized_end=7412,
 )
 
 
@@ -3190,8 +2927,8 @@ _RPCQUERYVOLUMEBARLISTRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8128,
-  serialized_end=8246,
+  serialized_start=7414,
+  serialized_end=7532,
 )
 
 
@@ -3243,8 +2980,8 @@ _RPCEXCEPTIONRSP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8248,
-  serialized_end=8360,
+  serialized_start=7534,
+  serialized_end=7646,
 )
 
 
@@ -3275,8 +3012,8 @@ _RPCORDERRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8362,
-  serialized_end=8419,
+  serialized_start=7648,
+  serialized_end=7705,
 )
 
 
@@ -3307,8 +3044,8 @@ _RPCTRADERTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8421,
-  serialized_end=8478,
+  serialized_start=7707,
+  serialized_end=7764,
 )
 
 
@@ -3339,8 +3076,8 @@ _RPCCONTRACTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8480,
-  serialized_end=8546,
+  serialized_start=7766,
+  serialized_end=7832,
 )
 
 
@@ -3371,8 +3108,8 @@ _RPCPOSITIONRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8548,
-  serialized_end=8614,
+  serialized_start=7834,
+  serialized_end=7900,
 )
 
 
@@ -3403,8 +3140,8 @@ _RPCACCOUNTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8616,
-  serialized_end=8679,
+  serialized_start=7902,
+  serialized_end=7965,
 )
 
 
@@ -3435,8 +3172,8 @@ _RPCTICKRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8681,
-  serialized_end=8735,
+  serialized_start=7967,
+  serialized_end=8021,
 )
 
 
@@ -3467,8 +3204,8 @@ _RPCORDERLISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8737,
-  serialized_end=8798,
+  serialized_start=8023,
+  serialized_end=8084,
 )
 
 
@@ -3499,8 +3236,8 @@ _RPCTRADELISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8800,
-  serialized_end=8861,
+  serialized_start=8086,
+  serialized_end=8147,
 )
 
 
@@ -3531,8 +3268,8 @@ _RPCCONTRACTLISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8863,
-  serialized_end=8933,
+  serialized_start=8149,
+  serialized_end=8219,
 )
 
 
@@ -3563,8 +3300,8 @@ _RPCPOSITIONLISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8935,
-  serialized_end=9005,
+  serialized_start=8221,
+  serialized_end=8291,
 )
 
 
@@ -3595,8 +3332,8 @@ _RPCACCOUNTLISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9007,
-  serialized_end=9074,
+  serialized_start=8293,
+  serialized_end=8360,
 )
 
 
@@ -3627,8 +3364,8 @@ _RPCTICKLISTRTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9076,
-  serialized_end=9134,
+  serialized_start=8362,
+  serialized_end=8420,
 )
 
 
@@ -3659,8 +3396,8 @@ _RPCNOTICERTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9136,
-  serialized_end=9196,
+  serialized_start=8422,
+  serialized_end=8482,
 )
 
 _RPCSUBSCRIBEREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
@@ -3693,18 +3430,18 @@ _RPCQUERYORDERBYORIGINORDERIDRSP.fields_by_name['order'].message_type = xyz_dot_
 _RPCQUERYORDERLISTBYACCOUNTIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCQUERYORDERLISTBYACCOUNTIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCQUERYORDERLISTBYACCOUNTIDRSP.fields_by_name['order'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._ORDERFIELD
-_RPCQUERYORDERLISTBYUNIFIEDSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYORDERLISTBYUNIFIEDSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYORDERLISTBYUNIFIEDSYMBOLRSP.fields_by_name['order'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._ORDERFIELD
+_RPCQUERYORDERLISTBYUNIFORMSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
+_RPCQUERYORDERLISTBYUNIFORMSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
+_RPCQUERYORDERLISTBYUNIFORMSYMBOLRSP.fields_by_name['order'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._ORDERFIELD
 _RPCGETTRADELISTREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCGETTRADELISTRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCGETTRADELISTRSP.fields_by_name['trade'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TRADEFIELD
 _RPCQUERYTRADEBYTRADEIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCQUERYTRADEBYTRADEIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCQUERYTRADEBYTRADEIDRSP.fields_by_name['trade'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TRADEFIELD
-_RPCQUERYTRADELISTBYUNIFIEDSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYTRADELISTBYUNIFIEDSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYTRADELISTBYUNIFIEDSYMBOLRSP.fields_by_name['trade'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TRADEFIELD
+_RPCQUERYTRADELISTBYUNIFORMSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
+_RPCQUERYTRADELISTBYUNIFORMSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
+_RPCQUERYTRADELISTBYUNIFORMSYMBOLRSP.fields_by_name['trade'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TRADEFIELD
 _RPCQUERYTRADELISTBYACCOUNTIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCQUERYTRADELISTBYACCOUNTIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCQUERYTRADELISTBYACCOUNTIDRSP.fields_by_name['trade'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TRADEFIELD
@@ -3723,9 +3460,9 @@ _RPCQUERYPOSITIONBYPOSITIONIDRSP.fields_by_name['position'].message_type = xyz_d
 _RPCQUERYPOSITIONLISTBYACCOUNTIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCQUERYPOSITIONLISTBYACCOUNTIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCQUERYPOSITIONLISTBYACCOUNTIDRSP.fields_by_name['position'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._POSITIONFIELD
-_RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLRSP.fields_by_name['position'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._POSITIONFIELD
+_RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
+_RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
+_RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLRSP.fields_by_name['position'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._POSITIONFIELD
 _RPCGETACCOUNTLISTREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCGETACCOUNTLISTRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCGETACCOUNTLISTRSP.fields_by_name['account'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._ACCOUNTFIELD
@@ -3738,23 +3475,14 @@ _RPCQUERYACCOUNTLISTBYACCOUNTCODERSP.fields_by_name['account'].message_type = xy
 _RPCGETCONTRACTLISTREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCGETCONTRACTLISTRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCGETCONTRACTLISTRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
-_RPCQUERYCONTRACTBYCONTRACTIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYCONTRACTBYCONTRACTIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYCONTRACTBYCONTRACTIDRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
-_RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
-_RPCQUERYCONTRACTLISTBYGATEWAYIDREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCQUERYCONTRACTLISTBYGATEWAYIDRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCQUERYCONTRACTLISTBYGATEWAYIDRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
+_RPCQUERYCONTRACTBYUNIFORMSYMBOLREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
+_RPCQUERYCONTRACTBYUNIFORMSYMBOLRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
+_RPCQUERYCONTRACTBYUNIFORMSYMBOLRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
 _RPCSYNCSLAVENODERUNTIMEDATAREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCSYNCSLAVENODERUNTIMEDATAREQ.fields_by_name['gateway'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._GATEWAYFIELD
 _RPCSYNCSLAVENODERUNTIMEDATARSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCSYNCSLAVENODERUNTIMEDATARSP.fields_by_name['gatewaySetting'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._GATEWAYSETTINGFIELD
 _RPCSYNCSLAVENODERUNTIMEDATARSP.fields_by_name['subscribedContract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
-_RPCGETMIXCONTRACTLISTREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
-_RPCGETMIXCONTRACTLISTRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
-_RPCGETMIXCONTRACTLISTRSP.fields_by_name['contract'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._CONTRACTFIELD
 _RPCGETTICKLISTREQ.fields_by_name['commonReq'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONREQFIELD
 _RPCGETTICKLISTRSP.fields_by_name['commonRsp'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._COMMONRSPFIELD
 _RPCGETTICKLISTRSP.fields_by_name['tick'].message_type = xyz_dot_redtorch_dot_pb_dot_core__field__pb2._TICKFIELD
@@ -3803,14 +3531,14 @@ DESCRIPTOR.message_types_by_name['RpcQueryOrderByOriginOrderIdReq'] = _RPCQUERYO
 DESCRIPTOR.message_types_by_name['RpcQueryOrderByOriginOrderIdRsp'] = _RPCQUERYORDERBYORIGINORDERIDRSP
 DESCRIPTOR.message_types_by_name['RpcQueryOrderListByAccountIdReq'] = _RPCQUERYORDERLISTBYACCOUNTIDREQ
 DESCRIPTOR.message_types_by_name['RpcQueryOrderListByAccountIdRsp'] = _RPCQUERYORDERLISTBYACCOUNTIDRSP
-DESCRIPTOR.message_types_by_name['RpcQueryOrderListByUnifiedSymbolReq'] = _RPCQUERYORDERLISTBYUNIFIEDSYMBOLREQ
-DESCRIPTOR.message_types_by_name['RpcQueryOrderListByUnifiedSymbolRsp'] = _RPCQUERYORDERLISTBYUNIFIEDSYMBOLRSP
+DESCRIPTOR.message_types_by_name['RpcQueryOrderListByUniformSymbolReq'] = _RPCQUERYORDERLISTBYUNIFORMSYMBOLREQ
+DESCRIPTOR.message_types_by_name['RpcQueryOrderListByUniformSymbolRsp'] = _RPCQUERYORDERLISTBYUNIFORMSYMBOLRSP
 DESCRIPTOR.message_types_by_name['RpcGetTradeListReq'] = _RPCGETTRADELISTREQ
 DESCRIPTOR.message_types_by_name['RpcGetTradeListRsp'] = _RPCGETTRADELISTRSP
 DESCRIPTOR.message_types_by_name['RpcQueryTradeByTradeIdReq'] = _RPCQUERYTRADEBYTRADEIDREQ
 DESCRIPTOR.message_types_by_name['RpcQueryTradeByTradeIdRsp'] = _RPCQUERYTRADEBYTRADEIDRSP
-DESCRIPTOR.message_types_by_name['RpcQueryTradeListByUnifiedSymbolReq'] = _RPCQUERYTRADELISTBYUNIFIEDSYMBOLREQ
-DESCRIPTOR.message_types_by_name['RpcQueryTradeListByUnifiedSymbolRsp'] = _RPCQUERYTRADELISTBYUNIFIEDSYMBOLRSP
+DESCRIPTOR.message_types_by_name['RpcQueryTradeListByUniformSymbolReq'] = _RPCQUERYTRADELISTBYUNIFORMSYMBOLREQ
+DESCRIPTOR.message_types_by_name['RpcQueryTradeListByUniformSymbolRsp'] = _RPCQUERYTRADELISTBYUNIFORMSYMBOLRSP
 DESCRIPTOR.message_types_by_name['RpcQueryTradeListByAccountIdReq'] = _RPCQUERYTRADELISTBYACCOUNTIDREQ
 DESCRIPTOR.message_types_by_name['RpcQueryTradeListByAccountIdRsp'] = _RPCQUERYTRADELISTBYACCOUNTIDRSP
 DESCRIPTOR.message_types_by_name['RpcQueryTradeListByOrderIdReq'] = _RPCQUERYTRADELISTBYORDERIDREQ
@@ -3823,8 +3551,8 @@ DESCRIPTOR.message_types_by_name['RpcQueryPositionByPositionIdReq'] = _RPCQUERYP
 DESCRIPTOR.message_types_by_name['RpcQueryPositionByPositionIdRsp'] = _RPCQUERYPOSITIONBYPOSITIONIDRSP
 DESCRIPTOR.message_types_by_name['RpcQueryPositionListByAccountIdReq'] = _RPCQUERYPOSITIONLISTBYACCOUNTIDREQ
 DESCRIPTOR.message_types_by_name['RpcQueryPositionListByAccountIdRsp'] = _RPCQUERYPOSITIONLISTBYACCOUNTIDRSP
-DESCRIPTOR.message_types_by_name['RpcQueryPositionListByUnifiedSymbolReq'] = _RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLREQ
-DESCRIPTOR.message_types_by_name['RpcQueryPositionListByUnifiedSymbolRsp'] = _RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLRSP
+DESCRIPTOR.message_types_by_name['RpcQueryPositionListByUniformSymbolReq'] = _RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLREQ
+DESCRIPTOR.message_types_by_name['RpcQueryPositionListByUniformSymbolRsp'] = _RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLRSP
 DESCRIPTOR.message_types_by_name['RpcGetAccountListReq'] = _RPCGETACCOUNTLISTREQ
 DESCRIPTOR.message_types_by_name['RpcGetAccountListRsp'] = _RPCGETACCOUNTLISTRSP
 DESCRIPTOR.message_types_by_name['RpcQueryAccountByAccountIdReq'] = _RPCQUERYACCOUNTBYACCOUNTIDREQ
@@ -3833,16 +3561,10 @@ DESCRIPTOR.message_types_by_name['RpcQueryAccountListByAccountCodeReq'] = _RPCQU
 DESCRIPTOR.message_types_by_name['RpcQueryAccountListByAccountCodeRsp'] = _RPCQUERYACCOUNTLISTBYACCOUNTCODERSP
 DESCRIPTOR.message_types_by_name['RpcGetContractListReq'] = _RPCGETCONTRACTLISTREQ
 DESCRIPTOR.message_types_by_name['RpcGetContractListRsp'] = _RPCGETCONTRACTLISTRSP
-DESCRIPTOR.message_types_by_name['RpcQueryContractByContractIdReq'] = _RPCQUERYCONTRACTBYCONTRACTIDREQ
-DESCRIPTOR.message_types_by_name['RpcQueryContractByContractIdRsp'] = _RPCQUERYCONTRACTBYCONTRACTIDRSP
-DESCRIPTOR.message_types_by_name['RpcQueryContractListByUnifiedSymbolReq'] = _RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLREQ
-DESCRIPTOR.message_types_by_name['RpcQueryContractListByUnifiedSymbolRsp'] = _RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLRSP
-DESCRIPTOR.message_types_by_name['RpcQueryContractListByGatewayIdReq'] = _RPCQUERYCONTRACTLISTBYGATEWAYIDREQ
-DESCRIPTOR.message_types_by_name['RpcQueryContractListByGatewayIdRsp'] = _RPCQUERYCONTRACTLISTBYGATEWAYIDRSP
+DESCRIPTOR.message_types_by_name['RpcQueryContractByUniformSymbolReq'] = _RPCQUERYCONTRACTBYUNIFORMSYMBOLREQ
+DESCRIPTOR.message_types_by_name['RpcQueryContractByUniformSymbolRsp'] = _RPCQUERYCONTRACTBYUNIFORMSYMBOLRSP
 DESCRIPTOR.message_types_by_name['RpcSyncSlaveNodeRuntimeDataReq'] = _RPCSYNCSLAVENODERUNTIMEDATAREQ
 DESCRIPTOR.message_types_by_name['RpcSyncSlaveNodeRuntimeDataRsp'] = _RPCSYNCSLAVENODERUNTIMEDATARSP
-DESCRIPTOR.message_types_by_name['RpcGetMixContractListReq'] = _RPCGETMIXCONTRACTLISTREQ
-DESCRIPTOR.message_types_by_name['RpcGetMixContractListRsp'] = _RPCGETMIXCONTRACTLISTRSP
 DESCRIPTOR.message_types_by_name['RpcGetTickListReq'] = _RPCGETTICKLISTREQ
 DESCRIPTOR.message_types_by_name['RpcGetTickListRsp'] = _RPCGETTICKLISTRSP
 DESCRIPTOR.message_types_by_name['RpcQueryDBBarListReq'] = _RPCQUERYDBBARLISTREQ
@@ -4008,19 +3730,19 @@ RpcQueryOrderListByAccountIdRsp = _reflection.GeneratedProtocolMessageType('RpcQ
   })
 _sym_db.RegisterMessage(RpcQueryOrderListByAccountIdRsp)
 
-RpcQueryOrderListByUnifiedSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryOrderListByUnifiedSymbolReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYORDERLISTBYUNIFIEDSYMBOLREQ,
+RpcQueryOrderListByUniformSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryOrderListByUniformSymbolReq', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYORDERLISTBYUNIFORMSYMBOLREQ,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolReq)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolReq)
   })
-_sym_db.RegisterMessage(RpcQueryOrderListByUnifiedSymbolReq)
+_sym_db.RegisterMessage(RpcQueryOrderListByUniformSymbolReq)
 
-RpcQueryOrderListByUnifiedSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryOrderListByUnifiedSymbolRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYORDERLISTBYUNIFIEDSYMBOLRSP,
+RpcQueryOrderListByUniformSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryOrderListByUniformSymbolRsp', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYORDERLISTBYUNIFORMSYMBOLRSP,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryOrderListByUnifiedSymbolRsp)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryOrderListByUniformSymbolRsp)
   })
-_sym_db.RegisterMessage(RpcQueryOrderListByUnifiedSymbolRsp)
+_sym_db.RegisterMessage(RpcQueryOrderListByUniformSymbolRsp)
 
 RpcGetTradeListReq = _reflection.GeneratedProtocolMessageType('RpcGetTradeListReq', (_message.Message,), {
   'DESCRIPTOR' : _RPCGETTRADELISTREQ,
@@ -4050,19 +3772,19 @@ RpcQueryTradeByTradeIdRsp = _reflection.GeneratedProtocolMessageType('RpcQueryTr
   })
 _sym_db.RegisterMessage(RpcQueryTradeByTradeIdRsp)
 
-RpcQueryTradeListByUnifiedSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryTradeListByUnifiedSymbolReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYTRADELISTBYUNIFIEDSYMBOLREQ,
+RpcQueryTradeListByUniformSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryTradeListByUniformSymbolReq', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYTRADELISTBYUNIFORMSYMBOLREQ,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolReq)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolReq)
   })
-_sym_db.RegisterMessage(RpcQueryTradeListByUnifiedSymbolReq)
+_sym_db.RegisterMessage(RpcQueryTradeListByUniformSymbolReq)
 
-RpcQueryTradeListByUnifiedSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryTradeListByUnifiedSymbolRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYTRADELISTBYUNIFIEDSYMBOLRSP,
+RpcQueryTradeListByUniformSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryTradeListByUniformSymbolRsp', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYTRADELISTBYUNIFORMSYMBOLRSP,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryTradeListByUnifiedSymbolRsp)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryTradeListByUniformSymbolRsp)
   })
-_sym_db.RegisterMessage(RpcQueryTradeListByUnifiedSymbolRsp)
+_sym_db.RegisterMessage(RpcQueryTradeListByUniformSymbolRsp)
 
 RpcQueryTradeListByAccountIdReq = _reflection.GeneratedProtocolMessageType('RpcQueryTradeListByAccountIdReq', (_message.Message,), {
   'DESCRIPTOR' : _RPCQUERYTRADELISTBYACCOUNTIDREQ,
@@ -4148,19 +3870,19 @@ RpcQueryPositionListByAccountIdRsp = _reflection.GeneratedProtocolMessageType('R
   })
 _sym_db.RegisterMessage(RpcQueryPositionListByAccountIdRsp)
 
-RpcQueryPositionListByUnifiedSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryPositionListByUnifiedSymbolReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLREQ,
+RpcQueryPositionListByUniformSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryPositionListByUniformSymbolReq', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLREQ,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolReq)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolReq)
   })
-_sym_db.RegisterMessage(RpcQueryPositionListByUnifiedSymbolReq)
+_sym_db.RegisterMessage(RpcQueryPositionListByUniformSymbolReq)
 
-RpcQueryPositionListByUnifiedSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryPositionListByUnifiedSymbolRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYPOSITIONLISTBYUNIFIEDSYMBOLRSP,
+RpcQueryPositionListByUniformSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryPositionListByUniformSymbolRsp', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYPOSITIONLISTBYUNIFORMSYMBOLRSP,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryPositionListByUnifiedSymbolRsp)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryPositionListByUniformSymbolRsp)
   })
-_sym_db.RegisterMessage(RpcQueryPositionListByUnifiedSymbolRsp)
+_sym_db.RegisterMessage(RpcQueryPositionListByUniformSymbolRsp)
 
 RpcGetAccountListReq = _reflection.GeneratedProtocolMessageType('RpcGetAccountListReq', (_message.Message,), {
   'DESCRIPTOR' : _RPCGETACCOUNTLISTREQ,
@@ -4218,47 +3940,19 @@ RpcGetContractListRsp = _reflection.GeneratedProtocolMessageType('RpcGetContract
   })
 _sym_db.RegisterMessage(RpcGetContractListRsp)
 
-RpcQueryContractByContractIdReq = _reflection.GeneratedProtocolMessageType('RpcQueryContractByContractIdReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTBYCONTRACTIDREQ,
+RpcQueryContractByUniformSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryContractByUniformSymbolReq', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYCONTRACTBYUNIFORMSYMBOLREQ,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractByContractIdReq)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractByUniformSymbolReq)
   })
-_sym_db.RegisterMessage(RpcQueryContractByContractIdReq)
+_sym_db.RegisterMessage(RpcQueryContractByUniformSymbolReq)
 
-RpcQueryContractByContractIdRsp = _reflection.GeneratedProtocolMessageType('RpcQueryContractByContractIdRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTBYCONTRACTIDRSP,
+RpcQueryContractByUniformSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryContractByUniformSymbolRsp', (_message.Message,), {
+  'DESCRIPTOR' : _RPCQUERYCONTRACTBYUNIFORMSYMBOLRSP,
   '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractByContractIdRsp)
+  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractByUniformSymbolRsp)
   })
-_sym_db.RegisterMessage(RpcQueryContractByContractIdRsp)
-
-RpcQueryContractListByUnifiedSymbolReq = _reflection.GeneratedProtocolMessageType('RpcQueryContractListByUnifiedSymbolReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLREQ,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolReq)
-  })
-_sym_db.RegisterMessage(RpcQueryContractListByUnifiedSymbolReq)
-
-RpcQueryContractListByUnifiedSymbolRsp = _reflection.GeneratedProtocolMessageType('RpcQueryContractListByUnifiedSymbolRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTLISTBYUNIFIEDSYMBOLRSP,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractListByUnifiedSymbolRsp)
-  })
-_sym_db.RegisterMessage(RpcQueryContractListByUnifiedSymbolRsp)
-
-RpcQueryContractListByGatewayIdReq = _reflection.GeneratedProtocolMessageType('RpcQueryContractListByGatewayIdReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTLISTBYGATEWAYIDREQ,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractListByGatewayIdReq)
-  })
-_sym_db.RegisterMessage(RpcQueryContractListByGatewayIdReq)
-
-RpcQueryContractListByGatewayIdRsp = _reflection.GeneratedProtocolMessageType('RpcQueryContractListByGatewayIdRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCQUERYCONTRACTLISTBYGATEWAYIDRSP,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcQueryContractListByGatewayIdRsp)
-  })
-_sym_db.RegisterMessage(RpcQueryContractListByGatewayIdRsp)
+_sym_db.RegisterMessage(RpcQueryContractByUniformSymbolRsp)
 
 RpcSyncSlaveNodeRuntimeDataReq = _reflection.GeneratedProtocolMessageType('RpcSyncSlaveNodeRuntimeDataReq', (_message.Message,), {
   'DESCRIPTOR' : _RPCSYNCSLAVENODERUNTIMEDATAREQ,
@@ -4273,20 +3967,6 @@ RpcSyncSlaveNodeRuntimeDataRsp = _reflection.GeneratedProtocolMessageType('RpcSy
   # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcSyncSlaveNodeRuntimeDataRsp)
   })
 _sym_db.RegisterMessage(RpcSyncSlaveNodeRuntimeDataRsp)
-
-RpcGetMixContractListReq = _reflection.GeneratedProtocolMessageType('RpcGetMixContractListReq', (_message.Message,), {
-  'DESCRIPTOR' : _RPCGETMIXCONTRACTLISTREQ,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcGetMixContractListReq)
-  })
-_sym_db.RegisterMessage(RpcGetMixContractListReq)
-
-RpcGetMixContractListRsp = _reflection.GeneratedProtocolMessageType('RpcGetMixContractListRsp', (_message.Message,), {
-  'DESCRIPTOR' : _RPCGETMIXCONTRACTLISTRSP,
-  '__module__' : 'xyz.redtorch.pb.core_rpc_pb2'
-  # @@protoc_insertion_point(class_scope:xyz.redtorch.pb.RpcGetMixContractListRsp)
-  })
-_sym_db.RegisterMessage(RpcGetMixContractListRsp)
 
 RpcGetTickListReq = _reflection.GeneratedProtocolMessageType('RpcGetTickListReq', (_message.Message,), {
   'DESCRIPTOR' : _RPCGETTICKLISTREQ,

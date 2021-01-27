@@ -23,18 +23,18 @@ class StrategyDemo(StrategyTemplate):
             if self.long:
                 orderId = self.submitOrder("cu2103@SHFE@FUTURES", OrderPriceTypeEnum.OPT_LimitPrice,
                                            DirectionEnum.D_Buy,
-                                           OffsetFlagEnum.OF_Open, "094948@CNY@52a91f77-c3a7-42ac-a4fe-7a605b99ff4a",
+                                           OffsetFlagEnum.OF_Open, "094948@CNY@a4005801-f276-4ef3-8eef-fc0fc000eb7f",
                                            tick.lastPrice + 10, 1, None, True)
                 self.long = False
             else:
                 orderId = self.submitOrder("cu2103@SHFE@FUTURES", OrderPriceTypeEnum.OPT_LimitPrice,
                                            DirectionEnum.D_Sell,
                                            OffsetFlagEnum.OF_CloseToday,
-                                           "094948@CNY@52a91f77-c3a7-42ac-a4fe-7a605b99ff4a", tick.lastPrice - 10, 1,
+                                           "094948@CNY@a4005801-f276-4ef3-8eef-fc0fc000eb7f", tick.lastPrice - 10, 1,
                                            None, True)
                 self.long = True
                 # self.cancelOrder(orderId=self.orderId)
-        logger.info("收到Tick, UnifiedSymbol: %s, GatewayId %s, 时间戳%s", tick.unifiedSymbol, tick.gatewayId, tick.actionTimestamp)
+        logger.info("收到Tick, UniformSymbol: %s, GatewayId %s, 时间戳%s", tick.uniformSymbol, tick.gatewayId, tick.actionTimestamp)
 
     def onTrade(self, trade):
         # 校验是否是策略发出的定单

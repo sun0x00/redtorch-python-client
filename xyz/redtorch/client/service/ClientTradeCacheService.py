@@ -8,8 +8,8 @@ class ClientTradeCacheService:
     __tradeDictLock = RLock()
     __positionDict = dict()
     __positionDictLock = RLock()
-    __mixContractDict = dict()
-    __mixContractDictLock = RLock()
+    __ContractDict = dict()
+    __ContractDictLock = RLock()
     __accountDict = dict()
     __accountDictLock = RLock()
     __mixTickDict = dict()
@@ -40,12 +40,12 @@ class ClientTradeCacheService:
             ClientTradeCacheService.__positionDictLock.release()
 
     @staticmethod
-    def getMixContractDict():
-        ClientTradeCacheService.__mixContractDictLock.acquire()
+    def getContractDict():
+        ClientTradeCacheService.__ContractDictLock.acquire()
         try:
-            return ClientTradeCacheService.__mixContractDict.copy()
+            return ClientTradeCacheService.__ContractDict.copy()
         finally:
-            ClientTradeCacheService.__mixContractDictLock.release()
+            ClientTradeCacheService.__ContractDictLock.release()
 
     @staticmethod
     def getAccountDict():
@@ -99,21 +99,21 @@ class ClientTradeCacheService:
 
     @staticmethod
     def storeContract(contract):
-        ClientTradeCacheService.__mixContractDictLock.acquire()
+        ClientTradeCacheService.__ContractDictLock.acquire()
         try:
-            ClientTradeCacheService.__mixContractDict[contract.unifiedSymbol] = contract
+            ClientTradeCacheService.__ContractDict[contract.uniformSymbol] = contract
         finally:
-            ClientTradeCacheService.__mixContractDictLock.release()
+            ClientTradeCacheService.__ContractDictLock.release()
 
 
     @staticmethod
     def storeContractList(contractList):
-        ClientTradeCacheService.__mixContractDictLock.acquire()
+        ClientTradeCacheService.__ContractDictLock.acquire()
         try:
             for contract in contractList:
-                ClientTradeCacheService.__mixContractDict[contract.unifiedSymbol] = contract
+                ClientTradeCacheService.__ContractDict[contract.uniformSymbol] = contract
         finally:
-            ClientTradeCacheService.__mixContractDictLock.release()
+            ClientTradeCacheService.__ContractDictLock.release()
 
     @staticmethod
     def storePosition(position):
@@ -153,7 +153,7 @@ class ClientTradeCacheService:
     def storeTick(tick):
         ClientTradeCacheService.__mixTickDictLock.acquire()
         try:
-            ClientTradeCacheService.__mixTickDict[tick.unifiedSymbol] = tick
+            ClientTradeCacheService.__mixTickDict[tick.uniformSymbol] = tick
         finally:
             ClientTradeCacheService.__mixTickDictLock.release()
 
@@ -162,7 +162,7 @@ class ClientTradeCacheService:
         ClientTradeCacheService.__mixTickDictLock.acquire()
         try:
             for tick in tickList:
-                ClientTradeCacheService.__mixTickDict[tick.unifiedSymbol] = tick
+                ClientTradeCacheService.__mixTickDict[tick.uniformSymbol] = tick
         finally:
             ClientTradeCacheService.__mixTickDictLock.release()
 
@@ -179,28 +179,28 @@ class ClientTradeCacheService:
             ClientTradeCacheService.__positionDictLock.release()
 
     @staticmethod
-    def getTickByUnifiedSymbol(unifiedSymbol):
-        if not unifiedSymbol:
+    def getTickByUniformSymbol(uniformSymbol):
+        if not uniformSymbol:
             return None
         ClientTradeCacheService.__mixTickDictLock.acquire()
         try:
-            if unifiedSymbol in ClientTradeCacheService.__mixTickDict:
-                return ClientTradeCacheService.__mixTickDict[unifiedSymbol]
+            if uniformSymbol in ClientTradeCacheService.__mixTickDict:
+                return ClientTradeCacheService.__mixTickDict[uniformSymbol]
             return None
         finally:
             ClientTradeCacheService.__mixTickDictLock.release()
 
     @staticmethod
-    def getContractByUnifiedSymbol(unifiedSymbol):
-        if not unifiedSymbol:
+    def getContractByUniformSymbol(uniformSymbol):
+        if not uniformSymbol:
             return None
-        ClientTradeCacheService.__mixContractDictLock.acquire()
+        ClientTradeCacheService.__ContractDictLock.acquire()
         try:
-            if unifiedSymbol in ClientTradeCacheService.__mixContractDict:
-                return ClientTradeCacheService.__mixContractDict[unifiedSymbol]
+            if uniformSymbol in ClientTradeCacheService.__ContractDict:
+                return ClientTradeCacheService.__ContractDict[uniformSymbol]
             return None
         finally:
-            ClientTradeCacheService.__mixContractDictLock.release()
+            ClientTradeCacheService.__ContractDictLock.release()
 
     @staticmethod
     def getAccountByAccountId(accountId):

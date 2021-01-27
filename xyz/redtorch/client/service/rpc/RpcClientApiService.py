@@ -7,10 +7,10 @@ from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientPro
 from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHandler as RspHandler
 from xyz.redtorch.pb.core_field_pb2 import CommonReqField, CancelOrderReqField
 from xyz.redtorch.pb.core_rpc_pb2 import RpcId, RpcSubscribeReq, RpcUnsubscribeReq, RpcSubmitOrderReq, \
-    RpcCancelOrderReq, RpcSearchContractReq, RpcGetAccountListReq, RpcGetMixContractListReq, RpcGetPositionListReq, \
+    RpcCancelOrderReq, RpcSearchContractReq, RpcGetAccountListReq, RpcGetContractListReq, RpcGetPositionListReq, \
     RpcGetOrderListReq, RpcGetTradeListReq, RpcGetTickListReq, RpcQueryDBBarListReq, RpcExceptionRsp, RpcSubscribeRsp, \
     RpcUnsubscribeRsp, RpcSubmitOrderRsp, RpcCancelOrderRsp, RpcSearchContractRsp, RpcGetAccountListRsp, \
-    RpcGetMixContractListRsp, RpcGetPositionListRsp, RpcGetOrderListRsp, RpcGetTradeListRsp, RpcGetTickListRsp, \
+    RpcGetContractListRsp, RpcGetPositionListRsp, RpcGetOrderListRsp, RpcGetTradeListRsp, RpcGetTickListRsp, \
     RpcQueryDBBarListRsp
 
 
@@ -56,7 +56,7 @@ class RpcClientApiService:
                             errorId = commonRsp.errorId
                             if errorId == 0:
                                 RpcClientApiService.subscribedContractDict[
-                                    contract.unifiedSymbol + "@" + str(contract.gatewayId)] = contract
+                                    contract.uniformSymbol + "@" + str(contract.gatewayId)] = contract
                                 return True
                             else:
                                 logger.error("订阅错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
@@ -111,12 +111,12 @@ class RpcClientApiService:
                             commonRsp = rsp.commonRsp
                             errorId = commonRsp.errorId
                             if errorId == 0:
-                                if contract.unifiedSymbol + "@" + str(
+                                if contract.uniformSymbol + "@" + str(
                                         contract.gatewayId) in RpcClientApiService.subscribedContractDict.keys():
                                     del RpcClientApiService.subscribedContractDict[
-                                        contract.unifiedSymbol + "@" + str(contract.gatewayId)]
+                                        contract.uniformSymbol + "@" + str(contract.gatewayId)]
                                 RpcClientApiService.subscribedContractDict[
-                                    contract.unifiedSymbol + "@" + str(contract.gatewayId)] = contract
+                                    contract.uniformSymbol + "@" + str(contract.gatewayId)] = contract
                                 return True
                             else:
                                 logger.error("取消订阅错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
@@ -352,7 +352,7 @@ class RpcClientApiService:
                     return None
 
     @staticmethod
-    def getMixContractList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+    def getContractList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
         if not transactionId:
             transactionId = str(uuid.uuid4())
 
@@ -360,15 +360,15 @@ class RpcClientApiService:
         commonReq.operatorId = RtConfig.operatorId
         commonReq.transactionId = transactionId
 
-        rpcGetMixContractListReq = RpcGetMixContractListReq()
+        rpcGetContractListReq = RpcGetContractListReq()
 
-        rpcGetMixContractListReq.commonReq.CopyFrom(commonReq)
+        rpcGetContractListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
             RspHandler.registerTransactionId(transactionId)
 
-        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_MIX_CONTRACT_LIST_REQ, transactionId,
-                                                 rpcGetMixContractListReq.SerializeToString())
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_CONTRACT_LIST_REQ, transactionId,
+                                                 rpcGetContractListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
@@ -382,7 +382,7 @@ class RpcClientApiService:
                             logger.error("获取混合合约列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
 
-                        elif isinstance(rsp, RpcGetMixContractListRsp):
+                        elif isinstance(rsp, RpcGetContractListRsp):
                             commonRsp = rsp.commonRsp
                             errorId = commonRsp.errorId
                             if errorId == 0:
@@ -602,7 +602,7 @@ class RpcClientApiService:
                     return None
 
     @staticmethod
-    def queryDBBarList(startTimestamp, endTimestamp, unifiedSymbol, barPeriod, marketDataDBType, transactionId=None,
+    def queryDBBarList(startTimestamp, endTimestamp, uniformSymbol, barPeriod, marketDataDBType, transactionId=None,
                        sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
         if not transactionId:
             transactionId = str(uuid.uuid4())
@@ -617,7 +617,7 @@ class RpcClientApiService:
 
         rpcQueryDBBarListReq.startTimestamp = startTimestamp
         rpcQueryDBBarListReq.endTimestamp = endTimestamp
-        rpcQueryDBBarListReq.unifiedSymbol = unifiedSymbol
+        rpcQueryDBBarListReq.uniformSymbol = uniformSymbol
         rpcQueryDBBarListReq.barPeriod = barPeriod
         rpcQueryDBBarListReq.marketDataDBType = marketDataDBType
 

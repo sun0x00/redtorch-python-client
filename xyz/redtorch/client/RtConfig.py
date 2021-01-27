@@ -4,7 +4,7 @@ from threading import Timer
 
 
 class RtConfig:
-
+    # 以下配置需要手动填写
     username = None
     password = None
     operatorId = None
@@ -44,8 +44,8 @@ class RtConfig:
                     logging.info("获取到%s条持仓数据", len(positionList))
 
                     logging.info("获取混合合约列表")
-                    mixContractList = RpcClientApiService.getMixContractList(sync=True)
-                    logging.info("获取到%s条合约数据", len(mixContractList))
+                    ContractList = RpcClientApiService.getContractList(sync=True)
+                    logging.info("获取到%s条合约数据", len(ContractList))
 
                     logging.info("获取委托列表")
                     orderList = RpcClientApiService.getOrderList(sync=True)

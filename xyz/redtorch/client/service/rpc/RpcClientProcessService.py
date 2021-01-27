@@ -13,7 +13,7 @@ from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHand
 from xyz.redtorch.client.service.rpc.RpcClientRtnHandler import RpcClientRtnHandler
 from xyz.redtorch.client.web.socket.WebSocketClientHandler import WebSocketClientHandler
 from xyz.redtorch.pb.core_rpc_pb2 import RpcSubmitOrderRsp, RpcExceptionRsp, RpcId, RpcCancelOrderRsp, \
-    RpcSubscribeRsp, RpcUnsubscribeRsp, RpcSearchContractRsp, RpcGetMixContractListRsp, RpcGetTickListRsp, \
+    RpcSubscribeRsp, RpcUnsubscribeRsp, RpcSearchContractRsp, RpcGetContractListRsp, RpcGetTickListRsp, \
     RpcGetOrderListRsp, RpcGetTradeListRsp, RpcGetPositionListRsp, RpcPositionRtn, RpcOrderRtn, \
     RpcTradeRtn, RpcAccountRtn, RpcNoticeRtn, RpcTickRtn, RpcContractRtn, RpcGetAccountListRsp, \
     RpcOrderListRtn, RpcTradeListRtn, RpcContractListRtn, RpcPositionListRtn, RpcAccountListRtn, \
@@ -136,18 +136,18 @@ class RpcClientProcessService:
                     logger.error("处理RPC异常,业务ID:%s,RPC:SEARCH_CONTRACT_RSP", transactionId, exc_info=True)
 
             cls.normalExecutor.submit(process)
-        elif rpcId == RpcId.GET_MIX_CONTRACT_LIST_RSP:
+        elif rpcId == RpcId.GET_CONTRACT_LIST_RSP:
             def process():
                 transactionId = ""
                 try:
-                    rpcGetMixContractListRsp = RpcGetMixContractListRsp()
-                    rpcGetMixContractListRsp.ParseFromString(contentByteString)
-                    cls.checkCommonRsp(rpcGetMixContractListRsp.commonRsp)
-                    transactionId = rpcGetMixContractListRsp.commonRsp.transactionId
-                    ClientTradeCacheService.storeContractList(rpcGetMixContractListRsp.contract)
-                    RpcClientRspHandler.onRpcRsp(transactionId, rpcGetMixContractListRsp)
+                    rpcGetContractListRsp = RpcGetContractListRsp()
+                    rpcGetContractListRsp.ParseFromString(contentByteString)
+                    cls.checkCommonRsp(rpcGetContractListRsp.commonRsp)
+                    transactionId = rpcGetContractListRsp.commonRsp.transactionId
+                    ClientTradeCacheService.storeContractList(rpcGetContractListRsp.contract)
+                    RpcClientRspHandler.onRpcRsp(transactionId, rpcGetContractListRsp)
                 except:
-                    logger.error("处理RPC异常,业务ID:%s,RPC:GET_MIX_CONTRACT_LIST_RSP", transactionId, exc_info=True)
+                    logger.error("处理RPC异常,业务ID:%s,RPC:GET_CONTRACT_LIST_RSP", transactionId, exc_info=True)
 
             cls.normalExecutor.submit(process)
         elif rpcId == RpcId.GET_TICK_LIST_RSP:
