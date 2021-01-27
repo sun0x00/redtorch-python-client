@@ -1,32 +1,30 @@
-import uuid
 import logging as logger
-from xyz.redtorch.client.RtConfig import RtConfig
 import time
+import uuid
 
+from xyz.redtorch.client.RtConfig import RtConfig
 from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
-from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHandler
+from xyz.redtorch.client.service.rpc.RpcClientRspHandler import RpcClientRspHandler as RspHandler
 from xyz.redtorch.pb.core_field_pb2 import CommonReqField, CancelOrderReqField
 from xyz.redtorch.pb.core_rpc_pb2 import RpcId, RpcSubscribeReq, RpcUnsubscribeReq, RpcSubmitOrderReq, \
-    RpcCancelOrderReq, RpcSearchContractReq, RpcGetAccountListReq, RpcGetMixContractListReq, RpcGetPositionListReq, \
-    RpcGetOrderListReq, RpcGetTradeListReq, RpcGetTickListReq, RpcQueryDBBarListReq
+    RpcCancelOrderReq, RpcSearchContractReq, RpcGetAccountListReq, RpcGetContractListReq, RpcGetPositionListReq, \
+    RpcGetOrderListReq, RpcGetTradeListReq, RpcGetTickListReq, RpcQueryDBBarListReq, RpcExceptionRsp, RpcSubscribeRsp, \
+    RpcUnsubscribeRsp, RpcSubmitOrderRsp, RpcCancelOrderRsp, RpcSearchContractRsp, RpcGetAccountListRsp, \
+    RpcGetContractListRsp, RpcGetPositionListRsp, RpcGetOrderListRsp, RpcGetTradeListRsp, RpcGetTickListRsp, \
+    RpcQueryDBBarListRsp
 
 
 class RpcClientApiService:
-
     subscribedContractDict = {}
 
     @staticmethod
-    def subscribe(contract, reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def subscribe(contract, transactionId=None, sync=False, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcSubscribeReq = RpcSubscribeReq()
 
@@ -34,52 +32,55 @@ class RpcClientApiService:
         rpcSubscribeReq.contract.CopyFrom(contract)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSubscribeReq.SerializeToString(), reqId,
-                                                         RpcId.SUBSCRIBE_REQ)
+        sendResult = RpcClientProcessService.sendRpc(RpcId.SUBSCRIBE_REQ, transactionId,
+                                                     rpcSubscribeReq.SerializeToString())
 
         if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return False
+            RspHandler.unregisterTransactionId(transactionId)
+            return
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcSubscribeRsp = RpcClientRspHandler.getAndRemoveRpcSubscribeRsp(reqId)
-                    if not rpcSubscribeRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("订阅错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("订阅错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return False
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcSubscribeRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            RpcClientApiService.subscribedContractDict[contract.unifiedSymbol+"@"+str(contract.gatewayId)] = contract
-                            return True
+
+                        elif isinstance(rsp, RpcSubscribeRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                RpcClientApiService.subscribedContractDict[
+                                    contract.uniformSymbol + "@" + str(contract.gatewayId)] = contract
+                                return True
+                            else:
+                                logger.error("订阅错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return False
                         else:
-                            logger.error("订阅错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("订阅错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return False
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("订阅错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("订阅错误,业务ID: %s,等待回报超时", transactionId)
                     return False
 
     @staticmethod
-    def unsubscribe(contract, reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
+    def unsubscribe(contract, transactionId=None, sync=False, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
         operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
         commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.transactionId = transactionId
 
         rpcUnsubscribeReq = RpcUnsubscribeReq()
 
@@ -87,53 +88,59 @@ class RpcClientApiService:
         rpcUnsubscribeReq.contract.CopyFrom(contract)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcUnsubscribeReq.SerializeToString(), reqId,
-                                                         RpcId.UNSUBSCRIBE_REQ)
+        sendResult = RpcClientProcessService.sendRpc(RpcId.UNSUBSCRIBE_REQ, transactionId,
+                                                     rpcUnsubscribeReq.SerializeToString())
 
         if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return False
+            RspHandler.unregisterTransactionId(transactionId)
+            return
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcUnsubscribeRsp = RpcClientRspHandler.getAndRemoveRpcUnsubscribeRsp(reqId)
-                    if not rpcUnsubscribeRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("取消订阅错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("取消订阅错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return False
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcUnsubscribeRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            if contract.unifiedSymbol+"@"+str(contract.gatewayId) in RpcClientApiService.subscribedContractDict.keys():
-                                del RpcClientApiService.subscribedContractDict[contract.unifiedSymbol+"@"+str(contract.gatewayId)]
-                            return True
+
+                        elif isinstance(rsp, RpcUnsubscribeRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                if contract.uniformSymbol + "@" + str(
+                                        contract.gatewayId) in RpcClientApiService.subscribedContractDict.keys():
+                                    del RpcClientApiService.subscribedContractDict[
+                                        contract.uniformSymbol + "@" + str(contract.gatewayId)]
+                                RpcClientApiService.subscribedContractDict[
+                                    contract.uniformSymbol + "@" + str(contract.gatewayId)] = contract
+                                return True
+                            else:
+                                logger.error("取消订阅错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return False
                         else:
-                            logger.error("取消订阅错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("取消订阅错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return False
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("取消订阅错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("取消订阅错误,业务ID: %s,等待回报超时", transactionId)
                     return False
 
     @staticmethod
-    def submitOrder(submitOrderReq, reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def submitOrder(submitOrderReq, transactionId=None, sync=False, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcSubmitOrderReq = RpcSubmitOrderReq()
 
@@ -141,51 +148,53 @@ class RpcClientApiService:
         rpcSubmitOrderReq.submitOrderReq.CopyFrom(submitOrderReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSubmitOrderReq.SerializeToString(), reqId,
-                                                         RpcId.SUBMIT_ORDER_REQ)
+        sendResult = RpcClientProcessService.sendRpc(RpcId.SUBMIT_ORDER_REQ, transactionId,
+                                                     rpcSubmitOrderReq.SerializeToString())
 
         if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+            RspHandler.unregisterTransactionId(transactionId)
+            return
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcSubmitOrderRsp = RpcClientRspHandler.getAndRemoveRpcSubmitOrderRsp(reqId)
-                    if not rpcSubmitOrderRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("提交定单错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("提交定单错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcSubmitOrderRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcSubmitOrderRsp.orderId
+
+                        elif isinstance(rsp, RpcSubmitOrderRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.orderId
+                            else:
+                                logger.error("提交定单错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("提交定单错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("提交定单错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("提交定单错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("提交定单错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def cancelOrder(orderId=None, originOrderId=None, reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def cancelOrder(orderId=None, originOrderId=None, transactionId=None, sync=False,
+                    rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         cancelOrderReq = CancelOrderReqField()
         if not orderId and not originOrderId:
@@ -201,51 +210,52 @@ class RpcClientApiService:
         rpcCancelOrderReq.cancelOrderReq.CopyFrom(cancelOrderReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcCancelOrderReq.SerializeToString(), reqId,
-                                                         RpcId.CANCEL_ORDER_REQ)
+        sendResult = RpcClientProcessService.sendRpc(RpcId.CANCEL_ORDER_REQ, transactionId,
+                                                     rpcCancelOrderReq.SerializeToString())
 
         if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return False
+            RspHandler.unregisterTransactionId(transactionId)
+            return
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcCancelOrderRsp = RpcClientRspHandler.getAndRemoveRpcCancelOrderRsp(reqId)
-                    if not rpcCancelOrderRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("撤销定单错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("撤销定单错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return False
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcCancelOrderRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return True
+
+                        elif isinstance(rsp, RpcCancelOrderRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return True
+                            else:
+                                logger.error("撤销定单错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return False
                         else:
-                            logger.error("撤销定单错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("撤销定单错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return False
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("撤销定单错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("撤销定单错误,业务ID: %s,等待回报超时", transactionId)
                     return False
 
     @staticmethod
-    def searchContract(contract, reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def searchContract(contract, transactionId=None, sync=False, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcSearchContractReq = RpcSearchContractReq()
 
@@ -253,359 +263,353 @@ class RpcClientApiService:
         rpcSearchContractReq.contract.CopyFrom(contract)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcSearchContractReq.SerializeToString(), reqId,
-                                                         RpcId.SEARCH_CONTRACT_REQ)
+        sendResult = RpcClientProcessService.sendRpc(RpcId.SEARCH_CONTRACT_REQ, transactionId,
+                                                     rpcSearchContractReq.SerializeToString())
 
         if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
+            RspHandler.unregisterTransactionId(transactionId)
             return False
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcSearchContractRsp = RpcClientRspHandler.getAndRemoveRpcSearchContractRsp(reqId)
-                    if not rpcSearchContractRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("搜寻合约错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("搜寻合约错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return False
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcSearchContractRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return True
+
+                        elif isinstance(rsp, RpcSearchContractRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return True
+                            else:
+                                logger.error("搜寻合约错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return False
                         else:
-                            logger.error("搜寻合约错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("搜寻合约错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return False
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("搜寻合约错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("搜寻合约错误,业务ID: %s,等待回报超时", transactionId)
                     return False
 
     @staticmethod
-    def getAccountList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getAccountList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcGetAccountListReq = RpcGetAccountListReq()
 
         rpcGetAccountListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetAccountListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_ACCOUNT_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_ACCOUNT_LIST_REQ, transactionId,
+                                                 rpcGetAccountListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetAccountListRsp = RpcClientRspHandler.getAndRemoveRpcGetAccountListRsp(reqId)
-                    if not rpcGetAccountListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取账户列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取账户列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetAccountListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetAccountListRsp.account
+
+                        elif isinstance(rsp, RpcGetAccountListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.account
+                            else:
+                                logger.error("获取账户列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取账户列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取账户列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取账户列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取账户列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def getMixContractList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getContractList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
-        rpcGetMixContractListReq = RpcGetMixContractListReq()
+        rpcGetContractListReq = RpcGetContractListReq()
 
-        rpcGetMixContractListReq.commonReq.CopyFrom(commonReq)
+        rpcGetContractListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetMixContractListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_MIX_CONTRACT_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_CONTRACT_LIST_REQ, transactionId,
+                                                 rpcGetContractListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetMixContractListRsp = RpcClientRspHandler.getAndRemoveRpcGetMixContractListRsp(reqId)
-                    if not rpcGetMixContractListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取混合合约列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取混合合约列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetMixContractListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetMixContractListRsp.contract
+
+                        elif isinstance(rsp, RpcGetContractListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.contract
+                            else:
+                                logger.error("获取混合合约列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取混合合约列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取混合合约列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取混合合约列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取混合合约列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def getPositionList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getPositionList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcGetPositionListReq = RpcGetPositionListReq()
 
         rpcGetPositionListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetPositionListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_POSITION_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_POSITION_LIST_REQ, transactionId,
+                                                 rpcGetPositionListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetPositionListRsp = RpcClientRspHandler.getAndRemoveRpcGetPositionListRsp(reqId)
-                    if not rpcGetPositionListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取持仓列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取持仓列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetPositionListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetPositionListRsp.position
+
+                        elif isinstance(rsp, RpcGetPositionListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.position
+                            else:
+                                logger.error("获取持仓列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取持仓列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取持仓列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取持仓列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取持仓列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def getOrderList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getOrderList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcGetOrderListReq = RpcGetOrderListReq()
 
         rpcGetOrderListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetOrderListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_ORDER_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_ORDER_LIST_REQ, transactionId,
+                                                 rpcGetOrderListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetOrderListRsp = RpcClientRspHandler.getAndRemoveRpcGetOrderListRsp(reqId)
-                    if not rpcGetOrderListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取定单列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取定单列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetOrderListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetOrderListRsp.order
+
+                        elif isinstance(rsp, RpcGetOrderListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.order
+                            else:
+                                logger.error("获取定单列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取定单列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取定单列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取定单列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取定单列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def getTradeList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getTradeList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcGetTradeListReq = RpcGetTradeListReq()
 
         rpcGetTradeListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetTradeListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_TRADE_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_TRADE_LIST_REQ, transactionId,
+                                                 rpcGetTradeListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetTradeListRsp = RpcClientRspHandler.getAndRemoveRpcGetTradeListRsp(reqId)
-                    if not rpcGetTradeListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取成交列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取成交列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetTradeListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetTradeListRsp.trade
+
+                        elif isinstance(rsp, RpcGetTradeListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.trade
+                            else:
+                                logger.error("获取成交列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取成交列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取成交列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取成交列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取成交列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def getTickList(reqId=None, sync=False):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def getTickList(transactionId=None, sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcGetTickListReq = RpcGetTickListReq()
 
         rpcGetTickListReq.commonReq.CopyFrom(commonReq)
 
         if sync:
-            RpcClientRspHandler.registerWaitReqId(reqId)
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcGetTickListReq.SerializeToString(), reqId,
-                                                         RpcId.GET_TICK_LIST_REQ)
-
-        if sync and not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.GET_TICK_LIST_REQ, transactionId,
+                                                 rpcGetTickListReq.SerializeToString())
 
         if sync:
             startTime = time.time()
             while True:
-                if time.time() - startTime < RtConfig.rpcTimeOut:
-                    rpcGetTickListRsp = RpcClientRspHandler.getAndRemoveRpcGetTickListRsp(reqId)
-                    if not rpcGetTickListRsp:
-                        rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                        if rpcExceptionRsp:
-                            logger.error("获取Tick列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取Tick列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
                             return None
-                        time.sleep(0.02)
-                    else:
-                        commonRsp = rpcGetTickListRsp.commonRsp
-                        errorId = commonRsp.errorId
-                        if errorId == 0:
-                            return rpcGetTickListRsp.tick
+
+                        elif isinstance(rsp, RpcGetTickListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.tick
+                            else:
+                                logger.error("获取Tick列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
                         else:
-                            logger.error("获取Tick列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
+                            logger.error("获取Tick列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
                             return None
+                    else:
+                        time.sleep(0.02)
                 else:
-                    RpcClientRspHandler.unregisterWaitReqId(reqId)
-                    logger.error("获取Tick列表错误,请求ID: %s,等待回报超时", reqId)
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取Tick列表错误,业务ID: %s,等待回报超时", transactionId)
                     return None
 
     @staticmethod
-    def queryDBBarList(startTimestamp, endTimestamp, unifiedSymbol, barCycle, marketDataDBType, reqId=None, timeoutSeconds=None):
-        if not reqId:
-            reqId = str(uuid.uuid4())
-        if not timeoutSeconds:
-            timeoutSeconds = RtConfig.rpcTimeOut
-        operatorId = RtConfig.operatorId
-        sourceNodeId = RtConfig.nodeId
+    def queryDBBarList(startTimestamp, endTimestamp, uniformSymbol, barPeriod, marketDataDBType, transactionId=None,
+                       sync=True, rpcTimeOut=RtConfig.defaultRpcTimeOut):
+        if not transactionId:
+            transactionId = str(uuid.uuid4())
 
         commonReq = CommonReqField()
-        commonReq.sourceNodeId = sourceNodeId
-        commonReq.targetNodeId = 0
-        commonReq.operatorId = operatorId
-        commonReq.reqId = reqId
+        commonReq.operatorId = RtConfig.operatorId
+        commonReq.transactionId = transactionId
 
         rpcQueryDBBarListReq = RpcQueryDBBarListReq()
 
@@ -613,38 +617,43 @@ class RpcClientApiService:
 
         rpcQueryDBBarListReq.startTimestamp = startTimestamp
         rpcQueryDBBarListReq.endTimestamp = endTimestamp
-        rpcQueryDBBarListReq.unifiedSymbol = unifiedSymbol
-        rpcQueryDBBarListReq.barCycle = barCycle
+        rpcQueryDBBarListReq.uniformSymbol = uniformSymbol
+        rpcQueryDBBarListReq.barPeriod = barPeriod
         rpcQueryDBBarListReq.marketDataDBType = marketDataDBType
 
-        RpcClientRspHandler.registerWaitReqId(reqId)
+        if sync:
+            RspHandler.registerTransactionId(transactionId)
 
-        sendResult = RpcClientProcessService.sendCoreRpc(0, rpcQueryDBBarListReq.SerializeToString(), reqId,
-                                                         RpcId.QUERY_DB_BAR_LIST_REQ)
+        RpcClientProcessService.sendAsyncHttpRpc(RpcId.QUERY_DB_BAR_LIST_REQ, transactionId,
+                                                 rpcQueryDBBarListReq.SerializeToString())
 
-        if not sendResult:
-            RpcClientRspHandler.unregisterWaitReqId(reqId)
-            return None
+        if sync:
+            startTime = time.time()
+            while True:
+                if time.time() - startTime < rpcTimeOut:
+                    if not RspHandler.containsTransactionId(transactionId):
+                        return False
+                    rsp = RspHandler.getAndRemoveRpcRsp(transactionId)
+                    if rsp:
+                        if isinstance(rsp, RpcExceptionRsp):
+                            logger.error("获取Bar列表错误,业务ID: %s, 远程错误回报 %s", transactionId, rsp.info)
+                            return None
 
-        startTime = time.time()
-        while True:
-            if time.time() - startTime < timeoutSeconds:
-                rpcQueryDBBarListRsp = RpcClientRspHandler.getAndRemoveRpcQueryDBBarListRsp(reqId)
-                if not rpcQueryDBBarListRsp:
-                    rpcExceptionRsp = RpcClientRspHandler.getAndRemoveRpcExceptionRsp(reqId)
-                    if rpcExceptionRsp:
-                        logger.error("获取Bar列表错误,请求ID: %s, 远程错误回报 %s", reqId, rpcExceptionRsp.info)
-                        return None
-                    time.sleep(0.02)
-                else:
-                    commonRsp = rpcQueryDBBarListRsp.commonRsp
-                    errorId = commonRsp.errorId
-                    if errorId == 0:
-                        return rpcQueryDBBarListRsp.bar
+                        elif isinstance(rsp, RpcQueryDBBarListRsp):
+                            commonRsp = rsp.commonRsp
+                            errorId = commonRsp.errorId
+                            if errorId == 0:
+                                return rsp.bar
+                            else:
+                                logger.error("获取Bar列表错误,业务ID:%s,错误ID:%s,远程错误回报:%s", transactionId, errorId,
+                                             commonRsp.errorMsg)
+                                return None
+                        else:
+                            logger.error("获取Bar列表错误,业务ID:%s,远程回报数据类型错误", transactionId)
+                            return None
                     else:
-                        logger.error("获取Bar列表错误,请求ID:%s,错误ID:%s,远程错误回报:%s", reqId, errorId, commonRsp.errorMsg)
-                        return None
-            else:
-                RpcClientRspHandler.unregisterWaitReqId(reqId)
-                logger.error("获取Bar列表错误,请求ID: %s,等待回报超时", reqId)
-                return None
+                        time.sleep(0.02)
+                else:
+                    RspHandler.unregisterTransactionId(transactionId)
+                    logger.error("获取Bar列表错误,业务ID: %s,等待回报超时", transactionId)
+                    return None

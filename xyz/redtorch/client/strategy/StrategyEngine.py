@@ -2,7 +2,6 @@ from gevent.lock import RLock
 
 
 class StrategyEngine:
-
     __strategyDict = {}
     __strategyDictLock = RLock()
     __engineSwitch = False
@@ -51,9 +50,9 @@ class StrategyEngine:
         StrategyEngine.__strategyDictLock.acquire()
         try:
             msg = {
-                    'type': 'tick',
-                    'value': tick
-                }
+                'type': 'tick',
+                'value': tick
+            }
 
             for key in StrategyEngine.__strategyDict.keys():
                 strategy = StrategyEngine.__strategyDict[key]
@@ -66,9 +65,9 @@ class StrategyEngine:
         StrategyEngine.__strategyDictLock.acquire()
         try:
             msg = {
-                    'type': 'order',
-                    'value': order
-                }
+                'type': 'order',
+                'value': order
+            }
 
             for key in StrategyEngine.__strategyDict.keys():
                 strategy = StrategyEngine.__strategyDict[key]
@@ -81,13 +80,12 @@ class StrategyEngine:
         StrategyEngine.__strategyDictLock.acquire()
         try:
             msg = {
-                    'type': 'trade',
-                    'value': trade
-                }
+                'type': 'trade',
+                'value': trade
+            }
 
             for key in StrategyEngine.__strategyDict.keys():
                 strategy = StrategyEngine.__strategyDict[key]
                 strategy.putMsg(msg)
         finally:
             StrategyEngine.__strategyDictLock.release()
-

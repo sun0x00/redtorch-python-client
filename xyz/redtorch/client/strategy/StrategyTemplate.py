@@ -1,6 +1,6 @@
 import logging as logger
-import uuid
 import time
+import uuid
 
 from google.protobuf.json_format import MessageToJson
 
@@ -28,7 +28,7 @@ class StrategyTemplate:
             raise Exception("策略ID不可为空")
         self.strategySetting = strategySetting
         self.strategyId = strategySetting['strategyId']
-        self.subscribedUnifiedSymbolSet = set()
+        self.subscribedUniformSymbolSet = set()
         self.originOrderIdSet = set()
         self.msgQueue = Queue()
 
@@ -47,7 +47,7 @@ class StrategyTemplate:
 
             if message['type'] == 'tick':
                 tick = message['value']
-                if tick.unifiedSymbol in self.subscribedUnifiedSymbolSet:
+                if tick.uniformSymbol in self.subscribedUniformSymbolSet:
                     self.processTick(tick)
             elif message['type'] == 'trade':
                 trade = message['value']
@@ -105,7 +105,7 @@ class StrategyTemplate:
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Tick异常", self.strategyId, exc_info=True)
         else:
-            logger.error("拒绝处理Tick,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Tick,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def processTrade(self, trade):
         if self.initSwitch and self.tradingSwitch:
@@ -115,7 +115,7 @@ class StrategyTemplate:
                 self.stopTrading(finishedCorrectly=False)
                 logger.error("策略%s处理Trade异常", self.strategyId, exc_info=True)
         else:
-            logger.error("拒绝处理Trade,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Trade,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def processOrder(self, order):
         if self.initSwitch and self.tradingSwitch:
@@ -126,7 +126,7 @@ class StrategyTemplate:
                 logger.error("策略%s处理Order异常", self.strategyId, exc_info=True)
 
         else:
-            logger.error("拒绝处理Order,策略%s尚未初始化或未处于交易状态", self.strategyId)
+            logger.warning("拒绝处理Order,策略%s尚未初始化或未处于交易状态", self.strategyId)
 
     def onInit(self):
         logger.info("策略%s初始化", self.strategyId)
@@ -135,28 +135,28 @@ class StrategyTemplate:
         logger.info("策略%s开始交易", self.strategyId)
 
     def onStopTrading(self, finishedCorrectly=True):
-        logger.info("策略%s停止交易, %s", self.strategyId, finishedCorrectly)
+        logger.info("策略%s停止交易, 停止状态%s", self.strategyId, finishedCorrectly)
 
     def onTick(self, tick):
         # 已经根据订阅过滤了不属于此策略的行情
-        print(MessageToJson(tick))
+        logger.info("策略%s收到Tick:%s", self.strategyId, MessageToJson(tick))
 
     def onTrade(self, trade):
         # 校验是否是策略发出的定单
         if trade.originOrderId in self.originOrderIdSet:
-            print(MessageToJson(trade))
+            logger.info("策略%s收到Trade:%s", self.strategyId, MessageToJson(trade))
 
     def onOrder(self, order):
         # 校验是否是策略发出的定单
         if order.originOrderId in self.originOrderIdSet:
-            print(MessageToJson(order))
+            logger.info("策略%s收到Order:%s", self.strategyId, MessageToJson(order))
 
-    def submitOrder(self, unifiedSymbol, orderPriceType, direction, offsetFlag, accountId, price, volume,
+    def submitOrder(self, uniformSymbol, orderPriceType, direction, offsetFlag, accountId, price, volume,
                     originOrderId=None, sync=True):
         if self.initSwitch and self.tradingSwitch:
             submitOrderReq = SubmitOrderReqField()
 
-            submitOrderReq.contract.CopyFrom(ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol))
+            submitOrderReq.contract.CopyFrom(ClientTradeCacheService.getContractByUniformSymbol(uniformSymbol))
             submitOrderReq.direction = direction
             submitOrderReq.offsetFlag = offsetFlag
             submitOrderReq.orderPriceType = orderPriceType
@@ -183,7 +183,7 @@ class StrategyTemplate:
 
             self.originOrderIdSet.add(submitOrderReq.originOrderId)
 
-            logger.info("策略%s提交定单 %s", MessageToJson(submitOrderReq), self.strategyId)
+            logger.info("策略%s提交定单 %s", self.strategyId, MessageToJson(submitOrderReq))
             if sync:
                 orderId = RpcClientApiService.submitOrder(submitOrderReq, sync=True)
                 return orderId
@@ -191,18 +191,19 @@ class StrategyTemplate:
                 RpcClientApiService.submitOrder(submitOrderReq, sync=False)
                 return None
         else:
-            logger.error("策略尚未初始化或未处于交易状态")
+            logger.error("策略%s尚未初始化或未处于交易状态", self.strategyId)
             return None
 
-    def cancelOrder(self, orderId=None, originOrderId=None, reqId=None, sync=False):
-        RpcClientApiService.cancelOrder(orderId=orderId, originOrderId=originOrderId, reqId=reqId, sync=sync)
+    def cancelOrder(self, orderId=None, originOrderId=None, transactionId=None, sync=False):
+        RpcClientApiService.cancelOrder(orderId=orderId, originOrderId=originOrderId, transactionId=transactionId,
+                                        sync=sync)
 
-    def subscribe(self, unifiedSymbol, gatewayId=None):
+    def subscribe(self, uniformSymbol, gatewayId=None):
 
-        logger.info("策略%s订阅合约%s", self.strategyId, unifiedSymbol)
-        contract = ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol)
+        logger.info("策略%s订阅合约%s", self.strategyId, uniformSymbol)
+        contract = ClientTradeCacheService.getContractByUniformSymbol(uniformSymbol)
         if contract is not None:
-            self.subscribedUnifiedSymbolSet.add(unifiedSymbol)
+            self.subscribedUniformSymbolSet.add(uniformSymbol)
 
             if gatewayId is not None:
                 contract.gatewayId = gatewayId
@@ -210,15 +211,15 @@ class StrategyTemplate:
                 contract.gatewayId = ""
             RpcClientApiService.subscribe(contract, None, sync=True)
         else:
-            logger.error("策略%s订阅行情错误,未能找到合约%s", self.strategyId, unifiedSymbol)
+            logger.error("策略%s订阅行情错误,未能找到合约%s", self.strategyId, uniformSymbol)
 
-    def unsubscribe(self, unifiedSymbol, gatewayId=None):
-        logger.info("策略%s取消订阅合约%s", self.strategyId, unifiedSymbol)
-        contract = ClientTradeCacheService.getContractByUnifiedSymbol(unifiedSymbol)
+    def unsubscribe(self, uniformSymbol, gatewayId=None):
+        logger.info("策略%s取消订阅合约%s", self.strategyId, uniformSymbol)
+        contract = ClientTradeCacheService.getContractByUniformSymbol(uniformSymbol)
         if contract is not None:
-            if unifiedSymbol in self.subscribedUnifiedSymbolSet:
-                self.subscribedUnifiedSymbolSet.remove(unifiedSymbol)
+            if uniformSymbol in self.subscribedUniformSymbolSet:
+                self.subscribedUniformSymbolSet.remove(uniformSymbol)
             RpcClientApiService.unsubscribe(contract, gatewayId,
                                             sync=True)
         else:
-            logger.error("策略%s退订行情错误,未能找到合约%s", self.strategyId, unifiedSymbol)
+            logger.error("策略%s取消订阅合约错误,未能找到合约%s", self.strategyId, uniformSymbol)

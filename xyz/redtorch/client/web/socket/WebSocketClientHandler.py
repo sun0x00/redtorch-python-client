@@ -1,8 +1,10 @@
+import asyncio
+import json
 import logging as logger
 
-from xyz.redtorch.client.RtConfig import RtConfig
-import asyncio
 import websockets
+
+from xyz.redtorch.client.RtConfig import RtConfig
 
 try:
     import thread
@@ -18,28 +20,34 @@ class WebSocketClientHandler:
     eventLoop = None
 
     @staticmethod
-    async def connectAsyncWS(headers):
+    async def connectAsyncWS():
 
         try:
-            wsUri = "ws://" + RtConfig.host + ":" + str(RtConfig.port) + "/websocket"
             async with websockets.connect(
-                    wsUri, extra_headers=headers, max_size=1_000_000_000_000
+                    RtConfig.websocketUri, max_size=1_000_000_000_000
             ) as websocket:
 
                 WebSocketClientHandler._ws = websocket
-                WebSocketClientHandler.connecting = False
-                WebSocketClientHandler.connected = True
 
                 from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
                 RpcClientProcessService.onWsConnected()
-                logger.info("连接已建立")
+                logger.info("连接已建立,发送认证")
+
+                await websocket.send(json.dumps({"Auth-Token": RtConfig.authToken}))
 
                 async for message in websocket:
                     if isinstance(message, bytes):
                         from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
                         RpcClientProcessService.processData(message)
                     else:
-                        logger.warning("接收到非二进制消息")
+                        if WebSocketClientHandler.connecting:
+                            data = json.loads(message)
+                            if data['verified']:
+                                logger.info("验证通过")
+                                WebSocketClientHandler.connecting = False
+                                WebSocketClientHandler.connected = True
+                            else:
+                                logger.info("验证失败")
 
         except:
             logger.error("WebSocket连接断开", exc_info=True)
@@ -51,15 +59,22 @@ class WebSocketClientHandler:
             WebSocketClientHandler.connected = False
 
     @staticmethod
-    def connect(cookie):
+    def connect():
 
         if WebSocketClientHandler._ws is None and not WebSocketClientHandler.connecting:
             WebSocketClientHandler.connecting = True
             try:
+                if WebSocketClientHandler.eventLoop is not None:
+                    try:
+                        WebSocketClientHandler.eventLoop.close()
+                    except:
+                        logger.error("关闭过期事件循环发生错误", exc_info=True)
+                    WebSocketClientHandler.eventLoop = None
+
                 WebSocketClientHandler.eventLoop = asyncio.new_event_loop()
                 asyncio.set_event_loop(WebSocketClientHandler.eventLoop)
                 thread.start_new_thread(asyncio.get_event_loop().run_until_complete,
-                                        (WebSocketClientHandler.connectAsyncWS({'cookie': cookie}),))
+                                        (WebSocketClientHandler.connectAsyncWS(),))
                 logger.info("创建WebSocket线程")
             except:
                 logger.error("创建会话实例异常", exc_info=True)
@@ -74,7 +89,8 @@ class WebSocketClientHandler:
             return False
 
         try:
-            asyncio.run_coroutine_threadsafe(WebSocketClientHandler._ws.send(data), WebSocketClientHandler.eventLoop).result()
+            asyncio.run_coroutine_threadsafe(WebSocketClientHandler._ws.send(data),
+                                             WebSocketClientHandler.eventLoop).result()
         except:
             logger.error("发送二进制数据错误", exc_info=True)
             return False
