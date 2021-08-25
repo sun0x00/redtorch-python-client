@@ -10,6 +10,10 @@
 
 本项目隶属于项目[redtorch](https://github.com/sun0x00/redtorch "redtorch")
 
+当前版本1.1.0
+
+redtorch 项目计划自2.0.0起不再提供Python API。
+
 ## 主要开发语言 
 + Python
 

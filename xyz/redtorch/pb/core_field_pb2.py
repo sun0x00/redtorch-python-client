@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n xyz/redtorch/pb/core_field.proto\x12\x0fxyz.redtorch.pb\x1a\x1fxyz/redtorch/pb/core_enum.proto\"\x8b\x02\n\x0cGatewayField\x12\x11\n\tgatewayId\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x35\n\x0bgatewayType\x18\x04 \x01(\x0e\x32 .xyz.redtorch.pb.GatewayTypeEnum\x12\x43\n\x12gatewayAdapterType\x18\x05 \x01(\x0e\x32\'.xyz.redtorch.pb.GatewayAdapterTypeEnum\x12\x32\n\x06status\x18\x06 \x01(\x0e\x32\".xyz.redtorch.pb.ConnectStatusEnum\x12\x15\n\rauthErrorFlag\x18\x07 \x01(\x08\"\x87\x06\n\rContractField\x12\x12\n\ncontractId\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x66ullName\x18\x03 \x01(\t\x12\x14\n\x0cthirdPartyId\x18\x04 \x01(\t\x12\x15\n\runiformSymbol\x18\x07 \x01(\t\x12\x0e\n\x06symbol\x18\x08 \x01(\t\x12/\n\x08\x65xchange\x18\t \x01(\x0e\x32\x1d.xyz.redtorch.pb.ExchangeEnum\x12\x37\n\x0cproductClass\x18\n \x01(\x0e\x32!.xyz.redtorch.pb.ProductClassEnum\x12/\n\x08\x63urrency\x18\x0b \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x12\n\nmultiplier\x18\x0c \x01(\x01\x12\x11\n\tpriceTick\x18\r \x01(\x01\x12\x17\n\x0flongMarginRatio\x18\x0e \x01(\x01\x12\x18\n\x10shortMarginRatio\x18\x0f \x01(\x01\x12\x1e\n\x16maxMarginSideAlgorithm\x18\x10 \x01(\x08\x12\x18\n\x10underlyingSymbol\x18\x11 \x01(\t\x12\x13\n\x0bstrikePrice\x18\x12 \x01(\x01\x12\x35\n\x0boptionsType\x18\x13 \x01(\x0e\x32 .xyz.redtorch.pb.OptionsTypeEnum\x12\x1c\n\x14underlyingMultiplier\x18\x14 \x01(\x01\x12$\n\x1clastTradeDateOrContractMonth\x18\x15 \x01(\t\x12\x1c\n\x14maxMarketOrderVolume\x18\x16 \x01(\x07\x12\x1c\n\x14minMarketOrderVolume\x18\x17 \x01(\x07\x12\x1b\n\x13maxLimitOrderVolume\x18\x18 \x01(\x07\x12\x1b\n\x13minLimitOrderVolume\x18\x19 \x01(\x07\x12=\n\x0f\x63ombinationType\x18\x1a \x01(\x0e\x32$.xyz.redtorch.pb.CombinationTypeEnum\x12\x11\n\tgatewayId\x18\x1b \x01(\t\"\xdc\x02\n\x0c\x41\x63\x63ountField\x12\x11\n\taccountId\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06holder\x18\x04 \x01(\t\x12/\n\x08\x63urrency\x18\x05 \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x12\n\npreBalance\x18\x06 \x01(\x01\x12\x0f\n\x07\x62\x61lance\x18\x07 \x01(\x01\x12\x11\n\tavailable\x18\x08 \x01(\x01\x12\x12\n\ncommission\x18\t \x01(\x01\x12\x0e\n\x06margin\x18\n \x01(\x01\x12\x13\n\x0b\x63loseProfit\x18\x0b \x01(\x01\x12\x16\n\x0epositionProfit\x18\x0c \x01(\x01\x12\x0f\n\x07\x64\x65posit\x18\r \x01(\x01\x12\x10\n\x08withdraw\x18\x0e \x01(\x01\x12\x11\n\tgatewayId\x18\x0f \x01(\t\x12\x1d\n\x15localCreatedTimestamp\x18\x10 \x01(\x06\"\xc1\t\n\nOrderField\x12\x15\n\roriginOrderId\x18\x01 \x01(\t\x12\x0f\n\x07orderId\x18\x02 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterOrderId\x18\x03 \x01(\t\x12\x11\n\taccountId\x18\x04 \x01(\t\x12\x14\n\x0corderLocalId\x18\x05 \x01(\t\x12\x16\n\x0e\x62rokerOrderSeq\x18\x06 \x01(\t\x12\x12\n\norderSysId\x18\x07 \x01(\t\x12\x12\n\nsequenceNo\x18\x08 \x01(\t\x12\x31\n\tdirection\x18\t \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\n \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0b \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12;\n\x0eorderPriceType\x18\x0c \x01(\x0e\x32#.xyz.redtorch.pb.OrderPriceTypeEnum\x12\x35\n\x0borderStatus\x18\r \x01(\x0e\x32 .xyz.redtorch.pb.OrderStatusEnum\x12\r\n\x05price\x18\x0e \x01(\x01\x12\x13\n\x0btotalVolume\x18\x0f \x01(\x07\x12\x14\n\x0ctradedVolume\x18\x10 \x01(\x07\x12\x39\n\rtimeCondition\x18\x11 \x01(\x0e\x32\".xyz.redtorch.pb.TimeConditionEnum\x12\x0f\n\x07gtdDate\x18\x12 \x01(\t\x12=\n\x0fvolumeCondition\x18\x13 \x01(\x0e\x32$.xyz.redtorch.pb.VolumeConditionEnum\x12\x11\n\tminVolume\x18\x14 \x01(\x07\x12\x45\n\x13\x63ontingentCondition\x18\x15 \x01(\x0e\x32(.xyz.redtorch.pb.ContingentConditionEnum\x12\x11\n\tstopPrice\x18\x16 \x01(\x01\x12?\n\x10\x66orceCloseReason\x18\x17 \x01(\x0e\x32%.xyz.redtorch.pb.ForceCloseReasonEnum\x12\x13\n\x0b\x61utoSuspend\x18\x18 \x01(\x07\x12\x16\n\x0euserForceClose\x18\x19 \x01(\x07\x12\x11\n\tswapOrder\x18\x1a \x01(\x07\x12\x12\n\ntradingDay\x18\x1b \x01(\t\x12\x11\n\torderDate\x18\x1c \x01(\t\x12\x11\n\torderTime\x18\x1d \x01(\t\x12\x12\n\nactiveTime\x18\x1e \x01(\t\x12\x13\n\x0bsuspendTime\x18\x1f \x01(\t\x12\x12\n\ncancelTime\x18  \x01(\t\x12\x12\n\nupdateTime\x18! \x01(\t\x12\x11\n\tstatusMsg\x18\" \x01(\t\x12\x0f\n\x07\x66rontId\x18# \x01(\x07\x12\x11\n\tsessionId\x18$ \x01(\x07\x12\x30\n\x08\x63ontract\x18% \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18& \x01(\t\x12\x41\n\x11orderSubmitStatus\x18\' \x01(\x0e\x32&.xyz.redtorch.pb.OrderSubmitStatusEnum\"\xaf\x05\n\nTradeField\x12\x0f\n\x07tradeId\x18\x01 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterTradeId\x18\x02 \x01(\t\x12\x15\n\roriginOrderId\x18\x03 \x01(\t\x12\x0f\n\x07orderId\x18\x04 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterOrderId\x18\x05 \x01(\t\x12\x14\n\x0corderLocalId\x18\x06 \x01(\t\x12\x16\n\x0e\x62rokerOrderSeq\x18\x07 \x01(\t\x12\x12\n\norderSysId\x18\x08 \x01(\t\x12\x14\n\x0csettlementId\x18\t \x01(\t\x12\x12\n\nsequenceNo\x18\n \x01(\t\x12\x11\n\taccountId\x18\x0b \x01(\t\x12\x31\n\tdirection\x18\x0c \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\r \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0e \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\r\n\x05price\x18\x0f \x01(\x01\x12\x0e\n\x06volume\x18\x10 \x01(\x07\x12\x31\n\ttradeType\x18\x11 \x01(\x0e\x32\x1e.xyz.redtorch.pb.TradeTypeEnum\x12\x35\n\x0bpriceSource\x18\x12 \x01(\x0e\x32 .xyz.redtorch.pb.PriceSourceEnum\x12\x12\n\ntradingDay\x18\x13 \x01(\t\x12\x11\n\ttradeDate\x18\x14 \x01(\t\x12\x11\n\ttradeTime\x18\x15 \x01(\t\x12\x16\n\x0etradeTimestamp\x18\x16 \x01(\x06\x12\x30\n\x08\x63ontract\x18\x17 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x18 \x01(\t\"\x91\x05\n\rPositionField\x12\x12\n\npositionId\x18\x01 \x01(\t\x12\x11\n\taccountId\x18\x02 \x01(\t\x12\x41\n\x11positionDirection\x18\x03 \x01(\x0e\x32&.xyz.redtorch.pb.PositionDirectionEnum\x12\x10\n\x08position\x18\x04 \x01(\x07\x12\x0e\n\x06\x66rozen\x18\x05 \x01(\x07\x12\x12\n\nydPosition\x18\x06 \x01(\x07\x12\x10\n\x08ydFrozen\x18\x07 \x01(\x07\x12\x12\n\ntdPosition\x18\x08 \x01(\x07\x12\x10\n\x08tdFrozen\x18\t \x01(\x07\x12\x11\n\tlastPrice\x18\n \x01(\x01\x12\r\n\x05price\x18\x0b \x01(\x01\x12\x11\n\tpriceDiff\x18\x0c \x01(\x01\x12\x11\n\topenPrice\x18\r \x01(\x01\x12\x15\n\ropenPriceDiff\x18\x0e \x01(\x01\x12\x16\n\x0epositionProfit\x18\x0f \x01(\x01\x12\x1b\n\x13positionProfitRatio\x18\x10 \x01(\x01\x12\x1a\n\x12openPositionProfit\x18\x11 \x01(\x01\x12\x1f\n\x17openPositionProfitRatio\x18\x12 \x01(\x01\x12\x11\n\tuseMargin\x18\x13 \x01(\x01\x12\x16\n\x0e\x65xchangeMargin\x18\x14 \x01(\x01\x12\x15\n\rcontractValue\x18\x15 \x01(\x01\x12\x31\n\thedgeFlag\x18\x16 \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\x30\n\x08\x63ontract\x18\x17 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x18 \x01(\t\x12\x1d\n\x15localCreatedTimestamp\x18\x19 \x01(\x06\"\xfa\x05\n\tTickField\x12\x15\n\runiformSymbol\x18\x01 \x01(\t\x12\x11\n\tgatewayId\x18\x02 \x01(\t\x12\x12\n\ntradingDay\x18\x03 \x01(\t\x12\x11\n\tactionDay\x18\x04 \x01(\t\x12\x12\n\nactionTime\x18\x05 \x01(\t\x12\x17\n\x0f\x61\x63tionTimestamp\x18\x06 \x01(\x06\x12\x0e\n\x06status\x18\x07 \x01(\x07\x12\x11\n\tlastPrice\x18\x08 \x01(\x01\x12\x10\n\x08\x61vgPrice\x18\t \x01(\x01\x12\x13\n\x0btotalBidVol\x18\n \x01(\x06\x12\x13\n\x0btotalAskVol\x18\x0b \x01(\x06\x12\x1b\n\x13weightedAvgBidPrice\x18\x0c \x01(\x01\x12\x1b\n\x13weightedAvgAskPrice\x18\r \x01(\x01\x12\x0c\n\x04iopv\x18\x0e \x01(\x01\x12\x17\n\x0fyieldToMaturity\x18\x0f \x01(\x01\x12\x13\n\x0bvolumeDelta\x18\x10 \x01(\x06\x12\x0e\n\x06volume\x18\x11 \x01(\x06\x12\x10\n\x08turnover\x18\x12 \x01(\x01\x12\x15\n\rturnoverDelta\x18\x13 \x01(\x01\x12\x11\n\tnumTrades\x18\x14 \x01(\x06\x12\x16\n\x0enumTradesDelta\x18\x15 \x01(\x06\x12\x14\n\x0copenInterest\x18\x16 \x01(\x01\x12\x19\n\x11openInterestDelta\x18\x17 \x01(\x01\x12\x17\n\x0fpreOpenInterest\x18\x18 \x01(\x01\x12\x15\n\rpreClosePrice\x18\x19 \x01(\x01\x12\x13\n\x0bsettlePrice\x18\x1a \x01(\x01\x12\x16\n\x0epreSettlePrice\x18\x1b \x01(\x01\x12\x11\n\topenPrice\x18\x1c \x01(\x01\x12\x11\n\thighPrice\x18\x1d \x01(\x01\x12\x10\n\x08lowPrice\x18\x1e \x01(\x01\x12\x12\n\nupperLimit\x18\x1f \x01(\x01\x12\x12\n\nlowerLimit\x18  \x01(\x01\x12\x10\n\x08\x62idPrice\x18! \x03(\x01\x12\x10\n\x08\x61skPrice\x18\" \x03(\x01\x12\x11\n\tbidVolume\x18# \x03(\x07\x12\x11\n\taskVolume\x18$ \x03(\x07\"\xc6\x03\n\x08\x42\x61rField\x12\x15\n\runiformSymbol\x18\x01 \x01(\t\x12\x11\n\tgatewayId\x18\x02 \x01(\t\x12\x12\n\ntradingDay\x18\x03 \x01(\t\x12\x11\n\tactionDay\x18\x04 \x01(\t\x12\x12\n\nactionTime\x18\x05 \x01(\t\x12\x17\n\x0f\x61\x63tionTimestamp\x18\x06 \x01(\x06\x12\x11\n\topenPrice\x18\x07 \x01(\x01\x12\x11\n\thighPrice\x18\x08 \x01(\x01\x12\x10\n\x08lowPrice\x18\t \x01(\x01\x12\x12\n\nclosePrice\x18\n \x01(\x01\x12\x14\n\x0copenInterest\x18\x0b \x01(\x01\x12\x19\n\x11openInterestDelta\x18\x0c \x01(\x01\x12\x0e\n\x06volume\x18\r \x01(\x06\x12\x13\n\x0bvolumeDelta\x18\x0e \x01(\x06\x12\x10\n\x08turnover\x18\x0f \x01(\x01\x12\x15\n\rturnoverDelta\x18\x10 \x01(\x01\x12\x11\n\tnumTrades\x18\x11 \x01(\x06\x12\x16\n\x0enumTradesDelta\x18\x12 \x01(\x06\x12\x17\n\x0fpreOpenInterest\x18\x13 \x01(\x01\x12\x15\n\rpreClosePrice\x18\x14 \x01(\x01\x12\x16\n\x0epreSettlePrice\x18\x15 \x01(\x01\";\n\x0e\x43ommonReqField\x12\x15\n\rtransactionId\x18\x01 \x01(\t\x12\x12\n\noperatorId\x18\x02 \x01(\t\"J\n\x0e\x43ommonRspField\x12\x15\n\rtransactionId\x18\x01 \x01(\t\x12\x0f\n\x07\x65rrorId\x18\x02 \x01(\x07\x12\x10\n\x08\x65rrorMsg\x18\x03 \x01(\t\"\xa7\x06\n\x13SubmitOrderReqField\x12\x15\n\roriginOrderId\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ountCode\x18\x02 \x01(\t\x12/\n\x08\x63urrency\x18\x03 \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x30\n\x08\x63ontract\x18\x04 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x05 \x01(\t\x12\x0e\n\x06volume\x18\x06 \x01(\x07\x12\r\n\x05price\x18\x07 \x01(\x01\x12;\n\x0eorderPriceType\x18\x08 \x01(\x0e\x32#.xyz.redtorch.pb.OrderPriceTypeEnum\x12\x31\n\tdirection\x18\t \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\n \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0b \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\x39\n\rtimeCondition\x18\x0c \x01(\x0e\x32\".xyz.redtorch.pb.TimeConditionEnum\x12\x0f\n\x07gtdDate\x18\r \x01(\t\x12=\n\x0fvolumeCondition\x18\x0e \x01(\x0e\x32$.xyz.redtorch.pb.VolumeConditionEnum\x12\x11\n\tminVolume\x18\x0f \x01(\x07\x12\x45\n\x13\x63ontingentCondition\x18\x10 \x01(\x0e\x32(.xyz.redtorch.pb.ContingentConditionEnum\x12\x11\n\tstopPrice\x18\x11 \x01(\x01\x12?\n\x10\x66orceCloseReason\x18\x12 \x01(\x0e\x32%.xyz.redtorch.pb.ForceCloseReasonEnum\x12\x13\n\x0b\x61utoSuspend\x18\x13 \x01(\x07\x12\x16\n\x0euserForceClose\x18\x14 \x01(\x07\x12\x11\n\tswapOrder\x18\x15 \x01(\x07\"=\n\x13\x43\x61ncelOrderReqField\x12\x15\n\roriginOrderId\x18\x03 \x01(\t\x12\x0f\n\x07orderId\x18\x04 \x01(\t\"\xfb\x05\n\x13GatewaySettingField\x12\x11\n\tgatewayId\x18\x01 \x01(\t\x12\x13\n\x0bgatewayName\x18\x02 \x01(\t\x12\x1a\n\x12gatewayDescription\x18\x04 \x01(\t\x12\x1a\n\x12implementClassName\x18\x05 \x01(\t\x12\x35\n\x0bgatewayType\x18\x06 \x01(\x0e\x32 .xyz.redtorch.pb.GatewayTypeEnum\x12\x43\n\x12gatewayAdapterType\x18\x07 \x01(\x0e\x32\'.xyz.redtorch.pb.GatewayAdapterTypeEnum\x12N\n\rctpApiSetting\x18\x08 \x01(\x0b\x32\x37.xyz.redtorch.pb.GatewaySettingField.CtpApiSettingField\x12L\n\x0cibApiSetting\x18\t \x01(\x0b\x32\x36.xyz.redtorch.pb.GatewaySettingField.IbApiSettingField\x12\x32\n\x06status\x18\n \x01(\x0e\x32\".xyz.redtorch.pb.ConnectStatusEnum\x12\x0f\n\x07version\x18\x0b \x01(\x06\x12\x1d\n\x15\x61utoConnectTimeRanges\x18\x0c \x01(\t\x1a\xc2\x01\n\x12\x43tpApiSettingField\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08\x62rokerId\x18\x03 \x01(\t\x12\x0e\n\x06tdHost\x18\x04 \x01(\t\x12\x0e\n\x06tdPort\x18\x05 \x01(\t\x12\x0e\n\x06mdHost\x18\x06 \x01(\t\x12\x0e\n\x06mdPort\x18\x07 \x01(\t\x12\x10\n\x08\x61uthCode\x18\x08 \x01(\t\x12\x17\n\x0fuserProductInfo\x18\t \x01(\t\x12\r\n\x05\x61ppId\x18\n \x01(\t\x1a\x41\n\x11IbApiSettingField\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x07\x12\x10\n\x08\x63lientId\x18\x03 \x01(\x07\"_\n\x08LogField\x12/\n\x08logLevel\x18\x01 \x01(\x0e\x32\x1d.xyz.redtorch.pb.LogLevelEnum\x12\x11\n\ttimestamp\x18\x02 \x01(\x06\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\"d\n\x0bNoticeField\x12\x31\n\x06status\x18\x01 \x01(\x0e\x32!.xyz.redtorch.pb.CommonStatusEnum\x12\x11\n\ttimestamp\x18\x02 \x01(\x06\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\tb\x06proto3'
+  serialized_pb=b'\n xyz/redtorch/pb/core_field.proto\x12\x0fxyz.redtorch.pb\x1a\x1fxyz/redtorch/pb/core_enum.proto\"\xb2\x02\n\x0cGatewayField\x12\x11\n\tgatewayId\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x35\n\x0bgatewayType\x18\x04 \x01(\x0e\x32 .xyz.redtorch.pb.GatewayTypeEnum\x12\x43\n\x12gatewayAdapterType\x18\x05 \x01(\x0e\x32\'.xyz.redtorch.pb.GatewayAdapterTypeEnum\x12\x32\n\x06status\x18\x06 \x01(\x0e\x32\".xyz.redtorch.pb.ConnectStatusEnum\x12\x15\n\rauthErrorFlag\x18\x07 \x01(\x08\x12\x14\n\x0ctargetNodeId\x18\x08 \x01(\x07\x12\x0f\n\x07version\x18\t \x01(\x06\"\x87\x06\n\rContractField\x12\x12\n\ncontractId\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x66ullName\x18\x03 \x01(\t\x12\x14\n\x0cthirdPartyId\x18\x04 \x01(\t\x12\x15\n\runiformSymbol\x18\x07 \x01(\t\x12\x0e\n\x06symbol\x18\x08 \x01(\t\x12/\n\x08\x65xchange\x18\t \x01(\x0e\x32\x1d.xyz.redtorch.pb.ExchangeEnum\x12\x37\n\x0cproductClass\x18\n \x01(\x0e\x32!.xyz.redtorch.pb.ProductClassEnum\x12/\n\x08\x63urrency\x18\x0b \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x12\n\nmultiplier\x18\x0c \x01(\x01\x12\x11\n\tpriceTick\x18\r \x01(\x01\x12\x17\n\x0flongMarginRatio\x18\x0e \x01(\x01\x12\x18\n\x10shortMarginRatio\x18\x0f \x01(\x01\x12\x1e\n\x16maxMarginSideAlgorithm\x18\x10 \x01(\x08\x12\x18\n\x10underlyingSymbol\x18\x11 \x01(\t\x12\x13\n\x0bstrikePrice\x18\x12 \x01(\x01\x12\x35\n\x0boptionsType\x18\x13 \x01(\x0e\x32 .xyz.redtorch.pb.OptionsTypeEnum\x12\x1c\n\x14underlyingMultiplier\x18\x14 \x01(\x01\x12$\n\x1clastTradeDateOrContractMonth\x18\x15 \x01(\t\x12\x1c\n\x14maxMarketOrderVolume\x18\x16 \x01(\x07\x12\x1c\n\x14minMarketOrderVolume\x18\x17 \x01(\x07\x12\x1b\n\x13maxLimitOrderVolume\x18\x18 \x01(\x07\x12\x1b\n\x13minLimitOrderVolume\x18\x19 \x01(\x07\x12=\n\x0f\x63ombinationType\x18\x1a \x01(\x0e\x32$.xyz.redtorch.pb.CombinationTypeEnum\x12\x11\n\tgatewayId\x18\x1b \x01(\t\"\xdc\x02\n\x0c\x41\x63\x63ountField\x12\x11\n\taccountId\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06holder\x18\x04 \x01(\t\x12/\n\x08\x63urrency\x18\x05 \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x12\n\npreBalance\x18\x06 \x01(\x01\x12\x0f\n\x07\x62\x61lance\x18\x07 \x01(\x01\x12\x11\n\tavailable\x18\x08 \x01(\x01\x12\x12\n\ncommission\x18\t \x01(\x01\x12\x0e\n\x06margin\x18\n \x01(\x01\x12\x13\n\x0b\x63loseProfit\x18\x0b \x01(\x01\x12\x16\n\x0epositionProfit\x18\x0c \x01(\x01\x12\x0f\n\x07\x64\x65posit\x18\r \x01(\x01\x12\x10\n\x08withdraw\x18\x0e \x01(\x01\x12\x11\n\tgatewayId\x18\x0f \x01(\t\x12\x1d\n\x15localCreatedTimestamp\x18\x10 \x01(\x06\"\xc1\t\n\nOrderField\x12\x15\n\roriginOrderId\x18\x01 \x01(\t\x12\x0f\n\x07orderId\x18\x02 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterOrderId\x18\x03 \x01(\t\x12\x11\n\taccountId\x18\x04 \x01(\t\x12\x14\n\x0corderLocalId\x18\x05 \x01(\t\x12\x16\n\x0e\x62rokerOrderSeq\x18\x06 \x01(\t\x12\x12\n\norderSysId\x18\x07 \x01(\t\x12\x12\n\nsequenceNo\x18\x08 \x01(\t\x12\x31\n\tdirection\x18\t \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\n \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0b \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12;\n\x0eorderPriceType\x18\x0c \x01(\x0e\x32#.xyz.redtorch.pb.OrderPriceTypeEnum\x12\x35\n\x0borderStatus\x18\r \x01(\x0e\x32 .xyz.redtorch.pb.OrderStatusEnum\x12\r\n\x05price\x18\x0e \x01(\x01\x12\x13\n\x0btotalVolume\x18\x0f \x01(\x07\x12\x14\n\x0ctradedVolume\x18\x10 \x01(\x07\x12\x39\n\rtimeCondition\x18\x11 \x01(\x0e\x32\".xyz.redtorch.pb.TimeConditionEnum\x12\x0f\n\x07gtdDate\x18\x12 \x01(\t\x12=\n\x0fvolumeCondition\x18\x13 \x01(\x0e\x32$.xyz.redtorch.pb.VolumeConditionEnum\x12\x11\n\tminVolume\x18\x14 \x01(\x07\x12\x45\n\x13\x63ontingentCondition\x18\x15 \x01(\x0e\x32(.xyz.redtorch.pb.ContingentConditionEnum\x12\x11\n\tstopPrice\x18\x16 \x01(\x01\x12?\n\x10\x66orceCloseReason\x18\x17 \x01(\x0e\x32%.xyz.redtorch.pb.ForceCloseReasonEnum\x12\x13\n\x0b\x61utoSuspend\x18\x18 \x01(\x07\x12\x16\n\x0euserForceClose\x18\x19 \x01(\x07\x12\x11\n\tswapOrder\x18\x1a \x01(\x07\x12\x12\n\ntradingDay\x18\x1b \x01(\t\x12\x11\n\torderDate\x18\x1c \x01(\t\x12\x11\n\torderTime\x18\x1d \x01(\t\x12\x12\n\nactiveTime\x18\x1e \x01(\t\x12\x13\n\x0bsuspendTime\x18\x1f \x01(\t\x12\x12\n\ncancelTime\x18  \x01(\t\x12\x12\n\nupdateTime\x18! \x01(\t\x12\x11\n\tstatusMsg\x18\" \x01(\t\x12\x0f\n\x07\x66rontId\x18# \x01(\x07\x12\x11\n\tsessionId\x18$ \x01(\x07\x12\x30\n\x08\x63ontract\x18% \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18& \x01(\t\x12\x41\n\x11orderSubmitStatus\x18\' \x01(\x0e\x32&.xyz.redtorch.pb.OrderSubmitStatusEnum\"\xaf\x05\n\nTradeField\x12\x0f\n\x07tradeId\x18\x01 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterTradeId\x18\x02 \x01(\t\x12\x15\n\roriginOrderId\x18\x03 \x01(\t\x12\x0f\n\x07orderId\x18\x04 \x01(\t\x12\x16\n\x0e\x61\x64\x61pterOrderId\x18\x05 \x01(\t\x12\x14\n\x0corderLocalId\x18\x06 \x01(\t\x12\x16\n\x0e\x62rokerOrderSeq\x18\x07 \x01(\t\x12\x12\n\norderSysId\x18\x08 \x01(\t\x12\x14\n\x0csettlementId\x18\t \x01(\t\x12\x12\n\nsequenceNo\x18\n \x01(\t\x12\x11\n\taccountId\x18\x0b \x01(\t\x12\x31\n\tdirection\x18\x0c \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\r \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0e \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\r\n\x05price\x18\x0f \x01(\x01\x12\x0e\n\x06volume\x18\x10 \x01(\x07\x12\x31\n\ttradeType\x18\x11 \x01(\x0e\x32\x1e.xyz.redtorch.pb.TradeTypeEnum\x12\x35\n\x0bpriceSource\x18\x12 \x01(\x0e\x32 .xyz.redtorch.pb.PriceSourceEnum\x12\x12\n\ntradingDay\x18\x13 \x01(\t\x12\x11\n\ttradeDate\x18\x14 \x01(\t\x12\x11\n\ttradeTime\x18\x15 \x01(\t\x12\x16\n\x0etradeTimestamp\x18\x16 \x01(\x06\x12\x30\n\x08\x63ontract\x18\x17 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x18 \x01(\t\"\x91\x05\n\rPositionField\x12\x12\n\npositionId\x18\x01 \x01(\t\x12\x11\n\taccountId\x18\x02 \x01(\t\x12\x41\n\x11positionDirection\x18\x03 \x01(\x0e\x32&.xyz.redtorch.pb.PositionDirectionEnum\x12\x10\n\x08position\x18\x04 \x01(\x07\x12\x0e\n\x06\x66rozen\x18\x05 \x01(\x07\x12\x12\n\nydPosition\x18\x06 \x01(\x07\x12\x10\n\x08ydFrozen\x18\x07 \x01(\x07\x12\x12\n\ntdPosition\x18\x08 \x01(\x07\x12\x10\n\x08tdFrozen\x18\t \x01(\x07\x12\x11\n\tlastPrice\x18\n \x01(\x01\x12\r\n\x05price\x18\x0b \x01(\x01\x12\x11\n\tpriceDiff\x18\x0c \x01(\x01\x12\x11\n\topenPrice\x18\r \x01(\x01\x12\x15\n\ropenPriceDiff\x18\x0e \x01(\x01\x12\x16\n\x0epositionProfit\x18\x0f \x01(\x01\x12\x1b\n\x13positionProfitRatio\x18\x10 \x01(\x01\x12\x1a\n\x12openPositionProfit\x18\x11 \x01(\x01\x12\x1f\n\x17openPositionProfitRatio\x18\x12 \x01(\x01\x12\x11\n\tuseMargin\x18\x13 \x01(\x01\x12\x16\n\x0e\x65xchangeMargin\x18\x14 \x01(\x01\x12\x15\n\rcontractValue\x18\x15 \x01(\x01\x12\x31\n\thedgeFlag\x18\x16 \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\x30\n\x08\x63ontract\x18\x17 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x18 \x01(\t\x12\x1d\n\x15localCreatedTimestamp\x18\x19 \x01(\x06\"\xb4\x04\n\tTickField\x12\x15\n\runiformSymbol\x18\x01 \x01(\t\x12\x11\n\tgatewayId\x18\x02 \x01(\t\x12\x12\n\ntradingDay\x18\x03 \x01(\x07\x12\x11\n\tactionDay\x18\x04 \x01(\x07\x12\x12\n\nactionTime\x18\x05 \x01(\x07\x12\x17\n\x0f\x61\x63tionTimestamp\x18\x06 \x01(\x06\x12\x11\n\tlastPrice\x18\x07 \x01(\x01\x12\x10\n\x08\x61vgPrice\x18\x08 \x01(\x01\x12\x13\n\x0bvolumeDelta\x18\t \x01(\x06\x12\x0e\n\x06volume\x18\n \x01(\x06\x12\x10\n\x08turnover\x18\x0b \x01(\x01\x12\x15\n\rturnoverDelta\x18\x0c \x01(\x01\x12\x14\n\x0copenInterest\x18\r \x01(\x01\x12\x19\n\x11openInterestDelta\x18\x0e \x01(\x01\x12\x17\n\x0fpreOpenInterest\x18\x0f \x01(\x01\x12\x15\n\rpreClosePrice\x18\x10 \x01(\x01\x12\x13\n\x0bsettlePrice\x18\x11 \x01(\x01\x12\x16\n\x0epreSettlePrice\x18\x12 \x01(\x01\x12\x11\n\topenPrice\x18\x13 \x01(\x01\x12\x11\n\thighPrice\x18\x14 \x01(\x01\x12\x10\n\x08lowPrice\x18\x15 \x01(\x01\x12\x12\n\nupperLimit\x18\x16 \x01(\x01\x12\x12\n\nlowerLimit\x18\x17 \x01(\x01\x12\x10\n\x08\x62idPrice\x18\x18 \x03(\x01\x12\x10\n\x08\x61skPrice\x18\x19 \x03(\x01\x12\x11\n\tbidVolume\x18\x1a \x03(\x07\x12\x11\n\taskVolume\x18\x1b \x03(\x07\"\xab\x03\n\x08\x42\x61rField\x12\x15\n\runiformSymbol\x18\x01 \x01(\t\x12\x11\n\tgatewayId\x18\x02 \x01(\t\x12\x12\n\ntradingDay\x18\x03 \x01(\x07\x12\x11\n\tactionDay\x18\x04 \x01(\x07\x12\x12\n\nactionTime\x18\x05 \x01(\x07\x12\x17\n\x0f\x61\x63tionTimestamp\x18\x06 \x01(\x06\x12\x11\n\topenPrice\x18\x07 \x01(\x01\x12\x11\n\thighPrice\x18\x08 \x01(\x01\x12\x10\n\x08lowPrice\x18\t \x01(\x01\x12\x12\n\nclosePrice\x18\n \x01(\x01\x12\x14\n\x0copenInterest\x18\x0b \x01(\x01\x12\x19\n\x11openInterestDelta\x18\x0c \x01(\x01\x12\x0e\n\x06volume\x18\r \x01(\x06\x12\x13\n\x0bvolumeDelta\x18\x0e \x01(\x06\x12\x10\n\x08turnover\x18\x0f \x01(\x01\x12\x15\n\rturnoverDelta\x18\x10 \x01(\x01\x12\x17\n\x0fpreOpenInterest\x18\x11 \x01(\x01\x12\x15\n\rpreClosePrice\x18\x12 \x01(\x01\x12\x16\n\x0epreSettlePrice\x18\x13 \x01(\x01\x12\x0e\n\x06period\x18\x14 \x01(\x05\";\n\x0e\x43ommonReqField\x12\x15\n\rtransactionId\x18\x01 \x01(\t\x12\x12\n\noperatorId\x18\x02 \x01(\t\"J\n\x0e\x43ommonRspField\x12\x15\n\rtransactionId\x18\x01 \x01(\t\x12\x0f\n\x07\x65rrorId\x18\x02 \x01(\x07\x12\x10\n\x08\x65rrorMsg\x18\x03 \x01(\t\"\xa7\x06\n\x13SubmitOrderReqField\x12\x15\n\roriginOrderId\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ountCode\x18\x02 \x01(\t\x12/\n\x08\x63urrency\x18\x03 \x01(\x0e\x32\x1d.xyz.redtorch.pb.CurrencyEnum\x12\x30\n\x08\x63ontract\x18\x04 \x01(\x0b\x32\x1e.xyz.redtorch.pb.ContractField\x12\x11\n\tgatewayId\x18\x05 \x01(\t\x12\x0e\n\x06volume\x18\x06 \x01(\x07\x12\r\n\x05price\x18\x07 \x01(\x01\x12;\n\x0eorderPriceType\x18\x08 \x01(\x0e\x32#.xyz.redtorch.pb.OrderPriceTypeEnum\x12\x31\n\tdirection\x18\t \x01(\x0e\x32\x1e.xyz.redtorch.pb.DirectionEnum\x12\x33\n\noffsetFlag\x18\n \x01(\x0e\x32\x1f.xyz.redtorch.pb.OffsetFlagEnum\x12\x31\n\thedgeFlag\x18\x0b \x01(\x0e\x32\x1e.xyz.redtorch.pb.HedgeFlagEnum\x12\x39\n\rtimeCondition\x18\x0c \x01(\x0e\x32\".xyz.redtorch.pb.TimeConditionEnum\x12\x0f\n\x07gtdDate\x18\r \x01(\t\x12=\n\x0fvolumeCondition\x18\x0e \x01(\x0e\x32$.xyz.redtorch.pb.VolumeConditionEnum\x12\x11\n\tminVolume\x18\x0f \x01(\x07\x12\x45\n\x13\x63ontingentCondition\x18\x10 \x01(\x0e\x32(.xyz.redtorch.pb.ContingentConditionEnum\x12\x11\n\tstopPrice\x18\x11 \x01(\x01\x12?\n\x10\x66orceCloseReason\x18\x12 \x01(\x0e\x32%.xyz.redtorch.pb.ForceCloseReasonEnum\x12\x13\n\x0b\x61utoSuspend\x18\x13 \x01(\x07\x12\x16\n\x0euserForceClose\x18\x14 \x01(\x07\x12\x11\n\tswapOrder\x18\x15 \x01(\x07\"=\n\x13\x43\x61ncelOrderReqField\x12\x15\n\roriginOrderId\x18\x03 \x01(\t\x12\x0f\n\x07orderId\x18\x04 \x01(\t\"\x91\x06\n\x13GatewaySettingField\x12\x11\n\tgatewayId\x18\x01 \x01(\t\x12\x13\n\x0bgatewayName\x18\x02 \x01(\t\x12\x1a\n\x12gatewayDescription\x18\x03 \x01(\t\x12\x1a\n\x12implementClassName\x18\x04 \x01(\t\x12\x35\n\x0bgatewayType\x18\x05 \x01(\x0e\x32 .xyz.redtorch.pb.GatewayTypeEnum\x12\x43\n\x12gatewayAdapterType\x18\x06 \x01(\x0e\x32\'.xyz.redtorch.pb.GatewayAdapterTypeEnum\x12\x14\n\x0ctargetNodeId\x18\x07 \x01(\x07\x12\x1d\n\x15\x61utoConnectTimeRanges\x18\x08 \x01(\t\x12\x32\n\x06status\x18\t \x01(\x0e\x32\".xyz.redtorch.pb.ConnectStatusEnum\x12\x0f\n\x07version\x18\n \x01(\x06\x12N\n\rctpApiSetting\x18\x0b \x01(\x0b\x32\x37.xyz.redtorch.pb.GatewaySettingField.CtpApiSettingField\x12L\n\x0cibApiSetting\x18\x0c \x01(\x0b\x32\x36.xyz.redtorch.pb.GatewaySettingField.IbApiSettingField\x1a\xc2\x01\n\x12\x43tpApiSettingField\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08\x62rokerId\x18\x03 \x01(\t\x12\x0e\n\x06tdHost\x18\x04 \x01(\t\x12\x0e\n\x06tdPort\x18\x05 \x01(\t\x12\x0e\n\x06mdHost\x18\x06 \x01(\t\x12\x0e\n\x06mdPort\x18\x07 \x01(\t\x12\x10\n\x08\x61uthCode\x18\x08 \x01(\t\x12\x17\n\x0fuserProductInfo\x18\t \x01(\t\x12\r\n\x05\x61ppId\x18\n \x01(\t\x1a\x41\n\x11IbApiSettingField\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x07\x12\x10\n\x08\x63lientId\x18\x03 \x01(\x07\"_\n\x08LogField\x12/\n\x08logLevel\x18\x01 \x01(\x0e\x32\x1d.xyz.redtorch.pb.LogLevelEnum\x12\x11\n\ttimestamp\x18\x02 \x01(\x06\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\"d\n\x0bNoticeField\x12\x31\n\x06status\x18\x01 \x01(\x0e\x32!.xyz.redtorch.pb.CommonStatusEnum\x12\x11\n\ttimestamp\x18\x02 \x01(\x06\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\tb\x06proto3'
   ,
   dependencies=[xyz_dot_redtorch_dot_pb_dot_core__enum__pb2.DESCRIPTOR,])
 
@@ -84,6 +84,20 @@ _GATEWAYFIELD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='targetNodeId', full_name='xyz.redtorch.pb.GatewayField.targetNodeId', index=7,
+      number=8, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='version', full_name='xyz.redtorch.pb.GatewayField.version', index=8,
+      number=9, type=6, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -97,7 +111,7 @@ _GATEWAYFIELD = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=87,
-  serialized_end=354,
+  serialized_end=393,
 )
 
 
@@ -296,8 +310,8 @@ _CONTRACTFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=357,
-  serialized_end=1132,
+  serialized_start=396,
+  serialized_end=1171,
 )
 
 
@@ -433,8 +447,8 @@ _ACCOUNTFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1135,
-  serialized_end=1483,
+  serialized_start=1174,
+  serialized_end=1522,
 )
 
 
@@ -731,8 +745,8 @@ _ORDERFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1486,
-  serialized_end=2703,
+  serialized_start=1525,
+  serialized_end=2742,
 )
 
 
@@ -924,8 +938,8 @@ _TRADEFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2706,
-  serialized_end=3393,
+  serialized_start=2745,
+  serialized_end=3432,
 )
 
 
@@ -1124,8 +1138,8 @@ _POSITIONFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3396,
-  serialized_end=4053,
+  serialized_start=3435,
+  serialized_end=4092,
 )
 
 
@@ -1153,22 +1167,22 @@ _TICKFIELD = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='tradingDay', full_name='xyz.redtorch.pb.TickField.tradingDay', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=3, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='actionDay', full_name='xyz.redtorch.pb.TickField.actionDay', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=4, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='actionTime', full_name='xyz.redtorch.pb.TickField.actionTime', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=5, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1180,211 +1194,148 @@ _TICKFIELD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='status', full_name='xyz.redtorch.pb.TickField.status', index=6,
-      number=7, type=7, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='lastPrice', full_name='xyz.redtorch.pb.TickField.lastPrice', index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='lastPrice', full_name='xyz.redtorch.pb.TickField.lastPrice', index=7,
+      name='avgPrice', full_name='xyz.redtorch.pb.TickField.avgPrice', index=7,
       number=8, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='avgPrice', full_name='xyz.redtorch.pb.TickField.avgPrice', index=8,
-      number=9, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
+      name='volumeDelta', full_name='xyz.redtorch.pb.TickField.volumeDelta', index=8,
+      number=9, type=6, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='totalBidVol', full_name='xyz.redtorch.pb.TickField.totalBidVol', index=9,
+      name='volume', full_name='xyz.redtorch.pb.TickField.volume', index=9,
       number=10, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='totalAskVol', full_name='xyz.redtorch.pb.TickField.totalAskVol', index=10,
-      number=11, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='turnover', full_name='xyz.redtorch.pb.TickField.turnover', index=10,
+      number=11, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='weightedAvgBidPrice', full_name='xyz.redtorch.pb.TickField.weightedAvgBidPrice', index=11,
+      name='turnoverDelta', full_name='xyz.redtorch.pb.TickField.turnoverDelta', index=11,
       number=12, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='weightedAvgAskPrice', full_name='xyz.redtorch.pb.TickField.weightedAvgAskPrice', index=12,
+      name='openInterest', full_name='xyz.redtorch.pb.TickField.openInterest', index=12,
       number=13, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='iopv', full_name='xyz.redtorch.pb.TickField.iopv', index=13,
+      name='openInterestDelta', full_name='xyz.redtorch.pb.TickField.openInterestDelta', index=13,
       number=14, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='yieldToMaturity', full_name='xyz.redtorch.pb.TickField.yieldToMaturity', index=14,
+      name='preOpenInterest', full_name='xyz.redtorch.pb.TickField.preOpenInterest', index=14,
       number=15, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='volumeDelta', full_name='xyz.redtorch.pb.TickField.volumeDelta', index=15,
-      number=16, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='preClosePrice', full_name='xyz.redtorch.pb.TickField.preClosePrice', index=15,
+      number=16, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='volume', full_name='xyz.redtorch.pb.TickField.volume', index=16,
-      number=17, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='settlePrice', full_name='xyz.redtorch.pb.TickField.settlePrice', index=16,
+      number=17, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='turnover', full_name='xyz.redtorch.pb.TickField.turnover', index=17,
+      name='preSettlePrice', full_name='xyz.redtorch.pb.TickField.preSettlePrice', index=17,
       number=18, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='turnoverDelta', full_name='xyz.redtorch.pb.TickField.turnoverDelta', index=18,
+      name='openPrice', full_name='xyz.redtorch.pb.TickField.openPrice', index=18,
       number=19, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='numTrades', full_name='xyz.redtorch.pb.TickField.numTrades', index=19,
-      number=20, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='highPrice', full_name='xyz.redtorch.pb.TickField.highPrice', index=19,
+      number=20, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='numTradesDelta', full_name='xyz.redtorch.pb.TickField.numTradesDelta', index=20,
-      number=21, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='lowPrice', full_name='xyz.redtorch.pb.TickField.lowPrice', index=20,
+      number=21, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='openInterest', full_name='xyz.redtorch.pb.TickField.openInterest', index=21,
+      name='upperLimit', full_name='xyz.redtorch.pb.TickField.upperLimit', index=21,
       number=22, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='openInterestDelta', full_name='xyz.redtorch.pb.TickField.openInterestDelta', index=22,
+      name='lowerLimit', full_name='xyz.redtorch.pb.TickField.lowerLimit', index=22,
       number=23, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preOpenInterest', full_name='xyz.redtorch.pb.TickField.preOpenInterest', index=23,
-      number=24, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='preClosePrice', full_name='xyz.redtorch.pb.TickField.preClosePrice', index=24,
-      number=25, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='settlePrice', full_name='xyz.redtorch.pb.TickField.settlePrice', index=25,
-      number=26, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='preSettlePrice', full_name='xyz.redtorch.pb.TickField.preSettlePrice', index=26,
-      number=27, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='openPrice', full_name='xyz.redtorch.pb.TickField.openPrice', index=27,
-      number=28, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='highPrice', full_name='xyz.redtorch.pb.TickField.highPrice', index=28,
-      number=29, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='lowPrice', full_name='xyz.redtorch.pb.TickField.lowPrice', index=29,
-      number=30, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='upperLimit', full_name='xyz.redtorch.pb.TickField.upperLimit', index=30,
-      number=31, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='lowerLimit', full_name='xyz.redtorch.pb.TickField.lowerLimit', index=31,
-      number=32, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='bidPrice', full_name='xyz.redtorch.pb.TickField.bidPrice', index=32,
-      number=33, type=1, cpp_type=5, label=3,
+      name='bidPrice', full_name='xyz.redtorch.pb.TickField.bidPrice', index=23,
+      number=24, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='askPrice', full_name='xyz.redtorch.pb.TickField.askPrice', index=33,
-      number=34, type=1, cpp_type=5, label=3,
+      name='askPrice', full_name='xyz.redtorch.pb.TickField.askPrice', index=24,
+      number=25, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bidVolume', full_name='xyz.redtorch.pb.TickField.bidVolume', index=34,
-      number=35, type=7, cpp_type=3, label=3,
+      name='bidVolume', full_name='xyz.redtorch.pb.TickField.bidVolume', index=25,
+      number=26, type=7, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='askVolume', full_name='xyz.redtorch.pb.TickField.askVolume', index=35,
-      number=36, type=7, cpp_type=3, label=3,
+      name='askVolume', full_name='xyz.redtorch.pb.TickField.askVolume', index=26,
+      number=27, type=7, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1401,8 +1352,8 @@ _TICKFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4056,
-  serialized_end=4818,
+  serialized_start=4095,
+  serialized_end=4659,
 )
 
 
@@ -1430,22 +1381,22 @@ _BARFIELD = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='tradingDay', full_name='xyz.redtorch.pb.BarField.tradingDay', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=3, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='actionDay', full_name='xyz.redtorch.pb.BarField.actionDay', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=4, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='actionTime', full_name='xyz.redtorch.pb.BarField.actionTime', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=5, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1527,37 +1478,30 @@ _BARFIELD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='numTrades', full_name='xyz.redtorch.pb.BarField.numTrades', index=16,
-      number=17, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='preOpenInterest', full_name='xyz.redtorch.pb.BarField.preOpenInterest', index=16,
+      number=17, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='numTradesDelta', full_name='xyz.redtorch.pb.BarField.numTradesDelta', index=17,
-      number=18, type=6, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='preClosePrice', full_name='xyz.redtorch.pb.BarField.preClosePrice', index=17,
+      number=18, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preOpenInterest', full_name='xyz.redtorch.pb.BarField.preOpenInterest', index=18,
+      name='preSettlePrice', full_name='xyz.redtorch.pb.BarField.preSettlePrice', index=18,
       number=19, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preClosePrice', full_name='xyz.redtorch.pb.BarField.preClosePrice', index=19,
-      number=20, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='preSettlePrice', full_name='xyz.redtorch.pb.BarField.preSettlePrice', index=20,
-      number=21, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
+      name='period', full_name='xyz.redtorch.pb.BarField.period', index=19,
+      number=20, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1573,8 +1517,8 @@ _BARFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4821,
-  serialized_end=5275,
+  serialized_start=4662,
+  serialized_end=5089,
 )
 
 
@@ -1612,8 +1556,8 @@ _COMMONREQFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5277,
-  serialized_end=5336,
+  serialized_start=5091,
+  serialized_end=5150,
 )
 
 
@@ -1658,8 +1602,8 @@ _COMMONRSPFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5338,
-  serialized_end=5412,
+  serialized_start=5152,
+  serialized_end=5226,
 )
 
 
@@ -1830,8 +1774,8 @@ _SUBMITORDERREQFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5415,
-  serialized_end=6222,
+  serialized_start=5229,
+  serialized_end=6036,
 )
 
 
@@ -1869,8 +1813,8 @@ _CANCELORDERREQFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6224,
-  serialized_end=6285,
+  serialized_start=6038,
+  serialized_end=6099,
 )
 
 
@@ -1964,8 +1908,8 @@ _GATEWAYSETTINGFIELD_CTPAPISETTINGFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6790,
-  serialized_end=6984,
+  serialized_start=6626,
+  serialized_end=6820,
 )
 
 _GATEWAYSETTINGFIELD_IBAPISETTINGFIELD = _descriptor.Descriptor(
@@ -2009,8 +1953,8 @@ _GATEWAYSETTINGFIELD_IBAPISETTINGFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6986,
-  serialized_end=7051,
+  serialized_start=6822,
+  serialized_end=6887,
 )
 
 _GATEWAYSETTINGFIELD = _descriptor.Descriptor(
@@ -2037,64 +1981,71 @@ _GATEWAYSETTINGFIELD = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gatewayDescription', full_name='xyz.redtorch.pb.GatewaySettingField.gatewayDescription', index=2,
-      number=4, type=9, cpp_type=9, label=1,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='implementClassName', full_name='xyz.redtorch.pb.GatewaySettingField.implementClassName', index=3,
-      number=5, type=9, cpp_type=9, label=1,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gatewayType', full_name='xyz.redtorch.pb.GatewaySettingField.gatewayType', index=4,
-      number=6, type=14, cpp_type=8, label=1,
+      number=5, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gatewayAdapterType', full_name='xyz.redtorch.pb.GatewaySettingField.gatewayAdapterType', index=5,
-      number=7, type=14, cpp_type=8, label=1,
+      number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='ctpApiSetting', full_name='xyz.redtorch.pb.GatewaySettingField.ctpApiSetting', index=6,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='targetNodeId', full_name='xyz.redtorch.pb.GatewaySettingField.targetNodeId', index=6,
+      number=7, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='ibApiSetting', full_name='xyz.redtorch.pb.GatewaySettingField.ibApiSetting', index=7,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='autoConnectTimeRanges', full_name='xyz.redtorch.pb.GatewaySettingField.autoConnectTimeRanges', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='status', full_name='xyz.redtorch.pb.GatewaySettingField.status', index=8,
-      number=10, type=14, cpp_type=8, label=1,
+      number=9, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='version', full_name='xyz.redtorch.pb.GatewaySettingField.version', index=9,
-      number=11, type=6, cpp_type=4, label=1,
+      number=10, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='autoConnectTimeRanges', full_name='xyz.redtorch.pb.GatewaySettingField.autoConnectTimeRanges', index=10,
-      number=12, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='ctpApiSetting', full_name='xyz.redtorch.pb.GatewaySettingField.ctpApiSetting', index=10,
+      number=11, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ibApiSetting', full_name='xyz.redtorch.pb.GatewaySettingField.ibApiSetting', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -2110,8 +2061,8 @@ _GATEWAYSETTINGFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6288,
-  serialized_end=7051,
+  serialized_start=6102,
+  serialized_end=6887,
 )
 
 
@@ -2156,8 +2107,8 @@ _LOGFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7053,
-  serialized_end=7148,
+  serialized_start=6889,
+  serialized_end=6984,
 )
 
 
@@ -2202,8 +2153,8 @@ _NOTICEFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7150,
-  serialized_end=7250,
+  serialized_start=6986,
+  serialized_end=7086,
 )
 
 _GATEWAYFIELD.fields_by_name['gatewayType'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._GATEWAYTYPEENUM
@@ -2249,9 +2200,9 @@ _GATEWAYSETTINGFIELD_CTPAPISETTINGFIELD.containing_type = _GATEWAYSETTINGFIELD
 _GATEWAYSETTINGFIELD_IBAPISETTINGFIELD.containing_type = _GATEWAYSETTINGFIELD
 _GATEWAYSETTINGFIELD.fields_by_name['gatewayType'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._GATEWAYTYPEENUM
 _GATEWAYSETTINGFIELD.fields_by_name['gatewayAdapterType'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._GATEWAYADAPTERTYPEENUM
+_GATEWAYSETTINGFIELD.fields_by_name['status'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._CONNECTSTATUSENUM
 _GATEWAYSETTINGFIELD.fields_by_name['ctpApiSetting'].message_type = _GATEWAYSETTINGFIELD_CTPAPISETTINGFIELD
 _GATEWAYSETTINGFIELD.fields_by_name['ibApiSetting'].message_type = _GATEWAYSETTINGFIELD_IBAPISETTINGFIELD
-_GATEWAYSETTINGFIELD.fields_by_name['status'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._CONNECTSTATUSENUM
 _LOGFIELD.fields_by_name['logLevel'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._LOGLEVELENUM
 _NOTICEFIELD.fields_by_name['status'].enum_type = xyz_dot_redtorch_dot_pb_dot_core__enum__pb2._COMMONSTATUSENUM
 DESCRIPTOR.message_types_by_name['GatewayField'] = _GATEWAYFIELD

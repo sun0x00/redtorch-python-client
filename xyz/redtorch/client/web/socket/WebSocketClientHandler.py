@@ -29,8 +29,6 @@ class WebSocketClientHandler:
 
                 WebSocketClientHandler._ws = websocket
 
-                from xyz.redtorch.client.service.rpc.RpcClientProcessService import RpcClientProcessService
-                RpcClientProcessService.onWsConnected()
                 logger.info("连接已建立,发送认证")
 
                 await websocket.send(json.dumps({"Auth-Token": RtConfig.authToken}))
@@ -46,6 +44,11 @@ class WebSocketClientHandler:
                                 logger.info("验证通过")
                                 WebSocketClientHandler.connecting = False
                                 WebSocketClientHandler.connected = True
+
+                                from xyz.redtorch.client.service.rpc.RpcClientProcessService import \
+                                    RpcClientProcessService
+                                RpcClientProcessService.onWsConnected()
+
                             else:
                                 logger.info("验证失败")
 
